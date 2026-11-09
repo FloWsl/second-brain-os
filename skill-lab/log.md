@@ -1,5 +1,9 @@
 # log.md — decisions, newest first
 
+## 2026-11-09 — Stage 2 cards written (no Karpathy, by decision of Florian)
+- analysis/cards/{benai,cole-medin,nate-herk,french}.md. No merge decision yet; keep/adapt/drop lists are proposals for stage 3.
+- Finding: Ben AI os-setup promises hooks but ships an empty settings.json and no hook scripts; Cole Medin describes all code but ships none.
+
 ## 2026-11-09 — Sources cleanup (authorised by Florian)
 - Removed byte-identical Ben AI copies (list in sources/benai/DUPLICATES.md); kept differing variants. Re-wrapped 5 transcripts, text unchanged. Karpathy gist still missing: outline only in karpathy/llm-wiki-summary.md.
 
