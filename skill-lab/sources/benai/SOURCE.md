@@ -8,7 +8,7 @@
 | baalda-app/ | github.com/naveedharri/baalda README.md + AGENTS.md only | 90929b5a68de3f5347cbf2084ee672dd41264234, 2026-11-09 | Apache-2.0 |
 | zip-video/ | Free ZIP from the video description | TODO: download by hand | ? |
 | sales/guide-routines.md | Free Sales OS guide (routine prompts) | TODO: download by hand | ? |
-| transcript.md | Video transcripts (18 tips, Sales OS) | TODO: paste | — |
+| transcript-18-tips.md, sales/transcript-sales-os.md | Video transcripts | 2026-11-09 | — |
 
 Notes: symlinks to `shared-skills/` were resolved (copied as files). Copy of MIT text allowed with licence notice.
 The optimizers now apply **10 frameworks** (os-optimizer/SKILL.md, description), not "22 passes / 9 frameworks" as the playbook says.

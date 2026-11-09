@@ -2,7 +2,7 @@
 
 ## 2026-11-09 — Lab created
 - Sources collected: Ben AI (benai-skills @4c7a2ec, baalda README @90929b5), Cole Medin (@74f7544).
-- Missing: guide.md, brain.py, Karpathy gist, French material, Ben AI ZIP + Sales guide, all transcripts.
+- Missing: guide.md, brain.py, Karpathy gist, French material, Ben AI ZIP + Sales guide. Transcripts added 2026-11-09.
 
 ## Merge decision rules (apply in prompt 3)
 1. **Mechanism beats instruction.** If one source enforces something with a script or hook and another asks the agent nicely, keep the script.
