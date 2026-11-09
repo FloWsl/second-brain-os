@@ -6,8 +6,8 @@
 | other-os/ | same repo `plugins/{aios,agentic-os,marketing-os}` | same | MIT |
 | sales/ | same repo `plugins/benai-sales` | same | MIT |
 | baalda-app/ | github.com/naveedharri/baalda README.md + AGENTS.md only | 90929b5a68de3f5347cbf2084ee672dd41264234, 2026-11-09 | Apache-2.0 |
-| zip-video/ | Free ZIP from the video description | TODO: download by hand | ? |
-| sales/guide-routines.md | Free Sales OS guide (routine prompts) | TODO: download by hand | ? |
+| zip-video/ | Free ZIP (setup, operator, optimizer) + video-prompts.md | 2026-11-09. **Byte-identical to baalda-os/skills/** at 4c7a2ec | MIT (same repo) |
+| sales/routines-guide.md | Free Sales OS guide: 7 routine prompts | 2026-11-09 | personal use |
 | transcript-18-tips.md, sales/transcript-sales-os.md | Video transcripts | 2026-11-09 | — |
 
 Notes: symlinks to `shared-skills/` were resolved (copied as files). Copy of MIT text allowed with licence notice.

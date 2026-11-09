@@ -1,5 +1,8 @@
 # log.md — decisions, newest first
 
+## 2026-11-09 — Ben AI free resources added
+- ZIP (setup/operator/optimizer) = identical to baalda-os plugin; obsidian os-* variants differ slightly. Routines guide (7 prompts) and video prompts saved.
+
 ## 2026-11-09 — 5th creator added
 - Nate Herk (5 levels video) added to sources/nate-herk/. Inventory and matrix get one more column.
 
