@@ -80,7 +80,7 @@ Scope: every file under `sources/` (676 files, `find sources -type f`). Nothing 
 | `sales/agents/{icebreaker-writer,lead-qualifier,lead-researcher,linkedin-scraper}.md` | prompt | — | Sub-agent definitions. |
 | `sales/.claude-plugin/plugin.json` | doc | — | Manifest. |
 | `baalda-app/README.md`, `AGENTS.md` — Apache-2.0 | doc | TEAM, CLD | Baalda app: markdown on disk as source of truth + real-time collaboration, MCP access (`README.md:41-57`). |
-| `transcript-18-tips.md` | transcript | ROOT, MNT, DSH, SKB, TEAM | 18 tips; credits Karpathy for the index concept; points to the free optimizer and setup (`transcript-18-tips.md:5`). |
+| `transcript-18-tips.md` | transcript | ROOT, MNT, DSH, SKB, TEAM | 18 tips; credits Karpathy for the index concept (`transcript-18-tips.md:53`); points to the free optimizer (`:71`). |
 | `SOURCE.md` | doc | — | Origins, commits, licences. |
 
 ---
@@ -100,7 +100,7 @@ Scope: every file under `sources/` (676 files, `find sources -type f`). Nothing 
 | `templates/memory/HABITS.md` | template | FMT | Habits/routines file (unique idea, rule 6). |
 | `templates/memory/daily/.gitkeep` | — | CAP | Empty daily-log folder. |
 | `SecondBrainArchitecture.png`, `WhyBuildYourOwnSecondBrain.png` | image | — | Diagrams. **Not greppable**; need visual read in stage 2. |
-| `transcript.md` | transcript | CAP, SCH, RET | 4 Cs video: Karpathy-style wiki, hook loads the top-level KB at session start, 30-min heartbeat (`transcript.md:5`). |
+| `transcript.md` | transcript | CAP, SCH, RET | 4 Cs video: Karpathy-style wiki (`transcript.md:25`), hook loads the top-level KB at session start (`:57`), 30-min heartbeat (`:87`). |
 | `SOURCE.md` | doc | — | Origin, commit, licence. |
 
 ---
@@ -109,7 +109,7 @@ Scope: every file under `sources/` (676 files, `find sources -type f`). Nothing 
 
 | file | kind | capability | one-line purpose |
 | --- | --- | --- | --- |
-| `transcript.md` | transcript | ROOT, RET, CLD, SET | 5 levels: routing CLAUDE.md + folders, LLM wiki + indexes, per-folder vector search, knowledge graph (LightRAG), always-on (GBrain); choose level per data type (`transcript.md:5`, "doesn't mean everything is just LLM wiki"); uses a `grill me` interview skill. |
+| `transcript.md` | transcript | ROOT, RET, CLD, SET | 5 levels: routing CLAUDE.md + folders, LLM wiki + indexes, per-folder vector search, knowledge graph (LightRAG), always-on (GBrain); choose level per data type (`transcript.md:105`); uses a `grill me` interview skill (`:115-117`). |
 | `SOURCE.md` | doc | — | Origin and level summary. |
 
 ## 4. French creator (`french/`) — 3 files, gated, personal use
@@ -123,7 +123,7 @@ Scope: every file under `sources/` (676 files, `find sources -type f`). Nothing 
 
 | file | kind | capability | one-line purpose |
 | --- | --- | --- | --- |
-| `SOURCE.md`, `.gitkeep` | doc | — | Gist URL + TODO. **No content.** Only second-hand versions exist: `benai/obsidian/skills/os-optimizer/references/karpathy-llm-wiki.md` (Ben AI's paraphrase) and mentions in Cole and Nate transcripts. |
+| `SOURCE.md`, `.gitkeep` | doc | — | Gist URL + TODO. **No content.** Only second-hand versions exist: `benai/obsidian/skills/os-optimizer/references/karpathy-llm-wiki.md` (Ben AI's paraphrase) and mentions in Cole (`transcript.md:25`) and Nate transcripts. |
 
 ---
 
@@ -133,20 +133,21 @@ Scope: every file under `sources/` (676 files, `find sources -type f`). Nothing 
 | item | named in | impact |
 | --- | --- | --- |
 | Karpathy `llm-wiki.md` | `karpathy/SOURCE.md`, PLAYBOOK | Karpathy column would rest on second-hand paraphrase. **Blocks a fair card.** |
-| French masterclass + mini-course: interview prompt, `/done`, cleanup, skill-manager, create-project, project skills | `french/transcript.md:5`, `french/SOURCE.md` | Only the transcript exists; capture (`/done`) is the guide's planned brain-capture source. |
-| Nate Herk `grill-me` skill, level 1-4 example project, slides | `nate-herk/transcript.md:5`, `nate-herk/SOURCE.md` | Interview and retrieval levels unverifiable in files. |
-| Cole Medin's actual hook scripts (SessionStart/PreCompact/SessionEnd) and heartbeat runner | `cole-medin/README.md:88,92`, `transcript.md:5` | Repo only describes them as PRD phases; no code to compare with `reference/protect.sh`/`brain.py`. |
+| French masterclass + mini-course: interview prompt, `/done`, cleanup, skill-manager, create-project, project skills | `french/transcript.md:45-55`, `french/SOURCE.md` | Only the transcript exists; capture (`/done`) is the guide's planned brain-capture source. |
+| Nate Herk `grill-me` skill, level 1-4 example project, slides | `nate-herk/transcript.md:115-117`, `nate-herk/SOURCE.md` | Interview and retrieval levels unverifiable in files. |
+| Cole Medin's actual hook scripts (SessionStart/PreCompact/SessionEnd) and heartbeat runner | `cole-medin/README.md:88,92`, `transcript.md:57,87` | Repo only describes them as PRD phases; no code to compare with `reference/protect.sh`/`brain.py`. |
 | Sales OS dashboard / setup skill | `sales/routines-guide.md:5`, `sales/transcript-sales-os.md` | No sales-specific setup or dashboard skill in `sales/skills/`; closest are `marketing-os-dashboard` and `agentic-os-setup`. |
 | `schedule` skill invoked by os-operator | `obsidian/skills/os-operator/SKILL.md:16` | External Claude skill, not shipped; operator cannot schedule outside Claude. |
 | Playbook claims "22-pass audit", "9-framework optimizer" | `PLAYBOOK.md` collection table | Not found: optimizers declare 10 frameworks (`os-optimizer/SKILL.md:21-34`). Playbook text is out of date. |
 
 ### Duplicated
 - **Inside Ben AI (heavy):** `zip-video/` = `baalda-os/` (64 files identical). `marketing-os/{os-optimizer,os-operator,os-mcp,team-os}` = `obsidian/`. `os-mcp` exists 3×, `team-os` 2×. The 35-file os-setup reference set exists 5× (obsidian, baalda, zip, local-os-builder, cloud-os-builder); 4 of them differ only in root/ignore templates. `agentic-os-setup` (obsidian) merges `agentic-os-obsidian` + `agentic-os-standalone` (other-os). About **400 of 663 Ben AI files are copies**; stage 2 should read only the canonical paths above plus the listed diffs.
+- **Cleanup 2026-11-09:** the byte-identical copies (zip-video skills, marketing-os os-optimizer/os-operator/os-mcp/team-os, agentic-os/os-mcp) were removed from `sources/`, see `benai/DUPLICATES.md`. Rows marked DUP above for those folders now point to the only remaining copy. 538 files remain.
 - **Across creators (ideas, not files):** Karpathy LLM wiki appears in Ben AI (`os-optimizer` F2), Cole (`transcript.md:5`), Nate (level 2). Onboarding interview appears in Ben AI os-setup, Cole BOOTSTRAP.md, French interview prompt, Nate grill-me. Scheduled agent appears as Ben AI Operator/routines and Cole heartbeat. Root routing file appears everywhere (CLAUDE.md, AGENTS.md, agent.md). No file-level duplication across creators.
 
 ### Unreadable or hard to cite
 - Binary: 2 PNGs (Cole), `mono.ttf`, `shadcn-components.tar.gz`, `frappe-charts.min.js` (minified).
-- All 5 transcripts are one paragraph on line 5 (5-40 kB each), so `transcript.md:N` cites cannot be finer than `:5`; stage 2 will cite with a short quote. Re-wrapping them would help (your call, sources/ is read-only for me).
+- Transcripts re-wrapped on 2026-11-09 (5 sentences per paragraph, text unchanged, checked by script), so `transcript.md:N` cites are now precise.
 - Scripts to treat as untrusted, not run: `web-artifacts-builder/scripts/*.sh`, `marketing-os-carousel/scripts/footer.py`, `win-loss-analysis/scripts/generate_charts.py`, `sales-rep-analyzer/scripts/generate_report.js`, `team-os` relay fork `main.js`, `os-mcp` relay server (TS, Docker, OAuth), hook wiring in `os-setup/references/settings-json-template.md`.
 
 ### Coverage at a glance (who has a file for it)
@@ -169,4 +170,4 @@ Scope: every file under `sources/` (676 files, `find sources -type f`). Nothing 
 Early signal for stage 3: nobody ships a real **eval** suite or **ranked retrieval with decay**; both will lean on `reference/guide.md` (§5.1, §5.2) and `reference/brain.py`.
 
 ## Next
-Stop for review. Suggested before Prompt 2: drop the Karpathy gist into `karpathy/llm-wiki.md`; decide whether stage 2 reads only the canonical Ben AI paths listed here.
+Stop for review. Before Prompt 2: paste the Karpathy gist (Raw view) into `karpathy/llm-wiki.md`; until then `karpathy/llm-wiki-summary.md` is a second-hand outline.

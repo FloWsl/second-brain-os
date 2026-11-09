@@ -1,5 +1,8 @@
 # log.md — decisions, newest first
 
+## 2026-11-09 — Sources cleanup (authorised by Florian)
+- Removed byte-identical Ben AI copies (list in sources/benai/DUPLICATES.md); kept differing variants. Re-wrapped 5 transcripts, text unchanged. Karpathy gist still missing: outline only in karpathy/llm-wiki-summary.md.
+
 ## 2026-11-09 — Stage 1 inventory written
 - analysis/00-inventory.md: 676 files, ~400 Ben AI copies; missing Karpathy gist, French skills, Nate grill-me, Cole hook code. No merge decision yet.
 
