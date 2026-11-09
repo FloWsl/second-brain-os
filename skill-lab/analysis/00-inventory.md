@@ -116,7 +116,7 @@ Scope: every file under `sources/` (676 files, `find sources -type f`). Nothing 
 
 | file | kind | capability | one-line purpose |
 | --- | --- | --- | --- |
-| `transcript.md` (EN translation) | transcript | SET, ROOT, CAP, MNT, SKB | agent.md + about.md; "interview" prompt for onboarding; `/done` end-of-session command; skills create-project, project, cleanup, skill-manager (`transcript.md:5`). |
+| `transcript.md` (EN translation) | transcript | SET, ROOT, CAP, MNT, SKB | agent.md + about.md; "interview" prompt for onboarding (`transcript.md:45`); `/done` end-of-session command (`:51`); skills create-project, project, cleanup, skill-manager (`:55`). |
 | `SOURCE.md`, `.gitkeep` | doc | — | Origin + TODO. |
 
 ## 5. Karpathy (`karpathy/`) — 2 files
@@ -143,7 +143,7 @@ Scope: every file under `sources/` (676 files, `find sources -type f`). Nothing 
 ### Duplicated
 - **Inside Ben AI (heavy):** `zip-video/` = `baalda-os/` (64 files identical). `marketing-os/{os-optimizer,os-operator,os-mcp,team-os}` = `obsidian/`. `os-mcp` exists 3×, `team-os` 2×. The 35-file os-setup reference set exists 5× (obsidian, baalda, zip, local-os-builder, cloud-os-builder); 4 of them differ only in root/ignore templates. `agentic-os-setup` (obsidian) merges `agentic-os-obsidian` + `agentic-os-standalone` (other-os). About **400 of 663 Ben AI files are copies**; stage 2 should read only the canonical paths above plus the listed diffs.
 - **Cleanup 2026-11-09:** the byte-identical copies (zip-video skills, marketing-os os-optimizer/os-operator/os-mcp/team-os, agentic-os/os-mcp) were removed from `sources/`, see `benai/DUPLICATES.md`. Rows marked DUP above for those folders now point to the only remaining copy. 538 files remain.
-- **Across creators (ideas, not files):** Karpathy LLM wiki appears in Ben AI (`os-optimizer` F2), Cole (`transcript.md:5`), Nate (level 2). Onboarding interview appears in Ben AI os-setup, Cole BOOTSTRAP.md, French interview prompt, Nate grill-me. Scheduled agent appears as Ben AI Operator/routines and Cole heartbeat. Root routing file appears everywhere (CLAUDE.md, AGENTS.md, agent.md). No file-level duplication across creators.
+- **Across creators (ideas, not files):** Karpathy LLM wiki appears in Ben AI (`os-optimizer` F2), Cole (`transcript.md:25`), Nate (level 2). Onboarding interview appears in Ben AI os-setup, Cole BOOTSTRAP.md, French interview prompt, Nate grill-me. Scheduled agent appears as Ben AI Operator/routines and Cole heartbeat. Root routing file appears everywhere (CLAUDE.md, AGENTS.md, agent.md). No file-level duplication across creators.
 
 ### Unreadable or hard to cite
 - Binary: 2 PNGs (Cole), `mono.ttf`, `shadcn-components.tar.gz`, `frappe-charts.min.js` (minified).
