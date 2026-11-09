@@ -1,5 +1,8 @@
 # log.md — decisions, newest first
 
+## 2026-11-09 — Stage 1 inventory written
+- analysis/00-inventory.md: 676 files, ~400 Ben AI copies; missing Karpathy gist, French skills, Nate grill-me, Cole hook code. No merge decision yet.
+
 ## 2026-11-09 — Ben AI free resources added
 - ZIP (setup/operator/optimizer) = identical to baalda-os plugin; obsidian os-* variants differ slightly. Routines guide (7 prompts) and video prompts saved.
 
