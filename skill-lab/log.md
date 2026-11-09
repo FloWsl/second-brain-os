@@ -1,5 +1,8 @@
 # log.md — decisions, newest first
 
+## 2026-11-09 — 5th creator added
+- Nate Herk (5 levels video) added to sources/nate-herk/. Inventory and matrix get one more column.
+
 ## 2026-11-09 — Lab created
 - Sources collected: Ben AI (benai-skills @4c7a2ec, baalda README @90929b5), Cole Medin (@74f7544).
 - Missing: guide.md, brain.py, Karpathy gist, French material, Ben AI ZIP + Sales guide. Transcripts added 2026-11-09.

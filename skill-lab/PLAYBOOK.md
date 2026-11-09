@@ -55,7 +55,7 @@ skill-lab/
 │   ├── guide.md         # export of "How to Build an AI Second Brain"
 │   └── brain.py         # the tested helper from the guide
 ├── sources/             # READ ONLY, one folder per creator, untouched
-│   ├── benai/  cole-medin/  french/  karpathy/
+│   ├── benai/  cole-medin/  french/  karpathy/  nate-herk/
 │   └── <creator>/SOURCE.md   # url, commit or date, licence
 ├── analysis/
 │   ├── 00-inventory.md
