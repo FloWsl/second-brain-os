@@ -1,5 +1,8 @@
 # log.md — decisions, newest first
 
+## 2026-11-09 — Stage 3 matrix written
+- analysis/01-matrix.md. 9 conflicts open, awaiting Florian. Proposed skill set unchanged (6 skills).
+
 ## 2026-11-09 — Stage 2 cards written (no Karpathy, by decision of Florian)
 - analysis/cards/{benai,cole-medin,nate-herk,french}.md. No merge decision yet; keep/adapt/drop lists are proposals for stage 3.
 - Finding: Ben AI os-setup promises hooks but ships an empty settings.json and no hook scripts; Cole Medin describes all code but ships none.
