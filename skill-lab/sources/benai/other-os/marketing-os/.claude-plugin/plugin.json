@@ -1,0 +1,9 @@
+{
+  "name": "marketing-os",
+  "description": "Set up and operate a Marketing OS: a markdown second brain that is the single source of truth every marketing skill reads, so the ICP, offer and voice live in one place. Four OS-native skills sit on top: newsletter, carousel, market intel and research.",
+  "version": "1.3.2",
+  "author": {
+    "name": "BenAI"
+  },
+  "displayName": "Marketing OS"
+}
