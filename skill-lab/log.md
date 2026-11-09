@@ -1,5 +1,14 @@
 # log.md — decisions, newest first
 
+## 2026-11-09 — Stage 3 decisions (Florian)
+1. Root file: AGENTS.md only, no CLAUDE.md content (guide over Ben AI/Nate). Open point: Claude Code only auto-loads CLAUDE.md, so a one-line pointer may be technically required.
+2. Folder routing: generated index.md (guide); Ben AI per-folder CLAUDE.md rejected (all load, conflict risk).
+3. Daily note = state, rewritten in place, no-op writes nothing (Ben AI operator); append-only kept for log.md only. Deviates from guide 5.
+5. Ingestion: automatic daily from connectors (guide, Ben AI) + manual add possible (Nate grill-me / ingest on demand). Ask before deletes.
+8. Ben AI style hard rules dropped from root file; wikilinks for entities kept.
+9. Health score /100 (Ben AI): trial in evals.
+Pending confirmation (recommendations given): 4 capture trigger, 6 identity files, 7 startup reads.
+
 ## 2026-11-09 — Stage 3 matrix written
 - analysis/01-matrix.md. 9 conflicts open, awaiting Florian. Proposed skill set unchanged (6 skills).
 
