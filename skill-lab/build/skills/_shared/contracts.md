@@ -11,6 +11,7 @@ clients/  people/                                                  one file per 
 notes/daily/YYYY-MM-DD.md   notes/inbox.md   notes/ideas.md
 wiki/  wiki/sources/        syntheses and source summaries
 raw/  archive/              read-only (hook-enforced)
+evals/results/YYYY-MM-DD.md  eval runs (not notes, not indexed)
 .claude/settings.json  .claude/hooks/{protect.sh,session-end.sh}  queue.py
 ```
 Every folder with 2+ notes has a generated `index.md` (`python3 brain.py index`). Never hand-edit an index.

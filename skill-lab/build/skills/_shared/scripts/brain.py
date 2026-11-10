@@ -10,7 +10,7 @@ import datetime as dt, re, shutil, sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
-SKIP = {"raw", "archive", ".git", ".obsidian", ".claude"}
+SKIP = {"raw", "archive", "evals", ".git", ".obsidian", ".claude"}
 SPECIAL = {"index.md", "AGENTS.md", "CLAUDE.md", "log.md", "hot.md", "evals.md"}
 HALF_LIFE = {"project": 30, "entity": 180, "concept": 365, "source": 365,
              "log": 7, "inbox": 3}            # days; types absent = no decay
@@ -21,7 +21,7 @@ LINK = re.compile(r"\[\[([^\]|#]+)")
 QUEUE_HEAD = re.compile(r"^## (q-(\d{8})-\d{4,6}) \| (\w+)\s*$", re.M)
 ROOT_MAX, HOT_MAX_WORDS, QUEUE_MAX_DAYS = 60, 500, 2
 DIRS = ["context", "projects", "clients", "people", "notes/daily", "wiki/sources",
-        "raw", "archive", ".claude/hooks"]
+        "raw", "archive", "evals/results", ".claude/hooks"]
 # severity per check: fail costs 5, warn costs 1, each check capped at 25 (Ben AI score idea)
 SEVERITY = {"frontmatter": "fail", "broken-link": "fail", "superseded": "fail",
             "root-size": "fail", "overdue": "warn", "size": "warn", "duplicate": "warn",

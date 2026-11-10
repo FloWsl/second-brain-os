@@ -1,5 +1,9 @@
 # log.md — decisions, newest first
 
+## 2026-11-10 — Stage 5, step 6: brain-evals built (all 6 skills done)
+- Runs evals.md cases on a disposable copy (BRAIN_AUTOMATED=1), one fresh sub-agent per case; mechanical Must contain / Must not contain checks before judgment; root cause per fail; results in evals/results/<date>.md, regressions vs previous run; never applies fixes.
+- Template evals.md now holds the four C audits (Cole/Nate via guide 3). brain.py: evals/ skipped from notes, evals/results created by init.
+
 ## 2026-11-10 — Stage 5, step 5: brain-ask built
 - brain.py search first (guide 5.1), freshness judgment (review_by, conflicts, hypotheses), connectors for live values; search-before-answering rule with exceptions (Cole SOUL); file syntheses back as wiki/ concept notes on user OK (Karpathy query, guide 5); "not found" lines in log.md feed brain-lint's retrieval-pressure check.
 - Conflicts are reported, not fixed (brain-lint owns fixes: one owner per capability).
