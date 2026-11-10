@@ -21,7 +21,7 @@ Tell the user, in one message: talk or paste freely for 5-30 minutes (dictation 
 - If they prefer questions: interview mode, **one question at a time**, in this order: role and preferences, business and goal, ideal customer, offer and current prices, voice, team, tools they use daily. Stop when they say so.
 
 ## 3. Write the core files from real content only
-- `context/me.md`, `business.md`, `icp.md`, `offer.md`, `voice.md`: frontmatter per contracts §2 (`type: context`, `review_by` = today + 90 days, `summary` answer-first). Use their exact names, numbers and phrasing; every price carries its date and source.
+- `context/me.md`, `business.md`, `icp.md`, `offer.md`, `voice.md`: frontmatter per contracts §2 (`type: context`, `review_by` = today + `review_days.context` from config, `summary` answer-first). Use their exact names, numbers and phrasing; every price carries its date and source.
 - A topic with no real content gets no file. Never leave a placeholder or bracketed text.
 - One project they mention → `projects/<name>/about.md` (status, goal, decisions, next step). Clients or people they describe → one file each in `clients/` or `people/`.
 - Decisions they state with a reason → `decisions.md`. Leftover ideas → `notes/ideas.md`.

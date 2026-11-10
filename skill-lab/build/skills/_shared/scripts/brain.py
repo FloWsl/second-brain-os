@@ -17,6 +17,7 @@ HALF_LIFE = {"project": 30, "entity": 180, "concept": 365, "source": 365,
 STATUS_MULT = {"active": 1.0, "draft": 0.8, "archived": 0.3, "superseded": 0.0}
 W_REL, W_REC, W_IMP = 1.0, 1.0, 1.0
 TODAY = dt.date.today()
+# Defaults above are overridden by context/config.md (decay_* keys), see load_config().
 LINK = re.compile(r"\[\[([^\]|#]+)")
 QUEUE_HEAD = re.compile(r"^## (q-(\d{8})-\d{4,6}) \| (\w+)\s*$", re.M)
 ROOT_MAX, HOT_MAX_WORDS, QUEUE_MAX_DAYS = 60, 500, 2
@@ -27,6 +28,44 @@ SEVERITY = {"frontmatter": "fail", "broken-link": "fail", "superseded": "fail",
             "root-size": "fail", "overdue": "warn", "size": "warn", "duplicate": "warn",
             "orphan": "warn", "index": "warn", "hot-size": "warn", "queue": "warn",
             "daily-log": "warn"}
+
+
+def _pairs(value):
+    """'project=30, entity=180' -> {'project': 30.0, 'entity': 180.0}; bad items skipped."""
+    out = {}
+    for item in value.split("#")[0].split(","):
+        if "=" in item:
+            k, v = item.split("=", 1)
+            try:
+                out[k.strip()] = float(v)
+            except ValueError:
+                pass
+    return out
+
+
+def load_config():
+    """Read decay settings from context/config.md so they can be tuned without code."""
+    global W_REL, W_REC, W_IMP
+    cfg = ROOT / "context" / "config.md"
+    if not cfg.exists():
+        return
+    for line in cfg.read_text(encoding="utf-8").splitlines():
+        if not line.startswith("- ") or ":" not in line:
+            continue
+        key, value = line[2:].split(":", 1)
+        key = key.strip()
+        if key == "decay_half_life":
+            for t, v in _pairs(value).items():
+                if v <= 0:
+                    HALF_LIFE.pop(t, None)      # 0 = no decay for this type
+                else:
+                    HALF_LIFE[t] = v
+        elif key == "decay_status_mult":
+            STATUS_MULT.update(_pairs(value))
+        elif key == "decay_weights":
+            w = _pairs(value)
+            W_REL, W_REC, W_IMP = (w.get("relevance", W_REL), w.get("recency", W_REC),
+                                   w.get("importance", W_IMP))
 
 
 def name(p):
@@ -213,6 +252,7 @@ def cmd_init(target):
 
 
 if __name__ == "__main__":
+    load_config()
     args = sys.argv[1:] or ["lint"]
     if args[0] == "init" and len(args) > 1:
         cmd_init(args[1])

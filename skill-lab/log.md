@@ -1,5 +1,9 @@
 # log.md — decisions, newest first
 
+## 2026-11-10 — Decay settings moved to context/config.md (Florian)
+- New config keys: decay_half_life, decay_status_mult, decay_weights (read by brain.py at every run, defaults kept in code as fallback), review_days (read by skills when setting review_by). 0 half-life = no decay.
+- contracts §3 now points to config instead of holding the table. Verified: overriding superseded=1 in config surfaces the old 900 EUR note; defaults restore 1 200 EUR first.
+
 ## 2026-11-10 — Stage 6 evals: 6/6 pass (evals/results/2026-11-10.md)
 - Fixes from evals: brain.py about.md naming and orphan rule for superseded notes; contracts/AGENTS template project link syntax and onboarding source; archive moves interactive-only; setup config defaults; capture inline fallback; seed dates.
 - Open (needs real use): hooks in live sessions, connectors, schedules, health-score trial over several weeks.

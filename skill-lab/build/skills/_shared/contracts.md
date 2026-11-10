@@ -24,7 +24,7 @@ type: entity          # context|entity|project|concept|source|decision|log|inbox
 status: active        # active|superseded|archived|draft
 created: 2026-03-02
 updated: 2026-11-07   # bump on substantive edit or re-confirmation, never on read
-review_by: 2027-05-07 # see half-life table
+review_by: 2027-05-07 # updated + review_days[type] from config.md
 importance: 3         # 1-5
 supersedes: ""        # "[[old-note]]"
 superseded_by: ""
@@ -37,14 +37,12 @@ Wikilinks `[[note]]` on first mention of an entity. A project is linked by its f
 Source of a fact from onboarding: `(setup brain dump, YYYY-MM-DD)`.
 
 ## 3. Decay [guide §5.1]
-| type | half-life (days) | review_by after update |
-| --- | --- | --- |
-| context, decision | none | context 90 days, decision none |
-| concept, source | 365 | concept 12 months |
-| entity | 180 | 6 months |
-| project | 30 | 1 month |
-| log | 7 | none |
-| inbox | 3 | 7 days |
+Settings live in `context/config.md` (Decay section), never in skills or code:
+- `decay_half_life`: days for a note type's recency weight to halve (0 = no decay). Defaults: project 30, entity 180, concept and source 365, log 7, inbox 3, context and decision none.
+- `decay_status_mult`: score multiplier by status (superseded 0 = never returned).
+- `decay_weights`: weights of relevance, recency, importance in the search score.
+- `review_days`: set `review_by` = `updated` + this many days when writing a note (decision and source: none).
+brain.py reads the first three at every run; skills read `review_days`.
 - When a fact changes: rewrite the note in place, or set the old note `status: superseded` + `superseded_by`. Never two active versions. Moving it to archive/ (`git mv`) is done in interactive runs; automated runs list the move in their report (archive/ is write-protected).
 - A curated claim contradicted by newer material: rewrite it, keep the old wording under `## History` with the date and a link to what superseded it. [Ben AI F8.3]
 - Past `review_by`: still usable, but say "as of <updated>" and check the live connector if one exists.

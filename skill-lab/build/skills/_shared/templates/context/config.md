@@ -18,3 +18,8 @@ summary: Settings every brain routine reads. Change values here, never in skills
 - proactivity: advisor    # observer | advisor (drafts, never sends) | assistant | partner
 - capture_confirm: false  # true = /done shows the entry before queueing
 - queue: inbox            # inbox (notes/inbox.md); airtable adapter later
+## Decay (read by brain.py; days; 0 = no decay)
+- decay_half_life: project=30, entity=180, concept=365, source=365, log=7, inbox=3, context=0, decision=0
+- decay_status_mult: active=1, draft=0.8, archived=0.3, superseded=0
+- decay_weights: relevance=1, recency=1, importance=1   # raise relevance if old exact matches get buried
+- review_days: context=90, concept=365, entity=180, project=30, inbox=7   # review_by = updated + this; read by skills
