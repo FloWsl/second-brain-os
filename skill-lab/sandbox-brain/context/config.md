@@ -1,0 +1,20 @@
+---
+title: Brain config
+type: context
+status: active
+created: 2026-11-10
+updated: 2026-11-10
+summary: Settings every brain routine reads. Change values here, never in skills.
+---
+# Config
+- timezone: Europe/Paris
+- daily_time: "07:30"
+- lint_day: friday
+- lint_time: "16:00"
+- connectors: []          # e.g. [calendar, gmail, fireflies, crm]
+- budget_reads: 60
+- budget_writes: 25
+- budget_fixes: 15
+- proactivity: advisor    # observer | advisor (drafts, never sends) | assistant | partner
+- capture_confirm: false  # true = /done shows the entry before queueing
+- queue: inbox            # inbox (notes/inbox.md); airtable adapter later

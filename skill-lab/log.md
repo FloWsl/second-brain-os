@@ -1,5 +1,10 @@
 # log.md — decisions, newest first
 
+## 2026-11-10 — Graphify evaluated: not in v1
+- What: open-source Claude Code skill (PyPI `graphifyy`) turning a folder into a knowledge graph (tree-sitter for code, Claude extraction for docs), exports Obsidian/Neo4j/MCP.
+- Rejected for v1: code-first (notes cost Claude tokens per ingest); 71.5x token claim is a self-run size comparison on 52 files, no answer-quality test, not independently reproduced; baseline is "read all files", not our ranked search + indexes; installs its own rules + PreToolUse hook (lab rule: never install a source's hooks); second index to keep in sync (one fact one place); Claude-specific; licence inconsistent (Apache-2.0 vs MIT).
+- Kept as level-4 candidate (Nate ladder): read-only diagnostic on a copy when a folder exceeds ~150 notes or evals show relation-type retrieval misses. Mentioned in brain-lint retrieval-pressure advice.
+
 ## 2026-11-10 — Stage 5, step 6: brain-evals built (all 6 skills done)
 - Runs evals.md cases on a disposable copy (BRAIN_AUTOMATED=1), one fresh sub-agent per case; mechanical Must contain / Must not contain checks before judgment; root cause per fail; results in evals/results/<date>.md, regressions vs previous run; never applies fixes.
 - Template evals.md now holds the four C audits (Cole/Nate via guide 3). brain.py: evals/ skipped from notes, evals/results created by init.

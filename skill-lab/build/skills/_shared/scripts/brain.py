@@ -29,6 +29,11 @@ SEVERITY = {"frontmatter": "fail", "broken-link": "fail", "superseded": "fail",
             "daily-log": "warn"}
 
 
+def name(p):
+    """Link name of a note: a project's about.md is named after its folder."""
+    return p.parent.name if p.name == "about.md" else p.stem
+
+
 def parse(path):
     text = path.read_text(encoding="utf-8")
     meta, body = {}, text
@@ -80,7 +85,7 @@ def score(meta, body, stem, terms):
 
 def cmd_search(query, n=5):
     terms = [t for t in query.lower().split() if len(t) > 2] or query.lower().split()
-    ranked = sorted(((score(m, b, p.stem, terms), p, m) for p, m, b in notes()),
+    ranked = sorted(((score(m, b, name(p), terms), p, m) for p, m, b in notes()),
                     key=lambda x: x[0], reverse=True)
     for s, p, m in [r for r in ranked if r[0] > 0][:n]:
         print(f"{s:.2f}  {p.relative_to(ROOT)}  ({m.get('status', 'active')}, "
@@ -102,7 +107,7 @@ def cmd_index():
                           key=lambda x: x[1].get("updated", ""), reverse=True)
             if rows:
                 out.append(f"\n## {status}")
-                out += [f"- [[{p.stem}]] (updated {m.get('updated', '?')}, "
+                out += [f"- [[{name(p)}]] (updated {m.get('updated', '?')}, "
                         f"imp {m.get('importance', '?')}): {m.get('summary', '')}"
                         for p, m in rows]
         (d / "index.md").write_text("\n".join(out) + "\n", encoding="utf-8")
@@ -112,7 +117,7 @@ def cmd_index():
 
 def lint_problems():
     """Return a list of (check, message)."""
-    all_md = {p.stem for p in ROOT.rglob("*.md")}
+    all_md = {name(p) for p in ROOT.rglob("*.md")}
     linked, out, titles, per_dir = set(), [], {}, {}
     for p, m, b in notes():
         rel = p.relative_to(ROOT)
@@ -134,7 +139,7 @@ def lint_problems():
             out.append(("superseded", f"{rel}: superseded but no superseded_by"))
         if len(b.splitlines()) > 300:
             out.append(("size", f"{rel}: over 300 lines, consider splitting"))
-        key = (m.get("title") or p.stem).lower()
+        key = (m.get("title") or name(p)).lower()
         if key in titles:
             out.append(("duplicate", f"{rel}: duplicate title of {titles[key]}"))
         titles[key] = rel
@@ -143,7 +148,7 @@ def lint_problems():
             if len(heads) != len(set(heads)) or re.search(r"\b(\d+(st|nd|rd|th) pass|run at \d)", b, re.I):
                 out.append(("daily-log", f"{rel}: daily has repeated sections or per-run blocks (daily is state)"))
     for p, m, _ in notes():
-        if p.stem not in linked and m.get("type") not in ("log", "inbox", "context", "decision"):
+        if name(p) not in linked and m.get("type") not in ("log", "inbox", "context", "decision"):
             out.append(("orphan", f"{p.relative_to(ROOT)}: orphan (nothing links here)"))
     for d, n in per_dir.items():
         if n >= 2 and not (d / "index.md").exists():

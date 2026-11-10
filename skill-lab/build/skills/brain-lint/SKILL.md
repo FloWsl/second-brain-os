@@ -31,7 +31,7 @@ For each: if a connector holds the live value (price, CRM stage, invoice), check
 - **Missing pages**: an entity or concept linked or named in 3+ notes without its own note. Propose creating it.
 - **Root map accuracy**: every folder in the brain appears in AGENTS.md "Where things live", and every line there still matches reality. Propose fixes.
 - **Queue**: entries still `new` after 2 days (lint lists them) → report; do not integrate here (brain-daily owns it).
-- **Retrieval pressure**: a folder index over ~150 notes, or repeated "not found" in log.md → suggest in the report: split the folder index first; a local search tool next; vector search only if that fails. [Nate's level ladder]
+- **Retrieval pressure**: a folder index over ~150 notes, or repeated "not found" in log.md → suggest in the report: split the folder index first; a local search tool next; vector search or a graph tool (e.g. Graphify, run read-only on a copy as a diagnostic) only if that fails and evals show relation-type misses. [Nate's level ladder]
 
 ## 4. Monthly consolidation (first lint run of the month)
 1. Projects with no update in 30 days → list them and ask whether to archive (never archive unasked).
