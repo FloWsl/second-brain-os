@@ -11,6 +11,7 @@ Goal: no load on the main context. The main agent does not summarise or re-read 
 ## Main agent: 4 actions
 1. Find the brain root: current folder if it holds `AGENTS.md` and `queue.py`, else `$BRAIN_DIR`, else ask once. None reachable (e.g. a claude.ai chat): the sub-agent writes the entry to a file only and says "not queued".
 2. Launch one sub-agent (general-purpose, fast model, foreground) with the SUB-AGENT brief below, filling `<ROOT>`, `<NOW>` (YYYY-MM-DD HH:MM), `<SOURCE>` (conversation tool, or the session transcript path if known), `<OUT>` (scratch folder).
+   No sub-agent tool available (e.g. you are already a sub-agent): follow the brief yourself, in the same order.
 3. If it answers `READ KO`: write `<OUT>/discussion.md` (user messages verbatim, assistant replies summarised, deliverables and links) and relaunch it with "Source: <OUT>/discussion.md".
 4. Send the user the entry file it names, then answer in one line: queued id (or "not queued" + reason), certainty, uncertain points. Never re-run the queueing yourself: a second run creates a duplicate.
 

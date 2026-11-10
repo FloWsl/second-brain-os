@@ -33,7 +33,8 @@ aliases: []
 summary: One line, answer first. Copied into the index.
 ```
 File names: kebab-case; dated notes start with the ISO date. Any number in a note carries its date and source inline, e.g. `1 200 EUR/month (offer.md, 2026-11-07)`. [Ben AI conventions]
-Wikilinks `[[note]]` on first mention of an entity.
+Wikilinks `[[note]]` on first mention of an entity. A project is linked by its folder name: `[[borel-renewal]]` → `projects/borel-renewal/about.md`.
+Source of a fact from onboarding: `(setup brain dump, YYYY-MM-DD)`.
 
 ## 3. Decay [guide §5.1]
 | type | half-life (days) | review_by after update |
@@ -44,7 +45,7 @@ Wikilinks `[[note]]` on first mention of an entity.
 | project | 30 | 1 month |
 | log | 7 | none |
 | inbox | 3 | 7 days |
-- When a fact changes: rewrite the note in place, or set the old note `status: superseded` + `superseded_by`, and move it to archive/. Never two active versions.
+- When a fact changes: rewrite the note in place, or set the old note `status: superseded` + `superseded_by`. Never two active versions. Moving it to archive/ (`git mv`) is done in interactive runs; automated runs list the move in their report (archive/ is write-protected).
 - A curated claim contradicted by newer material: rewrite it, keep the old wording under `## History` with the date and a link to what superseded it. [Ben AI F8.3]
 - Past `review_by`: still usable, but say "as of <updated>" and check the live connector if one exists.
 

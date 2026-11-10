@@ -26,7 +26,7 @@ Tell the user, in one message: talk or paste freely for 5-30 minutes (dictation 
 - One project they mention → `projects/<name>/about.md` (status, goal, decisions, next step). Clients or people they describe → one file each in `clients/` or `people/`.
 - Decisions they state with a reason → `decisions.md`. Leftover ideas → `notes/ideas.md`.
 - Live data (emails, CRM rows, exports) is not copied: note which tool holds it in `context/config.md` `connectors`.
-- Ask for timezone, daily and lint times and proactivity level only if unknown; write them in `context/config.md`.
+- `context/config.md` ships with defaults (Europe/Paris, daily 07:30, lint Friday 16:00, advisor). Change a value only if the user gave a different one; otherwise mention the defaults in the report.
 
 ## 4. Grill mode (deepen one topic, also on later runs)
 Pick one entity or topic. Ask one question at a time and keep going until the user has nothing to add or says stop: facts, history, people involved, decisions and why, open questions. Then extend the existing note (search first, contracts §7), or create one if none exists.
@@ -39,5 +39,5 @@ Edit AGENTS.md routing lines only where this brain differs (renamed or extra fol
 2. Write hot.md (under 500 words): current priorities and open loops from the dump.
 3. Append to log.md: `## [date] setup | <summary> | touched: <files>`.
 4. If the folder is not a git repository, offer `git init` and a first commit.
-5. Report in a short list: files created, topics with no content yet (suggest a grill session), the health score, next step (install brain-capture and brain-daily).
+5. Report in a short list: files created, topics with no content yet (suggest a grill session), config defaults kept, the final health score, next step (install brain-capture and brain-daily).
 6. Context audit: suggest the user opens a fresh session and asks "what does my business do and who works there?"

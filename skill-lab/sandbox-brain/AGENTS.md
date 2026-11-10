@@ -5,7 +5,7 @@ Full formats: contracts.md in the brain-* skills. Below is what every session ne
 
 ## Where things live (read the folder's index.md first)
 - context/   who I am, business, ICP, offer and prices, voice, config. Canonical. Edit only when I state a change.
-- projects/<name>/about.md   entry point per project: status, decisions, next step.
+- projects/<name>/about.md   entry point per project: status, decisions, next step. Link it as [[<name>]].
 - clients/ people/   one file per entity, kebab-case: clients/acme-corp.md
 - notes/daily/YYYY-MM-DD.md   today's state. notes/inbox.md   capture queue (use queue.py). notes/ideas.md
 - wiki/   syntheses; wiki/sources/   summaries of raw documents.

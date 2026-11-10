@@ -1,5 +1,9 @@
 # log.md — decisions, newest first
 
+## 2026-11-10 — Stage 6 evals: 6/6 pass (evals/results/2026-11-10.md)
+- Fixes from evals: brain.py about.md naming and orphan rule for superseded notes; contracts/AGENTS template project link syntax and onboarding source; archive moves interactive-only; setup config defaults; capture inline fallback; seed dates.
+- Open (needs real use): hooks in live sessions, connectors, schedules, health-score trial over several weeks.
+
 ## 2026-11-10 — Graphify evaluated: not in v1
 - What: open-source Claude Code skill (PyPI `graphifyy`) turning a folder into a knowledge graph (tree-sitter for code, Claude extraction for docs), exports Obsidian/Neo4j/MCP.
 - Rejected for v1: code-first (notes cost Claude tokens per ingest); 71.5x token claim is a self-run size comparison on 52 files, no answer-quality test, not independently reproduced; baseline is "read all files", not our ranked search + indexes; installs its own rules + PreToolUse hook (lab rule: never install a source's hooks); second index to keep in sync (one fact one place); Claude-specific; licence inconsistent (Apache-2.0 vs MIT).

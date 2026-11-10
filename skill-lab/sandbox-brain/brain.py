@@ -148,7 +148,8 @@ def lint_problems():
             if len(heads) != len(set(heads)) or re.search(r"\b(\d+(st|nd|rd|th) pass|run at \d)", b, re.I):
                 out.append(("daily-log", f"{rel}: daily has repeated sections or per-run blocks (daily is state)"))
     for p, m, _ in notes():
-        if name(p) not in linked and m.get("type") not in ("log", "inbox", "context", "decision"):
+        if (name(p) not in linked and m.get("type") not in ("log", "inbox", "context", "decision")
+                and m.get("status", "active") not in ("superseded", "archived")):
             out.append(("orphan", f"{p.relative_to(ROOT)}: orphan (nothing links here)"))
     for d, n in per_dir.items():
         if n >= 2 and not (d / "index.md").exists():

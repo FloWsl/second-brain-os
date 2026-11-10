@@ -2,7 +2,7 @@
 title: Acme pricing 2025
 type: entity
 status: superseded
-created: 2026-01-15
+created: 2025-03-01
 updated: 2025-12-10
 review_by: 2027-05-01
 importance: 3
