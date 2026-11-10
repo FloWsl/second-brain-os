@@ -27,7 +27,7 @@ DIRS = ["context", "projects", "clients", "people", "notes/daily", "wiki/sources
 SEVERITY = {"frontmatter": "fail", "broken-link": "fail", "superseded": "fail",
             "root-size": "fail", "overdue": "warn", "size": "warn", "duplicate": "warn",
             "orphan": "warn", "index": "warn", "hot-size": "warn", "queue": "warn",
-            "daily-log": "warn"}
+            "daily-log": "warn", "marker": "warn"}
 
 
 def _pairs(value):
@@ -196,6 +196,9 @@ def lint_problems():
     agents = ROOT / "AGENTS.md"
     if agents.exists() and len(agents.read_text(encoding="utf-8").splitlines()) > ROOT_MAX:
         out.append(("root-size", f"AGENTS.md: over {ROOT_MAX} lines"))
+    marker = ROOT / ".claude" / "automated-run"
+    if marker.exists() and dt.datetime.now().timestamp() - marker.stat().st_mtime > 3 * 3600:
+        out.append(("marker", ".claude/automated-run is over 3 h old: a routine crashed? delete it to unlock context/"))
     hot = ROOT / "hot.md"
     if hot.exists() and len(hot.read_text(encoding="utf-8").split()) > HOT_MAX_WORDS:
         out.append(("hot-size", f"hot.md: over {HOT_MAX_WORDS} words"))

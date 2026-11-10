@@ -1,5 +1,10 @@
 # log.md — decisions, newest first
 
+## 2026-11-10 — Install + handoff before real trial
+- Found before install: scheduled tasks cannot set BRAIN_AUTOMATED for the hook (an export in a shell command does not reach Claude Code's hook env). Fix: brain-daily/brain-lint create `.claude/automated-run` at start and remove it at end; protect.sh and session-end.sh honour it; brain.py lint warns if it is older than 3 h; `.gitignore` template ignores it. Tested: hook blocks context/ with marker, allows without.
+- build/install.sh (into ~/.claude/skills, refuses overwrite, --force backs up outside skills/) and build/INSTALL.md. Tested in a fake HOME.
+- HANDOFF.md rewritten for the 2-week real trial on a new brain folder (not the existing personal-os).
+
 ## 2026-11-10 — Decay settings moved to context/config.md (Florian)
 - New config keys: decay_half_life, decay_status_mult, decay_weights (read by brain.py at every run, defaults kept in code as fallback), review_days (read by skills when setting review_by). 0 half-life = no decay.
 - contracts §3 now points to config instead of holding the table. Verified: overriding superseded=1 in config surfaces the old 900 EUR note; defaults restore 1 200 EUR first.

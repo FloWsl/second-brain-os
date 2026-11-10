@@ -82,7 +82,7 @@ Statuses: `new` → `integrated` (result = touched notes) or `rejected` (result 
 2. After each write, read the file back and confirm the new content is there; retry once, then report. [Ben AI operator]
 3. Respect the run budget in `context/config.md`; put what is left in log.md as `queued`.
 4. Never delete; propose deletions in the report.
-5. Automated runs (`BRAIN_AUTOMATED=1`) never write to context/, raw/, archive/ (hook-enforced). Propose context edits in the report.
+5. Automated runs (marker file `.claude/automated-run`, or env `BRAIN_AUTOMATED=1`) never write to context/, raw/, archive/ (hook-enforced). Propose context edits in the report.
 6. Live data (email, CRM, payments) is read through connectors, not copied in. Only insights are stored. [guide §2, Nate]
 7. After creating or renaming notes: `python3 brain.py index`.
 

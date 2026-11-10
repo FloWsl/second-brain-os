@@ -8,8 +8,10 @@ description: Daily second-brain update - integrate the capture queue and the las
 Shared rules: `../_shared/contracts.md` (all sections, especially §3 decay, §4 daily = state, §6 queue, §7 write discipline). Read it and the brain's `AGENTS.md`, `context/config.md`, `hot.md` first.
 Unattended run: no questions, no confirmations. Anything needing the user goes in the report.
 
+**Automated-run marker**: first command of the run `touch .claude/automated-run` (the protect hook then blocks writes to context/); last command `rm -f .claude/automated-run`, also after a failure. On-demand runs started by the user skip the marker.
+
 ## Scheduling
-Run from the brain root at `daily_time` with the environment variable `BRAIN_AUTOMATED=1` (desktop scheduled task or cloud routine; the brain must be a synced git repo for cloud). Prompt: "Run the brain-daily skill on this brain." Without that variable the hook does not protect context/: obey §7.5 anyway.
+Run from the brain root at `daily_time` (desktop scheduled task or cloud routine; the brain must be a synced git repo for cloud). Prompt: "Run the brain-daily skill on this brain." 
 
 ## 0. Budget and path
 Budgets from config (`budget_reads`, `budget_writes`). Count as you go; when one runs out, stop that workstream and log what is left as `queued`.

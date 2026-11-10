@@ -7,7 +7,9 @@ description: Weekly health check of the second brain - run brain.py lint plus ju
 
 Shared rules: `../_shared/contracts.md`. Read it, the brain's `AGENTS.md` and `context/config.md` first.
 Principle: fix small things directly, ask before anything big, never delete. [guide §5, Ben AI optimizer]
-Scheduled run: from the brain root at `lint_day` `lint_time` with `BRAIN_AUTOMATED=1`, prompt "Run the brain-lint skill on this brain." Unattended: questions go in the report.
+Scheduled run: from the brain root at `lint_day` `lint_time`, prompt "Run the brain-lint skill on this brain." Unattended: questions go in the report.
+
+**Automated-run marker**: first command of the run `touch .claude/automated-run` (the protect hook then blocks writes to context/); last command `rm -f .claude/automated-run`, also after a failure. On-demand runs started by the user skip the marker.
 
 ## 1. Script checks
 `python3 brain.py index`, then `python3 brain.py lint`. Note the health score (before).
