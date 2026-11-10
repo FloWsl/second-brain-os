@@ -1,5 +1,9 @@
 # log.md — decisions, newest first
 
+## 2026-11-10 — Stage 5, step 4: brain-lint built
+- Script checks via brain.py (fix safe, budget_fixes); overdue reviews checked against connectors; judgment checks from Ben AI optimizer (F8.1 contradictions, near-duplicates, F8.3 stale, F2.8 undigested) and Karpathy lint (missing pages); root map accuracy; Nate ladder as advice only; guide monthly consolidation.
+- Not ported: Ben AI frameworks F3 caveman, F4 context rot, F5 memory, F10 rule rewriting, HTML report, per-finding walk (cost, Claude-specific, rule 7). Health score logged before/after each run to judge the trial.
+
 ## 2026-11-10 — Stage 5, step 3: brain-daily built
 - Single writer of notes from the queue. Borrowed: guide daily prompt (5.2); Ben AI operator (budgets, short path, daily = state, read-back, report, curated layer untouched); Cole gather-then-reason; Nate evergreen vs changing data; Sales OS completion check before tasks.
 - Choices: hypothesis entries go to Open questions or draft notes; verbatim lines to ## Quotes in the related note, voice patterns proposed for context/voice.md; uncaptured stubs read from transcript if available, else rejected.
