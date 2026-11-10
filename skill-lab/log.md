@@ -7,7 +7,8 @@
 5. Ingestion: automatic daily from connectors (guide, Ben AI) + manual add possible (Nate grill-me / ingest on demand). Ask before deletes.
 8. Ben AI style hard rules dropped from root file; wikilinks for entities kept.
 9. Health score /100 (Ben AI): trial in evals.
-Pending confirmation (recommendations given): 4 capture trigger, 6 identity files, 7 startup reads.
+4. Capture (2026-11-10, inspired by Florian's own /os-capture system): /done runs a sub-agent that writes a structured summary (date, source, entities, new/changed facts, decisions with reason, status) into a queue; queue adapter = notes/inbox.md by default, Airtable optional for chats outside Claude Code; brain-daily integrates entries with status new -> integrated/rejected (idempotent, one writer, search-first). SessionEnd hook only queues an "uncaptured session" line. Rejected: Cole background flush agent, Ben AI silent auto-save (duplicate risk).
+Pending confirmation: 6 identity files, 7 startup reads, 1(a)/(b) CLAUDE.md pointer.
 
 ## 2026-11-09 — Stage 3 matrix written
 - analysis/01-matrix.md. 9 conflicts open, awaiting Florian. Proposed skill set unchanged (6 skills).
