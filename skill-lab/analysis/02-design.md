@@ -42,7 +42,7 @@ Layer 1 status + superseded_by + archive; layer 2 half-lives in brain.py `HALF_L
 - `hot.md` ≤ 500 words, rewritten (not appended) by brain-daily.
 
 ### 2.6 Capture queue (decision 4)
-Entry fields: `id, date, source (claude-code|claude.ai|other), session_ref, entities[], facts_new_or_changed[], decisions[{what, why}], open_loops[], status (new|integrated|rejected), result_note`. Default adapter: a fenced YAML block per entry in `notes/inbox.md`. Optional adapter: Airtable table with the same fields (Florian's `/os-capture` pattern). brain-daily is the **only writer** of brain notes from the queue; it sets status so re-runs are idempotent.
+Entry fields: `id, date, source (claude-code|claude.ai|other), session_ref, entities[], facts_new_or_changed[], decisions[{what, why}], open_loops[], status (new|integrated|rejected), result_note`. Default adapter: one `## <id> | <status>` section per entry in `notes/inbox.md`, managed by queue.py (changed at build: simpler to parse than YAML with stdlib). Optional adapter: Airtable table with the same fields (Florian's `/os-capture` pattern). brain-daily is the **only writer** of brain notes from the queue; it sets status so re-runs are idempotent.
 
 ### 2.7 Write discipline (all writing skills)
 Search before creating (`brain.py search`), extend never near-duplicate (guide §4.1); read back every write and confirm content, retry once (Ben AI operator §Principles 4); budgets per run from `config.md` (reads, writes, fixes), excess queued in `log.md` as `## [date] queued |` (Ben AI §Cadence); never delete without asking; no write to `context/`, `raw/`, `archive/` in automated runs.

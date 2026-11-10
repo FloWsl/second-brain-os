@@ -1,5 +1,16 @@
 # log.md — decisions, newest first
 
+## 2026-11-10 — Stage 5, step 1: shared base + brain-setup built
+- build/skills/_shared/: contracts.md, scripts/brain.py (reference + init, lint checks root/index/hot/queue/daily, health score), scripts/queue.py, hooks/protect.sh (context/ blocked when BRAIN_AUTOMATED=1), hooks/session-end.sh (stub only), templates/.
+- build/skills/brain-setup/SKILL.md (45 lines).
+- Queue format changed from YAML blocks to `## id | status` sections (stdlib parsing). Smoke test in scratchpad passed; init no longer substitutes {{TODAY}} inside copied scripts (bug found and fixed).
+
+## 2026-11-10 — Stage 4 open points accepted (Florian: "très bien continue")
+1. v1 queue adapter = notes/inbox.md only; Airtable adapter after evals pass.
+2. Scheduled prompts written runtime-agnostic (desktop task or cloud routine chosen at install).
+3. Health score computed by brain.py from lint counts, not by the agent.
+4. wiki/ and wiki/sources/ created at setup even if empty.
+
 ## 2026-11-10 — Stage 4 design written
 - analysis/02-design.md: 6 skills, shared contracts, code vs instructions, credits. 4 open points for Florian.
 
