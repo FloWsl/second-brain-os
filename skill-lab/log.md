@@ -1,5 +1,8 @@
 # log.md — decisions, newest first
 
+## 2026-11-10 — Stage 5, step 2: brain-capture built
+- build/skills/brain-capture/SKILL.md: queue-only (brain-daily single writer), confirm with user before queueing, read-back check, fallback text when no brain folder reachable. Sub-agent drafting optional for long sessions (from Florian /os-capture).
+
 ## 2026-11-10 — Stage 5, step 1: shared base + brain-setup built
 - build/skills/_shared/: contracts.md, scripts/brain.py (reference + init, lint checks root/index/hot/queue/daily, health score), scripts/queue.py, hooks/protect.sh (context/ blocked when BRAIN_AUTOMATED=1), hooks/session-end.sh (stub only), templates/.
 - build/skills/brain-setup/SKILL.md (45 lines).
