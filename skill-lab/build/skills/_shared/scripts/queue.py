@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """queue.py - capture queue in notes/inbox.md (stdlib only). See contracts.md §6.
   python3 queue.py add --source claude-code --session "<id>" --entities "a; b" \
-      --facts "..." --decisions "what | why: ..." --open-loops "..."
+      --facts "..." --decisions "what | why: ..." --open-loops "..." \
+      --certainty fact|hypothesis --verbatim "exact user sentence"
   python3 queue.py list [--status new]
   python3 queue.py set <id> integrated|rejected "<result>"
 """
@@ -10,7 +11,8 @@ from pathlib import Path
 
 INBOX = Path(__file__).resolve().parent / "notes" / "inbox.md"
 HEAD = re.compile(r"^## (q-\d{8}-\d{4,6}) \| (\w+)\s*$", re.M)
-FIELDS = ["date", "source", "session", "entities", "facts", "decisions", "open_loops", "result"]
+FIELDS = ["date", "source", "session", "certainty", "entities", "facts", "decisions",
+          "open_loops", "verbatim", "result"]
 
 
 def read():
@@ -21,8 +23,9 @@ def add(a):
     now = dt.datetime.now()
     qid = now.strftime("q-%Y%m%d-%H%M%S")
     vals = {"date": now.date().isoformat(), "source": a.source, "session": a.session,
-            "entities": a.entities, "facts": a.facts, "decisions": a.decisions,
-            "open_loops": a.open_loops, "result": ""}
+            "certainty": a.certainty, "entities": a.entities, "facts": a.facts,
+            "decisions": a.decisions, "open_loops": a.open_loops,
+            "verbatim": a.verbatim, "result": ""}
     block = f"\n## {qid} | new\n" + "".join(f"- {k}: {vals[k] or ''}\n" for k in FIELDS)
     INBOX.parent.mkdir(parents=True, exist_ok=True)
     with INBOX.open("a", encoding="utf-8") as f:
@@ -62,8 +65,9 @@ if __name__ == "__main__":
     p = argparse.ArgumentParser()
     sub = p.add_subparsers(dest="cmd", required=True)
     ad = sub.add_parser("add")
-    for f in ["source", "session", "entities", "facts", "decisions", "open-loops"]:
+    for f in ["source", "session", "entities", "facts", "decisions", "open-loops", "verbatim"]:
         ad.add_argument(f"--{f}", default="")
+    ad.add_argument("--certainty", choices=["fact", "hypothesis"], default="fact")
     ls = sub.add_parser("list")
     ls.add_argument("--status")
     st = sub.add_parser("set")

@@ -1,5 +1,10 @@
 # log.md — decisions, newest first
 
+## 2026-11-10 — brain-capture revised from Florian's /os-capture (AskUserQuestion answers)
+- Kept: sub-agent does all the work (zero main-context load); READ KO fallback (export then relaunch); no confirmation, a copy of the entry is sent instead (config capture_confirm: false); never re-run queueing (duplicates); certainty (fact|hypothesis) + 1-3 verbatim lines, added to queue.py and contracts §6.
+- Rejected by Florian: decision vs "retenu" rule, canonical-name priority list, before/after results table, site fields (visibilite, contenu, cadre).
+- Not copied: the Airtable webhook URL (secret in plain text in os-capture; future adapter must read it from an env var or secret).
+
 ## 2026-11-10 — Stage 5, step 2: brain-capture built
 - build/skills/brain-capture/SKILL.md: queue-only (brain-daily single writer), confirm with user before queueing, read-back check, fallback text when no brain folder reachable. Sub-agent drafting optional for long sessions (from Florian /os-capture).
 

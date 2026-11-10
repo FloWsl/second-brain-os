@@ -16,4 +16,5 @@ summary: Settings every brain routine reads. Change values here, never in skills
 - budget_writes: 25
 - budget_fixes: 15
 - proactivity: advisor    # observer | advisor (drafts, never sends) | assistant | partner
+- capture_confirm: false  # true = /done shows the entry before queueing
 - queue: inbox            # inbox (notes/inbox.md); airtable adapter later
