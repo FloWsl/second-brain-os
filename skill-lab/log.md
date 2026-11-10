@@ -1,5 +1,9 @@
 # log.md — decisions, newest first
 
+## 2026-11-10 — Stage 5, step 3: brain-daily built
+- Single writer of notes from the queue. Borrowed: guide daily prompt (5.2); Ben AI operator (budgets, short path, daily = state, read-back, report, curated layer untouched); Cole gather-then-reason; Nate evergreen vs changing data; Sales OS completion check before tasks.
+- Choices: hypothesis entries go to Open questions or draft notes; verbatim lines to ## Quotes in the related note, voice patterns proposed for context/voice.md; uncaptured stubs read from transcript if available, else rejected.
+
 ## 2026-11-10 — brain-capture revised from Florian's /os-capture (AskUserQuestion answers)
 - Kept: sub-agent does all the work (zero main-context load); READ KO fallback (export then relaunch); no confirmation, a copy of the entry is sent instead (config capture_confirm: false); never re-run queueing (duplicates); certainty (fact|hypothesis) + 1-3 verbatim lines, added to queue.py and contracts §6.
 - Rejected by Florian: decision vs "retenu" rule, canonical-name priority list, before/after results table, site fields (visibilite, contenu, cadre).
