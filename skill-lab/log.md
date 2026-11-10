@@ -1,5 +1,9 @@
 # log.md — decisions, newest first
 
+## 2026-11-10 — Stage 5, step 5: brain-ask built
+- brain.py search first (guide 5.1), freshness judgment (review_by, conflicts, hypotheses), connectors for live values; search-before-answering rule with exceptions (Cole SOUL); file syntheses back as wiki/ concept notes on user OK (Karpathy query, guide 5); "not found" lines in log.md feed brain-lint's retrieval-pressure check.
+- Conflicts are reported, not fixed (brain-lint owns fixes: one owner per capability).
+
 ## 2026-11-10 — Stage 5, step 4: brain-lint built
 - Script checks via brain.py (fix safe, budget_fixes); overdue reviews checked against connectors; judgment checks from Ben AI optimizer (F8.1 contradictions, near-duplicates, F8.3 stale, F2.8 undigested) and Karpathy lint (missing pages); root map accuracy; Nate ladder as advice only; guide monthly consolidation.
 - Not ported: Ben AI frameworks F3 caveman, F4 context rot, F5 memory, F10 rule rewriting, HTML report, per-finding walk (cost, Claude-specific, rule 7). Health score logged before/after each run to judge the trial.
