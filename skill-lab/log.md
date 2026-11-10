@@ -1,5 +1,8 @@
 # log.md — decisions, newest first
 
+## 2026-11-10 — Stage 4 design written
+- analysis/02-design.md: 6 skills, shared contracts, code vs instructions, credits. 4 open points for Florian.
+
 ## 2026-11-09 — Stage 3 decisions (Florian)
 1. Root file: AGENTS.md only, no CLAUDE.md content (guide over Ben AI/Nate). Open point: Claude Code only auto-loads CLAUDE.md, so a one-line pointer may be technically required.
 2. Folder routing: generated index.md (guide); Ben AI per-folder CLAUDE.md rejected (all load, conflict risk).
@@ -8,7 +11,9 @@
 8. Ben AI style hard rules dropped from root file; wikilinks for entities kept.
 9. Health score /100 (Ben AI): trial in evals.
 4. Capture (2026-11-10, inspired by Florian's own /os-capture system): /done runs a sub-agent that writes a structured summary (date, source, entities, new/changed facts, decisions with reason, status) into a queue; queue adapter = notes/inbox.md by default, Airtable optional for chats outside Claude Code; brain-daily integrates entries with status new -> integrated/rejected (idempotent, one writer, search-first). SessionEnd hook only queues an "uncaptured session" line. Rejected: Cole background flush agent, Ben AI silent auto-save (duplicate risk).
-Pending confirmation: 6 identity files, 7 startup reads, 1(a)/(b) CLAUDE.md pointer.
+6. Identity (2026-11-10): context/me, business, icp, offer, voice, config + AGENTS.md rules + decisions.md + hot.md. Rejected Cole SOUL/USER/MEMORY (MEMORY mixes fact types). context/ write-protected in automated runs (Cole idea).
+7. Startup reads: AGENTS.md + hot.md only (guide 4.1 evidence). Rejected Cole multi-file injection, Ben AI latest-daily read.
+1a. CLAUDE.md = one line @AGENTS.md, no content.
 
 ## 2026-11-09 — Stage 3 matrix written
 - analysis/01-matrix.md. 9 conflicts open, awaiting Florian. Proposed skill set unchanged (6 skills).
