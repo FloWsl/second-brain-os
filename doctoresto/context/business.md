@@ -6,41 +6,41 @@ created: 2026-11-20
 updated: 2026-11-20
 review_by: 2027-02-18
 importance: 5
-sources: ["[[2026-10-13-cadrage-doctoresto]]", "[[2026-10-19-cr-reunion]]", "[[2026-10-26-odj-reunion]]"]
-aliases: [DoctoResto, Docto Resto]
-summary: Appli qui envoie en urgence un technicien aux boulangeries et restaurants en panne ; le restaurateur paie l'appli, qui reverse au technicien et garde une commission. Société en cours de création.
+sources: ["[[2026-10-13-cadrage-doctoresto]]", "[[2026-10-19-cr-reunion]]", "[[2026-10-26-cr-reunion]]", "[[2026-11-02-presentation-reunion]]", "[[2026-11-09-cr-reunion]]", "[[2026-11-02-pacte-associes]]"]
+aliases: [DoctoResto, Docto Resto, WRLJ]
+summary: Appli de dépannage d'urgence pour les professionnels CHR (restaurants, boulangeries, hôtels) ; 4 associés (pacte signé), société WRLJ SAS en création ; bêta à Paris en avril 2027, 500 clients fin 2027, national en 2028.
 ---
 # Doctoresto
 
 ## Le concept
-Une appli qui met en relation boulangeries et restaurants (CHR) en panne avec des techniciens disponibles en urgence. Le restaurateur paie l'appli, l'appli reverse au technicien et garde une commission. (cadrage, 2026-10-13)
-Deux applis : côté restaurateur ("DoctoResto") et côté technicien ("DoctoResto Pro"). (maquette v6, 2026-11-02, [[2026-11-02-maquette-ecrans-v6]])
-Nom définitif encore à valider. (ODJ 2026-10-26)
+Appli de dépannage d'urgence pour les professionnels du CHR : le restaurateur déclare sa panne, paie un forfait, un technicien qualifié et proche arrive ; la plateforme encaisse, reverse au technicien et garde une commission ou une marge. (cadrage 2026-10-13 ; CDC 2026-11-02)
+Deux profils dans une appli : client (restaurateur, hôtelier, traiteur, boulanger) et technicien (technicien de marque ou artisan). Voir [[app-beta]].
+Principe de responsabilité : la plateforme porte la relation commerciale, le prestataire la responsabilité technique. ([[2026-11-09-process-operationnel]])
+Modèle : urgence et one shot ; les restaurateurs n'investissent pas dans le préventif. (CR 2026-11-09)
+Nom : plutôt « DoctoResto » pour l'appli (vigilance Doctolib) ; société « WRLJ » dans le pacte. Voir [[creation-societe]].
 
-## Objectifs (CR du 19/10, version à jour du Drive)
-- Sirha Lyon (21-25 janvier 2027, Eurexpo) : y être pour entrer en relation avec les fournisseurs et fabricants. Voir [[sirha-2027]].
-- Avril 2027 : version bêta de l'appli, testée sur tout Paris, avec 100 restaurateurs et 30 techniciens ciblés (recrutement de janvier à juillet 2027). Voir [[app-beta]].
-- Avant tout développement : vérifier le besoin sur le terrain. Voir [[validation-terrain]].
+## Objectifs (CR 2026-11-09, diapos du 2026-11-02)
+- Janvier 2027 : Sirha Lyon, négociation avec les fabricants, au moins un visuel côté technicien. → [[sirha-2027]]
+- Janvier à avril 2027 : référencer fabricants, pièces, puis techniciens habilités.
+- Avril 2027 : bêta à Paris (100 clients visés), société créée avant. → [[app-beta]]
+- Avril à décembre 2027 : 500 clients. 2028 : développement national, 5 000 clients fin 2028.
 
-## Équipe
-| Qui | Rôle |
-| --- | --- |
-| [[jessica]] | porteuse du projet |
-| [[lancelot]] | co-initiateur, conducteur de travaux ; pacte d'associés, prestations, fabricants |
-| Florian (Flo), voir [[me]] | data, digital, prototype de l'appli |
-| [[lea]] | communication ; étude concurrents |
-| [[maman]] | recherches marché |
-Autres noms dans les sources : Corinne (absente le 19/10), Tony (prévu au Sirha), Mathieu (a reçu le technicien du test MesDépanneurs). Candidats associés ou partenaires : [[alicia]] et [[pierre]].
-Rôles encore à répartir : finances, commercial, développement, communication, juridique. (CR 19/10)
+## Associés et rôles
+| Qui | Capital (pacte signé) | Rôle |
+| --- | --- | --- |
+| [[jessica]] | 37,5 % | présidente de WRLJ ; développement commercial et financier ; CDC machines ; prévisionnel |
+| [[lancelot]] | 37,5 % | gestion de l'entreprise et RH ; CDC artisans ; process, indicateurs, questionnaire |
+| [[lea]] | 15 % | communication ; nom et INPI |
+| Florian (Flo), voir [[me]] | 10 % | développement de l'appli |
+Autres : [[corinne]] (première réunion le 2026-11-09), [[alicia]] (hors capital, prestataire possible), [[maman]] (recherches marché au cadrage), Tony (prévu au Sirha), Mathieu (test MesDépanneurs), Alban (installateur qui a trouvé le nom). [[pierre]] n'apparaît plus après le 2026-10-19.
+Disponibilités (CR 2026-10-26) : Léa 1 h par jour ; Flo 3 h par semaine pendant 3 semaines puis 1 h par jour, peu disponible en mars et avril 2027 ; Jess et Lancelot le vendredi après-midi.
 
 ## Rythme
-Réunion d'équipe chaque lundi à 13h. (CR 19/10, version du Drive modifiée le 2026-10-21)
-
-## Société
-En création : voir [[creation-societe]] (capital, gouvernance, pacte, INPI).
+Réunion d'équipe le lundi (13h d'après le CR du 19/10 ; le 2/11 était à 11h). Prochaine réunion après le 9/11 : à définir.
 
 ## Où sont les données vivantes
-Drive partagé "DOCTO RESTO" (dossiers DEVELOPPEMENT, COMMUNICATION, ASSOCIÉS, CLIENTS, COMPTABILITÉ). Groupe WhatsApp de l'équipe (non connecté). Voir `context/config.md`.
+Drive partagé « DOCTO RESTO » (carte complète : [[drive-map]]) : ASSOCIÉS (REUNIONS, PACTE), COMMUNICATION (NOM DE MARQUE, DESIGN MARQUE), DEVELOPPEMENT (CAHIER DES CHARGES, PANNES MACHINES, PANNES ARTISANS, VISUELS APP, FEUILLE DE ROUTE, Questionnaire), CLIENTS (CLIENTS CHR, TEKOS : vides), COMPTABILITÉ (PREVISIONNEL). Groupe WhatsApp non connecté. Voir `context/config.md`.
 
 ## History
-- Copie du CR du 19/10 dans le doc de cadrage (2026-10-19) : réunion le lundi à 14h ; objectif d'une bêta prête pour le Sirha avec 100 restaurateurs et 30 techniciens inscrits. Remplacé par la version du Drive (2026-10-21) : bêta en avril 2027, Sirha pour les fournisseurs, réunion à 13h.
+- Copie du CR du 19/10 dans le doc de cadrage : réunion le lundi à 14h, bêta prête pour le Sirha. Remplacée par la version du Drive (2026-10-21).
+- Diapos du 19/10 : création de la société en septembre 2027. Remplacée le 2026-11-09 : société créée avant la bêta d'avril 2027 (responsabilité en cas d'incident).

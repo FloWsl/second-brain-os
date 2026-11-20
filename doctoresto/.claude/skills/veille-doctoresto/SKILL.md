@@ -11,9 +11,9 @@ Exécution sans surveillance : aucune question ; tout ce qui demande Florian va 
 Exécution automatique : `touch .claude/automated-run` en premier, `rm -f .claude/automated-run` à la fin, même en cas d'échec. Pas d'écriture dans `context/` : proposer les modifications dans le rapport.
 
 ## 1. Synchronisation du Drive (connecteur Google Drive)
-1. Dossier racine : `drive_folder_id` dans config.md. Lister tout le contenu : `search_files` avec `'<id>' in ancestors` (paginer), plus `parentId = '<id>'` pour chaque sous-dossier. Ajouter les fichiers listés dans `drive_extra_files`.
+1. Dossier racine : `drive_folder_id` dans config.md. **Parcours récursif obligatoire** : `search_files` avec `parentId = '<id>'` (une requête par dossier, sans `or` : les requêtes combinées et `in ancestors` renvoient des résultats incomplets), suivre chaque `nextPageToken` jusqu'à une réponse vide, puis recommencer sur chaque sous-dossier trouvé. La liste des dossiers connus est dans `wiki/drive-map.md` : la mettre à jour si un dossier apparaît. Ajouter les fichiers listés dans `drive_extra_files`.
 2. Date de dernière synchro : la dernière ligne `veille` de `log.md` (sinon 2026-11-20). Garder les fichiers créés ou modifiés depuis (`modifiedTime`), et ceux dont l'id n'apparaît dans aucune note de `wiki/sources/` (champ `drive_id`).
-3. Pour chacun : `read_file_content` (Doc, Sheet, PDF ; commentaires inclus), `download_file_content` pour les images.
+3. Pour chacun : `read_file_content` (Doc, Sheet, PDF, docx, pptx, xlsx ; commentaires inclus), `download_file_content` pour les images. Fichier trop gros : le lire par tranches avec python. Keynote (.key) : illisible, le noter. Ne jamais recopier de données personnelles (adresses, téléphones, IBAN) dans le cerveau.
    - Pas encore de fiche → créer `wiki/sources/<date du doc>-<slug>.md` (type source, `drive_id`, résumé, liens vers les notes concernées).
    - Fiche existante → la mettre à jour (statuts d'actions, votes, nouveaux points).
 4. Intégrer les faits durables dans les notes existantes (search d'abord : `python3 brain.py search "..."`) : projets, personnes, décisions (`decisions.md` avec `Why:`), questions ouvertes. Un fait qui change : on le réécrit, et l'ancien passe sous `## History`. Ce qui touche `context/` va dans le rapport.

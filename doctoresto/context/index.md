@@ -1,8 +1,8 @@
 # context/ index (generated 2026-11-20, 5 notes)
 
 ## active
-- [[business]] (updated 2026-11-20, imp 5): Appli qui envoie en urgence un technicien aux boulangeries et restaurants en panne ; le restaurateur paie l'appli, qui reverse au technicien et garde une commission. Société en cours de création.
+- [[business]] (updated 2026-11-20, imp 5): Appli de dépannage d'urgence pour les professionnels CHR (restaurants, boulangeries, hôtels) ; 4 associés (pacte signé), société WRLJ SAS en création ; bêta à Paris en avril 2027, 500 clients fin 2027, national en 2028.
 - [[config]] (updated 2026-11-20, imp ?): Settings every brain routine reads. Change values here, never in skills.
-- [[icp]] (updated 2026-11-20, imp 4): Deux faces - boulangeries et restaurants (CHR) en panne d'équipement, et techniciens dépanneurs (indépendants ou entreprises) payés plus vite via l'appli.
-- [[me]] (updated 2026-11-20, imp 5): Florian (Flo) porte la data, le digital et le prototype de l'appli ; il prépare la bêta d'avril 2027 et le budget des coûts de l'appli.
-- [[offer]] (updated 2026-11-20, imp 5): Commission sur chaque dépannage (10 à 15 % envisagés au 2026-10-19, non votés) sur un panier moyen estimé à 350 € ; la maquette v6 affiche un forfait de 80 €.
+- [[icp]] (updated 2026-11-20, imp 4): Deux faces - professionnels CHR en panne (restaurants, boulangeries, hôtels, traiteurs ; urgence et one shot) et techniciens (techniciens de marque formés par les fabricants, artisans indépendants) payés avant l'intervention.
+- [[me]] (updated 2026-11-20, imp 5): Florian (Flo) est associé à 10 % (pacte signé), responsable du développement de l'appli ; il doit chiffrer le temps et le coût de la bêta d'avril 2027.
+- [[offer]] (updated 2026-11-20, imp 5): Forfait de 110 € (déplacement, diagnostic, 45 min) puis devis payé à part ; commission de 10 % sur un panier de 350 € HT dans le prévisionnel ; montant de la commission et du reversement pas encore voté.

@@ -5,25 +5,26 @@ status: active
 created: 2026-11-20
 updated: 2026-11-20
 review_by: 2026-12-20
-importance: 5
-sources: ["[[2026-10-13-cadrage-doctoresto]]"]
-summary: Cinq missions (de 2 à 4 h chacune) pour vérifier le besoin avant de développer. Critère d'arrêt - moins de la moitié des boulangers citent une panne récente mal gérée.
+importance: 4
+sources: ["[[2026-10-13-cadrage-doctoresto]]", "[[2026-10-22-questionnaire-restaurateurs]]", "[[2026-11-09-cr-reunion]]"]
+summary: Vérifier le besoin des restaurateurs et l'intérêt des techniciens ; questionnaire restaurateurs prêt (22/10) ; premiers retours terrain de Jess côté fabricants et installateurs (9/11) ; aucun entretien restaurateur documenté au 2026-11-20.
 ---
 # Validation du besoin sur le terrain
-Contexte : au 2026-10-13, personne n'avait encore parlé à un boulanger ni à un technicien. (cadrage)
-Durée prévue : 2 à 3 semaines. Point d'équipe à la fin pour décider : continuer, ajuster ou arrêter.
-Critère : si moins de la moitié des boulangers interrogés citent une panne récente mal gérée, le besoin n'est pas assez fort.
+Critère du cadrage (2026-10-13) : si moins de la moitié des boulangers interrogés citent une panne récente mal gérée, le besoin n'est pas assez fort.
 
-| Mission | Qui | Statut (2026-10-13) |
-| --- | --- | --- |
-| Terrain restaurateurs : 5 boulangers ou restaurateurs sur leur dernière panne (qui appelé, délai, prix, ce qui a coincé) | - | À faire |
-| Terrain techniciens : 3 indépendants (origine des clients, dispo tôt et le week-end, commission acceptable), repérer ceux prêts à tester | - | À faire |
-| Marché et prix : chiffrer boulangeries, restaurants, dépanneurs de la zone ; appeler 3 ou 4 dépanneurs ou SAV comme un client | - | À faire |
-| Concurrents et avis : avis 1-2 étoiles de 10 dépanneurs sur Google Maps ; commissions et conditions des plateformes | [[lea]] | En cours |
-| Test sans appli : formulaire ou WhatsApp "Déclarez votre panne", 2-3 techniciens, envoi manuel, après les retours techniciens | - | À faire |
+## Où on en est (2026-11-20)
+- Côté restaurateurs : questionnaire d'entretien prêt (Lancelot, 22/10) avec 12 indicateurs comparables : [[2026-10-22-questionnaire-restaurateurs]]. **Aucun compte rendu d'entretien dans le Drive.**
+- Côté techniciens et fabricants (Jess, CR 9/11) : fabricants bien plus favorables que les installateurs ; plus de la moitié des installateurs réticents, 2 ou 3 déjà fans (paiement immédiat, pièces bien tarifées) ; les techniciens partent avec l'essentiel des pièces dans leur camion.
+- Concurrents : étude de Léa en cours au cadrage ; premiers signaux dans [[marche-et-concurrence]].
 
-Peut attendre : IA, forum, stock embarqué, GPS, coût serveur, choix de la ville.
+## Missions du cadrage
+| Mission | Statut connu |
+| --- | --- |
+| 5 boulangers ou restaurateurs sur leur dernière panne | questionnaire prêt, entretiens non documentés |
+| 3 techniciens indépendants | retours de Jess côté installateurs |
+| Marché et prix de la zone | non documenté |
+| Concurrents et avis Google | Léa, en cours (cadrage) |
+| Test sans appli (formulaire ou WhatsApp) | non lancé |
 
 ## Déjà fait
-Test de MesDépanneurs.fr par [[jessica]] (petite intervention sur un tiroir) : voir [[marche-et-concurrence]].
-Relancer Jessica pour les factures de dépannages déjà reçues. (ODJ 26/10, point 9)
+Test de MesDépanneurs.fr par [[jessica]] : voir [[marche-et-concurrence]].
