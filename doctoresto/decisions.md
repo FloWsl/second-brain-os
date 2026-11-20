@@ -9,6 +9,10 @@ summary: Dated decisions with their reason, newest first.
 # Decisions
 Format: `## YYYY-MM-DD <decision>` then `Why:` and `Replaces:` if any.
 
+## 2026-11-20 Jessica est présidente de la SAS (confirmé)
+Why: désignée dans le pacte signé (PDF du 2026-11-13) ; confirmé par Florian.
+Replaces: « président à désigner » (CR du 9/11).
+
 ## 2026-11-09 Créer la société avant la bêta d'avril 2027
 Why: sans société ni assurance, un incident après une intervention (pièce mal remontée, départ de feu la nuit) retomberait sur les associés en personne. (CR 9/11)
 Replaces: création de la société en septembre 2027 (diapos du 19/10).

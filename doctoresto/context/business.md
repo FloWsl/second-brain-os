@@ -28,11 +28,11 @@ Nom : plutôt « DoctoResto » pour l'appli (vigilance Doctolib) ; société « 
 ## Associés et rôles
 | Qui | Capital (pacte signé) | Rôle |
 | --- | --- | --- |
-| [[jessica]] | 37,5 % | présidente de WRLJ ; développement commercial et financier ; CDC machines ; prévisionnel |
+| [[jessica]] | 37,5 % | présidente de WRLJ (pacte, confirmé par Florian le 2026-11-20) ; développement commercial et financier ; CDC machines ; prévisionnel |
 | [[lancelot]] | 37,5 % | gestion de l'entreprise et RH ; CDC artisans ; process, indicateurs, questionnaire |
 | [[lea]] | 15 % | communication ; nom et INPI |
 | Florian (Flo), voir [[me]] | 10 % | développement de l'appli |
-Autres : [[corinne]] (première réunion le 2026-11-09), [[alicia]] (hors capital, prestataire possible), [[maman]] (recherches marché au cadrage), Tony (prévu au Sirha), Mathieu (test MesDépanneurs), Alban (installateur qui a trouvé le nom). [[pierre]] n'apparaît plus après le 2026-10-19.
+Autres : [[corinne]] (« Maman » dans les sources ; recherches marché au cadrage, première réunion le 2026-11-09), [[alicia]] (hors capital, prestataire possible), Tony (prévu au Sirha), Mathieu (test MesDépanneurs), Alban (installateur qui a trouvé le nom). [[pierre]] n'apparaît plus après le 2026-10-19.
 Disponibilités (CR 2026-10-26) : Léa 1 h par jour ; Flo 3 h par semaine pendant 3 semaines puis 1 h par jour, peu disponible en mars et avril 2027 ; Jess et Lancelot le vendredi après-midi.
 
 ## Rythme

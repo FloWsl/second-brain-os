@@ -1,3 +1,11 @@
+---
+title: Handoff
+type: log
+status: active
+created: 2026-11-20
+updated: 2026-11-20
+summary: Passation de la session du 2026-11-20 - état du cerveau, actions pour Florian, points pour l équipe, pièges.
+---
 # HANDOFF — cerveau Doctoresto (2026-11-20)
 
 Branche : `claude/relaxed-thompson-cebfy0` (dépôt FloWsl/second-brain-os). Racine : `doctoresto/`.
@@ -33,4 +41,4 @@ Règles : `AGENTS.md`. État de la semaine : `hot.md`. Historique : `log.md`. D�
 ## Non vérifié
 - Tâche planifiée jamais exécutée.
 - Hooks du cerveau (SessionStart, protect) jamais testés dans une session ouverte sur `doctoresto/`.
-- « Maman » et Corinne : même personne ? Pierre : sorti du projet ? Président de la SAS : Jessica dans le pacte, « à désigner » au CR du 9/11.
+- Pierre : sorti du projet ? (Réglé le 2026-11-20 : Jessica présidente ; Corinne = « Maman ».)

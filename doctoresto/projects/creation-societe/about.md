@@ -10,7 +10,7 @@ sources: ["[[2026-11-02-pacte-associes]]", "[[2026-11-09-cr-reunion]]", "[[2026-
 summary: Pacte signé (PDF du 2026-11-13) - WRLJ SAS, capital de 20 000 €, Jessica présidente, 37,5/37,5/15/10 ; société à créer avant avril 2027 ; à faire - prévisionnel, budget avant création, nom, INPI et e-Soleau.
 ---
 # Création de la société
-Statut : pacte d'associés signé (PDF du 2026-11-13). Société **WRLJ**, SAS au capital de 20 000 € en cours de constitution au RCS de Paris, présidente Jessica Martin, les autres associés DG. ([[2026-11-02-pacte-associes]])
+Statut : pacte d'associés signé (PDF du 2026-11-13). Société **WRLJ**, SAS au capital de 20 000 € en cours de constitution au RCS de Paris, présidente Jessica Martin (confirmé par Florian le 2026-11-20), les autres associés DG. ([[2026-11-02-pacte-associes]])
 Échéance : créée avant la bêta d'avril 2027, pour que la société assurée porte le risque d'un incident et non les associés en personne. (CR 2026-11-09)
 
 ## Capital (pacte)
