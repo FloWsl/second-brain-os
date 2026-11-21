@@ -5,4 +5,4 @@
 
 ## draft
 - [[brief-prd]] (updated 2026-11-21, imp 5): Compilation, structurée autour du process opérationnel de Lancelot, de tout ce qui sert à écrire le brief et le PRD de la bêta DoctoResto - contexte, cibles, offre, périmètre, parcours écran par écran, règles métier, back-office, exigences non fonctionnelles, données, indicateurs, contraintes, options techniques, incohérences et questions ouvertes.
-- [[stack-technique]] (updated 2026-11-21, imp 5): Première piste de réflexion (Florian, 2026-11-21) - Expo + Convex + Stripe, client en web app, technicien en app, back-office web ; MVP d'un mois découpé ; 5 principes d'architecture pour passer à l'échelle ; Convex ou Supabase selon la maîtrise de Convex ; questions ouvertes.
+- [[stack-technique]] (updated 2026-11-21, imp 5): Première piste de réflexion (Florian, 2026-11-21) - Expo + Convex + Stripe, client en web app, technicien en app, back-office web ; MVP d'un mois découpé ; flux d'argent en charges et transferts séparés (Stripe Connect) ; 5 principes d'architecture pour passer à l'échelle ; Convex ou Supabase selon la maîtrise de Convex ; questions ouvertes.
