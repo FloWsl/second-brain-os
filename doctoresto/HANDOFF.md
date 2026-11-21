@@ -27,7 +27,7 @@ Règles : `AGENTS.md`. État de la semaine : `hot.md`. Historique : `log.md`. D�
 
 ## Points à remonter à l'équipe
 - Prévisionnel : le CA trimestriel ne compte qu'un mois sur trois (CA probablement sous-estimé d'un facteur 3) ; clients fin 2027 : 1 500 dans la sheet, 500 dans les diapos. → `wiki/sources/2026-11-09-previsionnel-financier.md`
-- Forfait : depuis le 2026-11-21, le process de Lancelot fait référence (forfait de diagnostic, 129 € HT à confirmer ; marge au lieu de commission). À présenter à l'équipe : CDC et prévisionnel à aligner.
+- Modèle : depuis le 2026-11-21, process de Lancelot amendé par la discussion du 9/11 ([[2026-11-09-notes-granola-reunion]]) : empreinte CB, 1re heure au taux horaire débitée à l'arrivée, devis payé à sa validation, marge au lieu de commission, pièces commandées par le bureau du technicien, relevé mensuel. À présenter à l'équipe : CDC et prévisionnel à aligner.
 - Aucun entretien restaurateur documenté ; le questionnaire est prêt.
 - Sirha : du 21 au 25 janvier 2027 (et non 21-23).
 

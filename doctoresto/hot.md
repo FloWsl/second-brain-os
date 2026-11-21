@@ -9,17 +9,17 @@ Updated 2026-11-21.
 
 ## Open loops
 - Relire le CDC V1 et préparer ses réponses aux questions ouvertes (tous).
-- **Process de Lancelot = référence produit** (décision du 2026-11-21) : forfait de diagnostic (129 € HT à confirmer), prix calculé par la plateforme, choix du prestataire par la plateforme, marge au lieu de commission, stock réservé, paiement à la clôture. **À présenter à l'équipe** : CDC de Jess et prévisionnel à aligner. → [[2026-11-09-process-operationnel]], [[brief-prd]]
-- Montant du forfait de diagnostic à confirmer (129 € HT « exemple » dans le process) ; grille des tarifs contractuels et règle de marge à fixer.
+- **Référence produit = process de Lancelot amendé par la discussion du 9/11** (décisions du 2026-11-21) : empreinte CB, 1re heure au taux horaire débitée à l'arrivée, devis calculé par la plateforme et payé à sa validation, marge, pièces commandées par le bureau du technicien (pas de stock), relevé mensuel. **À présenter à l'équipe** : CDC de Jess et prévisionnel à aligner. → [[2026-11-09-notes-granola-reunion]], [[brief-prd]]
+- Taux horaire client, grille des tarifs contractuels et règle de marge à fixer ; client en cas de retard de pièce ; délai de libération de l'empreinte.
 - Nom : DoctoResto pour l'appli (risque Doctolib, libellés INPI ; le 9/11, nom jugé trop proche de Doctolib et top 3-5 à voter, pas de trace du vote : [[2026-11-09-notes-granola-reunion]]) ; nom de la société ; classes 9/37/42 ou 35/37/42.
 - Validation terrain : aucun entretien restaurateur documenté ; questionnaire prêt.
 - Alicia : retour attendu sur un format hors capital.
 - Prochaine réunion : à définir.
 
-- Écarts entre les notes du 9/11 et le process retenu (paiement, reversement mensuel, commande de pièce par le bureau du technicien, 2e passage hors plateforme) : à discuter avec l'équipe. → [[2026-11-09-notes-granola-reunion]], [[stack-technique]]
 - Florian (notes du 9/11) : vérifier coûts du paiement et durée max des empreintes CB ; proposer un rétroplanning de dev.
 
 ## Decisions this week
+- 2026-11-21 : la discussion du 9/11 prime sur le process de Lancelot là où ils se contredisent (paiement, reversement, pièces, stock). → [[2026-11-09-notes-granola-reunion]]
 - 2026-11-21 : première piste de stack Expo + Convex (ou Supabase) + Stripe, client en web app ; à confirmer (maîtrise de Convex, heures/semaine, objectif Sirha). → [[stack-technique]]
 - 2026-11-21 : le process de Lancelot fait référence pour le produit (marge, forfait de diagnostic, dispatch et prix par la plateforme, stock, paiement à la clôture).
 - Rien de nouveau depuis le 2026-11-13 (pacte signé). Dernières : société avant la bêta, pacte sans avocat, pas de suivi en temps réel dans la bêta (CR du 9/11).

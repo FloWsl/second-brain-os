@@ -6,13 +6,13 @@ created: 2026-11-21
 updated: 2026-11-21
 review_by: 2026-12-20
 importance: 4
-summary: Prise de notes Granola de Florian (9/11, 14h51) - techniciens (10 meilleures entreprises d'abord, sectorisation, matching au-delà de la distance, équipe joker), paiement en 2 temps avec reversement par relevé mensuel validé et empreinte CB, pièces commandées par le bureau du technicien (2e passage hors plateforme), coûts de fonctionnement, nom trop proche de Doctolib, actions de Florian. Plusieurs écarts avec le process de Lancelot retenu le 2026-11-21.
+summary: Prise de notes Granola de Florian (9/11, 14h51) - techniciens (10 meilleures entreprises d'abord, sectorisation, matching au-delà de la distance, équipe joker), paiement en 2 temps avec reversement par relevé mensuel validé et empreinte CB, pièces commandées par le bureau du technicien (2e passage hors plateforme), coûts de fonctionnement, nom trop proche de Doctolib, actions de Florian. Prime sur le process de Lancelot là où ils se contredisent (décision du 2026-11-21).
 ---
 # Notes Granola de Florian — réunion du 9 novembre 2026
 Source : Granola, « Processus de prise de commande, paiement et gestion des pièces détachées », note de Florian créée le 2026-11-09 à 14h51 (résumé généré par Granola à partir de l'enregistrement). Lien : https://notes.granola.ai/d/db493219-a3bd-4ba7-9e1b-e02e6e942daf
 Importée le 2026-11-21. Complète le CR officiel du même jour ([[2026-11-09-cr-reunion]]), qui ne couvre pas ces sujets. Le diagramme de Lancelot ([[2026-11-09-process-operationnel]]) est daté du même jour (15h08) ; l'ordre entre les deux n'est pas établi.
 
-⚠️ **Antérieure à la décision du 2026-11-21** (le process de Lancelot fait référence, [[decisions]]). Les points en conflit sont listés en fin de fiche ; ils ne changent pas la référence mais sont à discuter avec l'équipe.
+✅ **Prime sur le process de Lancelot là où ils se contredisent** (décision de Florian du 2026-11-21, [[decisions]]) : paiement, reversement, pièces, 2e passage, stock. Le process reste la référence pour le reste. À présenter à l'équipe.
 
 ## Techniciens (« TECO »)
 - Turnover élevé chez les indépendants : les restaurateurs fidèles à leur technicien historique refusent souvent d'en changer.
@@ -54,8 +54,10 @@ Importée le 2026-11-21. Complète le CR officiel du même jour ([[2026-11-09-cr
 | Top 3-5 de noms pour vote | tous | pas de trace |
 | Confirmer le rendez-vous du vendredi 13 novembre | — | passé |
 
-## Écarts avec le process de Lancelot (référence depuis le 2026-11-21)
-| Sujet | Notes Granola (9/11) | Process retenu (21/11) |
+## Écarts avec le process de Lancelot (tranchés le 2026-11-21 en faveur de cette discussion)
+Précisions de Florian le 2026-11-21 : 1re heure au **taux horaire** (heures suivantes et pièce via le devis) ; **prix calculé par la plateforme, revenu = marge** (process) ; le technicien déclare « camion » ou « à commander par son bureau » et **peut lancer le devis avant de quitter le client**.
+
+| Sujet | Retenu (9/11) | Écarté (process) |
 | --- | --- | --- |
 | 1er paiement | 1re heure débitée à l'arrivée du technicien ; empreinte CB avant | Forfait de diagnostic payé ou préautorisé à l'engagement |
 | 2e paiement | À la validation du devis de pièce | Reste payé à la clôture, après validation de la remise en service |
@@ -63,5 +65,5 @@ Importée le 2026-11-21. Complète le CR officiel du même jour ([[2026-11-09-cr
 | Commande de pièce | Par le bureau du technicien | Par la plateforme (prix, livraison, délai tracés) |
 | 2e passage | Hors plateforme, pas de planning | Programmé par la plateforme |
 | Stock | Non évoqué | Réservé par mission |
-| Dispatch | Sectorisation, clients préférentiels | Zone × dispo × métier × marque × historique (compatible) |
+| Dispatch | Sectorisation, clients préférentiels | Zone × dispo × métier × marque × historique (compatible, conservé) |
 → [[app-beta]], [[brief-prd]], [[stack-technique]]

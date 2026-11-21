@@ -9,11 +9,21 @@ summary: Dated decisions with their reason, newest first.
 # Decisions
 Format: `## YYYY-MM-DD <decision>` then `Why:` and `Replaces:` if any.
 
+## 2026-11-21 La discussion du 9/11 prime sur le process de Lancelot là où ils se contredisent (Florian, responsable dev)
+Why: décision de Florian ; la discussion du 9/11 ([[2026-11-09-notes-granola-reunion]]) simplifie la bêta (pas de stock, pas de commande ni de planning côté plateforme, pas d'avance de trésorerie sur les pièces) et colle au fonctionnement réel des entreprises de maintenance (le bureau intègre la pose dans la tournée). Le process reste la référence pour le reste (qualification, dispatch, prix calculé par la plateforme, marge, responsabilités, clôture, SAV). **À présenter à l'équipe.**
+Conséquences :
+- **Empreinte CB à la commande**, libérée si aucun technicien avant un délai (ex. minuit).
+- **Taux horaire, 1re heure indivisible débitée à l'arrivée du technicien** ; heures suivantes et pièce via le devis.
+- **Devis calculé par la plateforme** (heures + pièce + marge), un seul total, **payé à sa validation** ; le technicien peut lancer le devis avant de quitter le client.
+- **Pièces commandées par le bureau du technicien**, qui planifie la pose (2e passage hors plateforme, visibilité maintenue) ; le technicien déclare « dans le camion » ou « à commander » ; **pas de stock géré** ; délai fabricant + 1 jour, relances, sinon pièce non payée au technicien.
+- **Reversement par relevé mensuel** (bimensuel si urgence), validé par le technicien.
+Replaces: forfait de diagnostic de 129 € HT à l'engagement, reste payé à la clôture, commande de pièces et stock réservé par la plateforme, 2e passage planifié par la plateforme (process de Lancelot, décision du même jour ci-dessous).
+
 ## 2026-11-21 Stack de la bêta : première piste Expo + Convex + Stripe (piste de réflexion, pas définitive)
 Why: code TypeScript qui appartient à la société (pacte, art. 1), rapide à coder seul avec l'IA, machine à statuts, tâches planifiées et temps réel intégrés pour le process de Lancelot ; le no-code colle mal au prix calculé après diagnostic et aux passages multiples. Client en web app, technicien en app, back-office web ; MVP d'un mois découpé. Convex si Florian le maîtrise déjà, sinon Supabase. [[stack-technique]]
 Replaces: piste no-code Bubble ou Sharetribe du doc IA ([[2026-11-15-feuille-de-route-ia]]).
 
-## 2026-11-21 Le process opérationnel de Lancelot fait référence pour le produit (Florian, responsable dev)
+## 2026-11-21 Le process opérationnel de Lancelot fait référence pour le produit (Florian, responsable dev) — amendé le même jour par la discussion du 9/11 (paiement, reversement, pièces, stock)
 Why: c'est le document le plus complet et le plus cohérent sur le déroulé d'une intervention (rôles, responsabilités, flux d'argent) ; il sert d'ossature au PRD. Décision de Florian pour le dev, **à présenter à l'équipe** : le CDC V1 de Jess et le prévisionnel sont à aligner. [[2026-11-09-process-operationnel]], [[brief-prd]]
 Conséquences, sur les 6 points où il contredit le CDC :
 - Forfait = **forfait de diagnostic** (réf. 129 € HT, donné « à titre d'exemple », montant à confirmer), sans temps de réparation inclus ; réparation sans pièce facturée en prix ferme (MO + consommable).

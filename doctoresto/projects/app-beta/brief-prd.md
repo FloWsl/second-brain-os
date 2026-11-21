@@ -7,13 +7,13 @@ updated: 2026-11-21
 review_by: 2026-12-20
 importance: 5
 sources: ["[[business]]", "[[icp]]", "[[offer]]", "[[me]]", "[[app-beta]]", "[[decisions]]", "[[2026-10-13-cadrage-doctoresto]]", "[[2026-11-02-cahier-des-charges]]", "[[2026-11-02-maquette-ecrans-v6]]", "[[2026-11-09-process-operationnel]]", "[[2026-11-09-indicateurs-suivi]]", "[[2026-11-09-cout-geolocalisation]]", "[[2026-11-09-previsionnel-financier]]", "[[2026-11-09-cr-reunion]]", "[[2026-11-09-notes-granola-reunion]]", "[[2026-11-15-feuille-de-route-ia]]", "[[2026-11-01-pannes-rational]]", "[[2026-11-02-pistes-style]]", "[[2026-11-09-recap-nom-inpi]]", "[[marche-et-concurrence]]", "[[2026-11-20]]"]
-summary: Compilation, structurée autour du process opérationnel de Lancelot, de tout ce qui sert à écrire le brief et le PRD de la bêta DoctoResto - contexte, cibles, offre, périmètre, parcours écran par écran, règles métier, back-office, exigences non fonctionnelles, données, indicateurs, contraintes, options techniques, incohérences et questions ouvertes.
+summary: Compilation, structurée autour du process opérationnel de Lancelot amendé par la discussion du 9/11 (paiement, reversement, pièces), de tout ce qui sert à écrire le brief et le PRD de la bêta DoctoResto - contexte, cibles, offre, périmètre, parcours écran par écran, règles métier, back-office, exigences non fonctionnelles, données, indicateurs, contraintes, options techniques, incohérences et questions ouvertes.
 ---
 # Brief projet et PRD — appli DoctoResto (bêta avril 2027)
 
 > Compilé le 2026-11-20 à partir du cerveau Doctoresto (sources du Drive « DOCTO RESTO » importées le même jour).
 > Chaque fait renvoie à sa source. **Statut des informations** : ✅ décidé · 🟡 proposé, non voté · ❓ ouvert · 💡 proposition de compilation (à valider par l'équipe).
-> **Document de référence : le process opérationnel de Lancelot** (diagramme du 2026-11-09, analysé en détail le 2026-11-21 : [[2026-11-09-process-operationnel]]). **Décision du 2026-11-21 (Florian) : en cas de conflit avec le CDC V1, le process fait foi** (forfait, chiffrage du devis, dispatch, marge, stock, paiement ; voir [[decisions]]). Il sert d'ossature au PRD (§2.3) ; le CDC V1 décrit les écrans, adaptés au process aux §2.4-2.5.
+> **Références (décisions du 2026-11-21, Florian)** : la **discussion du 9/11** ([[2026-11-09-notes-granola-reunion]]) prime sur le process de Lancelot **sur les points où ils se contredisent** (paiement du client, reversement aux techniciens, commande des pièces, 2e passage, stock) ; le **process de Lancelot** ([[2026-11-09-process-operationnel]]) reste la référence pour tout le reste (qualification, dispatch par la plateforme, prix calculé par la plateforme, marge, responsabilités, clôture, SAV) et prime sur le CDC V1. Voir [[decisions]]. Le process ainsi amendé sert d'ossature au PRD (§2.3) ; le CDC V1 décrit les écrans, adaptés aux §2.4-2.5.
 > Ce document ne remplace pas le CDC V1 de Jess ([[2026-11-02-cahier-des-charges]]) : il l'agrège avec le process, les indicateurs, les décisions et les contraintes, pour servir de base au chiffrage et au développement.
 
 ---
@@ -21,7 +21,7 @@ summary: Compilation, structurée autour du process opérationnel de Lancelot, d
 ## Partie 1 — Brief projet
 
 ### 1.1 En une phrase
-Une appli mobile de **dépannage d'urgence pour les professionnels du CHR** (restaurants, boulangeries, hôtels, traiteurs) : le client déclare sa panne en moins de 2 minutes, paie un forfait, un technicien qualifié et proche intervient ; la plateforme encaisse, reverse au technicien et **garde une marge** (process de référence, 2026-11-21). ✅ ([[business]], [[2026-11-02-cahier-des-charges]])
+Une appli mobile de **dépannage d'urgence pour les professionnels du CHR** (restaurants, boulangeries, hôtels, traiteurs) : le client déclare sa panne en moins de 2 minutes, un technicien qualifié et proche intervient, la 1re heure est débitée à son arrivée ; la plateforme encaisse, reverse au technicien et **garde une marge** (décisions du 2026-11-21). ✅ ([[business]], [[2026-11-02-cahier-des-charges]])
 
 ### 1.2 Problème
 - Une panne en plein service, c'est du chiffre d'affaires perdu. Les pannes d'équipements critiques arrivent souvent tôt le matin ou le week-end. (CDC V1 ; cadrage)
@@ -57,10 +57,11 @@ Personas des maquettes v6 : **Marie** (Boulangerie Martin) côté client ; **Kar
 | 2028 | Développement national, 5 000 clients fin 2028 |
 
 ### 1.6 Modèle économique ([[offer]])
-- ✅ **Forfait de diagnostic** payé (ou préautorisé) à l'engagement, prix connu avant le déplacement. Montant de référence : **129 € HT**, donné « à titre d'exemple » dans le process, à confirmer. Il couvre le déplacement et le diagnostic, **pas de temps de réparation inclus**. (process de référence, décision du 2026-11-21 ; remplace le forfait de 110 € avec 45 min du CDC)
-- ✅ Après le diagnostic, deux cas : **sans pièce**, prix ferme (MO + consommable éventuel) validé par le restaurant, réparation immédiate ; **avec pièce**, devis complémentaire calculé par la plateforme (pièce + livraison + retour + MO + marge), **un seul prix total**, aucune commande sans accord.
-- ✅ **Revenu = marge** : le prestataire travaille à un **tarif contractuel plateforme** connu d'avance ; le client paie le prix calculé par la plateforme ; la différence reste à la plateforme. Seuil de marge brute de Lancelot : > 25 % (alerte < 15 %). (décision du 2026-11-21 ; remplace la commission de 10 % du prévisionnel)
-- ❓ Montants à fixer : grille des tarifs contractuels, taux de MO, règle de marge (par pièce, par intervention ?). Le **prévisionnel de Jess est à refaire** sur ce modèle.
+- ✅ **Taux horaire, 1re heure indivisible** : à la commande, **empreinte CB** (pas de débit), libérée automatiquement si aucun technicien ne prend la course avant un délai (ex. minuit) ; **la 1re heure est débitée à l'arrivée du technicien**. (discussion du 9/11, [[2026-11-09-notes-granola-reunion]] ; décision du 2026-11-21 ; remplace le forfait de diagnostic de 129 € HT du process et le forfait de 110 € avec 45 min du CDC)
+- ✅ Au-delà de la 1re heure ou si une pièce est nécessaire : **devis calculé par la plateforme** (heures suivantes au taux horaire + pièce au prix de la base + marge), **un seul prix total** ; **2e paiement débité dès la validation du devis par le client**. Le technicien peut lancer le devis avant de quitter le client.
+- ✅ **Revenu = marge** : le prestataire travaille à un **tarif contractuel plateforme** connu d'avance ; le client paie le prix calculé par la plateforme ; la différence reste à la plateforme. Seuil de marge brute de Lancelot : > 25 % (alerte < 15 %). (process ; remplace la commission de 10 % du prévisionnel)
+- ✅ **Reversement aux techniciens par relevé mensuel** (bimensuel en cas d'urgence de trésorerie), validé par le technicien ; l'argent reste bloqué sur la plateforme jusqu'à la fin de la prestation (« modèle Vinted »). ([[2026-11-09-notes-granola-reunion]])
+- ❓ Montants à fixer : **taux horaire client**, grille des tarifs contractuels, règle de marge (heures, pièces). Le **prévisionnel de Jess est à refaire** sur ce modèle.
 - Hors bêta : paiement en 3 fois (gros devis), abonnements.
 
 ### 1.7 Équipe et ressources
@@ -92,7 +93,7 @@ Budget dev dans le prévisionnel 2027 : **3 500 € (dev mobile et cloud)**. Tou
 - Suivi du technicien en temps réel (coût API Google) — mais le technicien doit être **dans le périmètre** géographique. (CR du 9/11)
 - Machines connectées (codes d'erreur), paiement en 3 fois, abonnements (phase 2 du CDC).
 - Affectation **entièrement automatique** (en bêta : la plateforme choisit, avec un outil d'aide), diagnostic par IA, GPS intégré (Waze suffit). (cadrage)
-- ⚠️ Le **stock du prestataire** entre dans la bêta (process de référence, 2026-11-21), alors que le cadrage le repoussait : contrôle et réservation de la pièce par mission.
+- **Stock du prestataire, commande de pièces et planning des 2es passages par la plateforme** : hors bêta. Le technicien déclare seulement si la pièce est dans son camion ou à commander par son bureau, qui intègre la pose dans sa tournée ; la plateforme garde la visibilité (délai prévu, relances). ([[2026-11-09-notes-granola-reunion]], décision du 2026-11-21 ; remplace la réservation de stock du process)
 
 **Écarts à trancher** ❓
 - Cadrage (13/10) : cible boulangerie (four, pétrin, diviseuse, froid ; marques Bongard, Pavailler, Panimatic, VMI) et **mode hors-ligne** (labos mal couverts). Le CDC (2/11) a élargi à la cuisine pro et ne mentionne plus le hors-ligne.
@@ -107,60 +108,57 @@ Budget dev dans le prévisionnel 2027 : **3 500 € (dev mobile et cloud)**. Tou
 | EXPERT DoctoResto (back-office) | Valide les candidatures techniciens, suit les missions, traite les litiges |
 | 💡 Admin | Gère catalogues (familles, marques, pannes, pièces, prix), tarifs, paramètres |
 
-### 2.3 Process opérationnel de référence (Lancelot) — ossature du produit
-Source : [[2026-11-09-process-operationnel]] (diagramme en 3 couloirs, transcription complète et analyse dans la fiche). Principe : **la plateforme porte la relation commerciale, le prestataire la responsabilité technique.** C'est le document le plus structurant pour le dev : chaque case devient un écran, une action back-office, un statut ou une règle.
+### 2.3 Process opérationnel de référence — ossature du produit
+Sources : process de Lancelot ([[2026-11-09-process-operationnel]], transcription et analyse dans la fiche) **amendé par la discussion du 9/11** ([[2026-11-09-notes-granola-reunion]]) sur le paiement, le reversement, les pièces et le 2e passage (décision du 2026-11-21). Principe inchangé : **la plateforme porte la relation commerciale, le prestataire la responsabilité technique.** Chaque case devient un écran, une action back-office, un statut ou une règle.
 
 **Flux (réécrit en Mermaid pour le dev)**
 ```mermaid
 flowchart TD
   A[1 Signalement<br/>restaurant : équipement, marque, modèle, plaque, symptômes, photos, urgence] --> B[Qualification<br/>plateforme : pré-diagnostic, urgence, métier, compétence]
-  B --> C{2 Engagement<br/>restaurant accepte le forfait diagnostic}
-  C -->|oui| D[Plateforme encaisse ou préautorise]
-  D --> E[3 Dispatch<br/>plateforme : zone × dispo × métier × marque × historique]
+  B --> C{2 Engagement<br/>restaurant accepte le taux horaire<br/>1re heure indivisible due à l'arrivée}
+  C -->|oui| D[Empreinte CB, pas de débit]
+  D --> E[3 Dispatch<br/>plateforme : zone × dispo × métier × marque × historique<br/>sectorisation, clients préférentiels]
   E --> F{Prestataire accepte<br/>tarif contractuel connu}
-  F -->|oui| G[Arrivée et début du diagnostic horodatés]
+  F -.->|personne avant le délai, ex. minuit| X1[Empreinte libérée]
+  F -->|oui| G[Arrivée horodatée<br/>1re heure débitée]
   G --> H[4 Diagnostic<br/>responsabilité du prestataire : panne, référence, quantité, temps de pose]
-  H --> I{Pièce nécessaire ?}
-  I -->|non| J[Prix ferme MO + consommable<br/>validé par le restaurant] --> K[Réparation immédiate]
-  I -->|oui| L[5 Plateforme calcule le prix client<br/>pièce + livraison + retour + MO + marge<br/>prestataire valide la référence]
-  L --> M{Restaurant accepte le devis ?<br/>un seul prix total}
-  M -->|oui| N{Pièce dans le stock du prestataire ?}
-  N -->|cas 1 non| O[Commande via la plateforme<br/>prix, livraison, délai tracés<br/>prestataire valide la commande technique]
-  N -->|cas 2 oui| P[Réservation de la pièce<br/>affectée à la mission]
-  O --> Q[2e intervention programmée<br/>selon délai d'appro et dispo]
-  P --> Q
-  Q --> R[Pose, essais, remise en service]
-  K --> S
-  R --> S[6 Clôture<br/>PV + photos par le prestataire<br/>restaurant valide la remise en service<br/>rapport, facture, historique machine]
-  S --> T[Restaurant paie la plateforme<br/>plateforme reverse au prestataire, garde la marge]
-  T --> U[7 SAV<br/>plateforme orchestre ; prestataire reprend à ses frais si erreur]
-  C -.->|non : non dessiné| X((à définir))
-  F -.->|refus : non dessiné| X
-  M -.->|non : non dessiné<br/>CDC = remise en état| X
+  H --> I{Réparé dans la 1re heure ?}
+  I -->|oui| S
+  I -->|non : heures en plus ou pièce| J[Prestataire déclare : pièce dans le camion ou à commander par son bureau<br/>lance le devis sur place]
+  J --> L[5 Plateforme calcule le prix client<br/>heures suivantes + pièce + marge, un seul total<br/>prestataire valide la référence]
+  L --> M{Restaurant valide le devis ?}
+  M -->|oui| N[2e paiement débité]
+  N --> O{Pièce dans le camion ?}
+  O -->|oui| R[Pose immédiate, essais, remise en service]
+  O -->|non| Q[Bureau du prestataire commande et planifie la pose dans sa tournée<br/>hors plateforme, visibilité : délai fabricant + 1 j, relances J+24 h, J+48 h]
+  Q --> R
+  R --> S[6 Clôture<br/>photo obligatoire + validation du client dans l'appli<br/>rapport, facture, historique machine]
+  S --> T[7 Relevé mensuel validé par le prestataire<br/>plateforme reverse, garde la marge<br/>pièce non payée si délai dépassé]
+  T --> U[SAV<br/>plateforme orchestre ; prestataire reprend à ses frais si erreur]
+  M -.->|non : remise en état, CDC| X2((à préciser))
 ```
 
-**Statuts d'une intervention (💡 déduits du process de référence)**
-`signalée` → `qualifiée` → `forfait accepté / payé` → `proposée au prestataire` → `acceptée` → `prestataire sur place` (horodaté) → `diagnostiquée` → soit `réparation immédiate validée` → `réparée`, soit `devis envoyé` → `devis accepté` (ou `devis refusé` → remise en état) → `pièce réservée` ou `pièce commandée` → `2e passage planifié` → `réparée` → `remise en service validée` → `payée` → `prestataire réglé` → `close` ; branche `réclamation SAV` ouverte après clôture.
+**Statuts d'une intervention (💡 déduits)**
+`signalée` → `qualifiée` → `empreinte posée` → `proposée au prestataire` → `acceptée` (ou `expirée, empreinte libérée`) → `prestataire sur place` (horodaté, **1re heure débitée**) → `diagnostiquée` → soit `réparée dans l'heure`, soit `devis envoyé` → `devis accepté` (**2e paiement débité**) ou `devis refusé` (remise en état) → `pose immédiate` ou `pièce commandée par le bureau` (délai prévu, relances, `en retard`) → `2e passage` → `réparée` → `remise en service validée` (photo + client) → `au relevé` → `relevé validé par le prestataire` → `prestataire payé` → `close` ; branche `réclamation SAV` après clôture.
 
 **Qui fait quoi, et ce que ça demande à l'appli**
 | Étape | Restaurant (appli client) | Plateforme (back-office) | Prestataire (appli pro) |
 | --- | --- | --- | --- |
-| 1 Signalement | Formulaire : équipement, marque, **modèle, plaque (photo)**, symptômes, photos, urgence | File des demandes ; pré-diagnostic et choix du métier et de la compétence (manuel en bêta) | — |
-| 2 Engagement | Accepte et paie le forfait diagnostic | Encaissement ou préautorisation (prix connu avant déplacement) | — |
-| 3 Dispatch | — | Choix du prestataire sur 5 critères (manuel assisté en bêta : liste filtrée et triée) | Reçoit la mission avec le **tarif contractuel**, accepte |
-| 4 Diagnostic | Accueille le technicien | Suit la mission ; horodatage arrivée / début | Diagnostic ; saisit panne, **référence, quantité, temps de pose** |
-| Sans pièce | Valide le prix ferme sur place | Calcule le prix ferme (MO + consommable) | Répare tout de suite |
-| 5 Appro | Reçoit **un seul prix total** et accepte | Calcule le prix client ; enregistre l'accord ; **aucune commande sans accord** | Valide la référence (erreur à sa charge) ; déclare son stock |
-| Stock | — | Réserve la pièce ou la commande (prix fournisseur, livraison, délai tracés) | Confirme la disponibilité réelle ; la pièce réservée est bloquée pour les autres missions |
-| 2e passage | Reçoit la date | Programme selon délai d'appro et disponibilité | Pose, essais, remise en service |
-| 6 Clôture | Valide la remise en service ; paie | Rapport, facture, **historique machine** ; encaisse puis reverse | PV technique : pièce posée, tests, temps passé, photos |
-| 7 SAV | Réclame auprès de la plateforme, son seul interlocuteur | Orchestre la réclamation ; pas de nouvelle facture si erreur du prestataire | Reprend à ses frais (diagnostic, référence, malfaçon) |
+| 1 Signalement | Formulaire : équipement, marque, **modèle, plaque (photo)**, symptômes, photos, urgence | File des demandes ; pré-diagnostic, métier et compétence (manuel en bêta) | — |
+| 2 Engagement | Accepte le taux horaire (1re heure due à l'arrivée) ; **empreinte CB** | Pose l'empreinte ; la libère si personne ne prend la course avant le délai | — |
+| 3 Dispatch | — | Choix du prestataire (zone, dispo, métier, marque, historique, **sectorisation, clients préférentiels**) ; manuel assisté en bêta ; équipe joker si défaillance | Reçoit la mission avec le **tarif contractuel**, accepte |
+| 4 Arrivée et diagnostic | Accueille le technicien | Horodatage de l'arrivée ; **débit de la 1re heure** | Diagnostic ; saisit panne, **référence, quantité, temps de pose** |
+| Réparé dans l'heure | — | — | Répare, passe à la clôture |
+| 5 Devis | Reçoit **un seul prix total**, valide ; **2e paiement débité** | Calcule le prix (heures + pièce + marge) | Déclare pièce **dans le camion** ou **à commander par son bureau** ; valide la référence (erreur à sa charge) ; **lance le devis avant de partir** |
+| Pièce à commander | Reçoit le délai prévu | **Visibilité seulement** : délai fabricant + 1 j, relances automatiques (J+24 h, J+48 h…) | Son bureau commande et intègre la pose dans sa tournée (hors plateforme) |
+| 6 Clôture | **Valide la remise en service** dans l'appli | Rapport, facture, **historique machine** | **Photo obligatoire**, PV (pièce posée, tests, temps passé) |
+| 7 Reversement | — | Relevé mensuel (bimensuel si urgence) ; reverse, garde la marge ; **pièce non payée si délai dépassé** | Valide son relevé, signale les erreurs |
+| SAV | Réclame auprès de la plateforme, son seul interlocuteur | Orchestre ; pas de nouvelle facture si erreur du prestataire | Reprend à ses frais (diagnostic, référence, malfaçon) |
 
 **Conséquences pour le périmètre de la bêta** 💡
-- Le **back-office est central** (qualification, dispatch, calcul de prix, commandes, planification, SAV) : en bêta, l'équipe fait ces gestes à la main dans un outil interne simple ; l'automatisation (dispatch, prix) vient après.
-- Il faut des **référentiels avant le lancement** : grille de tarifs contractuels des prestataires, taux de MO, consommables, catalogue pièces avec prix fournisseur, frais de livraison et de retour, règle de marge. Base existante : Rational ([[2026-11-01-pannes-rational]]).
-- **Plusieurs passages par intervention** et **stock du prestataire** sont dans la bêta (décision du 2026-11-21). 💡 Version minimale proposée : à chaque devis, le prestataire confirme « pièce dans mon camion : oui/non » et la plateforme la réserve pour la mission, sans inventaire complet.
-- **Paiement** (décision du 2026-11-21) : forfait encaissé ou préautorisé à l'engagement ; **le reste est payé à la clôture**, après validation de la remise en service ; la plateforme reverse ensuite au prestataire. ⚠️ Une préautorisation carte expire (environ 7 jours chez Stripe) : avec un délai d'appro, prévoir d'enregistrer la carte (paiement différé) et de débiter à la clôture.
+- Le **back-office reste central** (qualification, dispatch, calcul de prix, suivi des délais de pièces, relevés, SAV), mais **sans commande de pièces, sans stock et sans planning** : périmètre nettement réduit (décision du 2026-11-21).
+- **Référentiels avant le lancement** : taux horaire client, grille de tarifs contractuels des prestataires, **base de pièces avec prix publics et délais fabricant**, règle de marge. Base existante : Rational ([[2026-11-01-pannes-rational]]).
+- **Paiement** : empreinte CB à la commande (courte, même jour), débit de la 1re heure à l'arrivée, 2e paiement à la validation du devis, client présent dans l'appli ; reversement mensuel. Mécanique Stripe : [[stack-technique]].
 
 ### 2.4 Parcours client — 14 écrans (CDC V1)
 | # | Écran | Exigences |
@@ -173,11 +171,11 @@ flowchart TD
 | C6 | Connectée ? | Machine connectée ou non (info seulement en bêta) |
 | C7 | Description | Texte + photo. 💡 Ajouter modèle et photo de la plaque signalétique (process étape 1) |
 | C8 | Récapitulatif et géolocalisation | Consentement RGPD |
-| C9 | Conditions du forfait | **Forfait de diagnostic** (réf. 129 € HT) ; ensuite prix ferme sans pièce, ou devis complémentaire avec pièce ; paiement du reste à la clôture *(adapté au process ; le CDC disait 110 € avec 45 min)* |
-| C10 | Paiement | Forfait encaissé ou préautorisé ; carte enregistrée pour le reste ; CB, Apple Pay, 3-D Secure ; (3 fois : hors bêta). Cible : panne → commande **< 2 min** |
+| C9 | Conditions | **Taux horaire, 1re heure indivisible débitée à l'arrivée du technicien** ; au-delà ou avec pièce, devis calculé par la plateforme, payé à sa validation *(décision du 2026-11-21 ; le CDC disait 110 € avec 45 min)* |
+| C10 | Paiement | **Empreinte CB** (pas de débit), libérée si aucun technicien avant le délai ; carte enregistrée ; CB, Apple Pay, 3-D Secure ; (3 fois : hors bêta). Cible : panne → commande **< 2 min** |
 | C11 | Prestataire et heure d'arrivée | Prestataire choisi par la plateforme ; heure confirmée par lui (pas de suivi en direct en bêta) |
-| C12 | Prix ou devis | Sans pièce : valider le prix ferme sur place. Avec pièce : devis calculé par la plateforme, **un seul total**, accepter ou refuser (refus = remise en état initial, CDC) ; si pièce à commander, date du 2e passage |
-| C13 | Remise en service | Le restaurant **valide la remise en service** (sinon : réclamation) ; puis paiement du reste, rapport et facture |
+| C12 | Devis | Devis calculé par la plateforme (heures en plus et/ou pièce), **un seul total**, accepter (**2e paiement débité**) ou refuser (remise en état initial, CDC) ; si pièce à commander, délai prévu |
+| C13 | Remise en service | Le restaurant **valide la remise en service** (sinon : réclamation) ; rapport et facture |
 | C14 | Notation | Ponctualité, professionnalisme, explications, appli, recommandation |
 
 Écrans complémentaires vus dans la maquette v6 : historique des interventions, factures, compte. ([[2026-11-02-maquette-ecrans-v6]])
@@ -191,11 +189,11 @@ flowchart TD
 | T4 | Candidature | Validée par un EXPERT en back-office. Pièces à exiger (piste IA) : Kbis, attestation URSSAF, RC pro et décennale, habilitations (électrique, fluides frigorigènes). 💡 + données DAC7 (identité, SIREN, IBAN) |
 | T5 | Mission proposée | Proposée par la plateforme (meilleur prestataire), avec le **tarif contractuel** ; accepter et fixer son heure ; refus → la plateforme propose au suivant |
 | T6 | Détail de la panne | Infos et photos du client |
-| T7 | Arrivée | Validée par géolocalisation ; **horodatage arrivée / début du diagnostic** *(plus de compteur de 45 min)* |
-| T8 | Diagnostic | Panne, **référence, quantité, temps de pose** ; pièce nécessaire oui/non ; réparation impossible |
-| T9 | Prix / devis | Sans pièce : prix ferme calculé par la plateforme, réparation immédiate. Avec pièce : **la plateforme calcule le prix client** ; le prestataire **valide la référence** (erreur à sa charge) et indique si la pièce est dans son stock (réservée) ou à commander (il valide la commande technique) |
-| T10 | Réponse client et 2e passage | Refus = remise en état initial ; accord → pose immédiate si pièce dans le camion, sinon 2e passage planifié |
-| T11 | Clôture | **PV technique** : pièce posée, tests, temps passé, photos avant/après ; paiement par la plateforme |
+| T7 | Arrivée | Validée par géolocalisation ; **horodatage de l'arrivée = débit de la 1re heure** *(plus de compteur de 45 min)* |
+| T8 | Diagnostic | Panne, **référence, quantité, temps de pose** ; réparé dans l'heure, heures en plus, pièce nécessaire ; réparation impossible |
+| T9 | Devis | Le prestataire indique si la pièce est **dans son camion** ou **à commander par son bureau** et **lance le devis avant de quitter le client** ; **la plateforme calcule le prix client** ; le prestataire **valide la référence** (erreur à sa charge) |
+| T10 | Réponse client et 2e passage | Refus = remise en état initial ; accord → pose immédiate si pièce dans le camion, sinon son bureau commande et planifie la pose (hors plateforme) ; délai fabricant + 1 j, relances |
+| T11 | Clôture et relevé | **Photo obligatoire**, PV (pièce posée, tests, temps passé) ; **relevé mensuel à valider** avant paiement |
 
 Maquette v6 côté technicien : statut disponible / hors ligne, missions à moins de 20 km, planning, revenus. Photo de la pièce obligatoire au diagnostic.
 
@@ -205,42 +203,41 @@ Fonctions issues du CDC et du process de Lancelot :
 2. **File des demandes et qualification** : pré-diagnostic, urgence, métier, compétence.
 3. **Dispatch** : liste des prestataires filtrée (zone, disponibilité, métier, marque) et triée (historique) ; envoi de la mission ; relance si refus ou absence de réponse.
 4. **Suivi en direct des missions** par statut (§2.3), avec horodatages.
-5. **Calcul de prix** : prix ferme sans pièce (MO + consommable) ; prix client avec pièce (pièce + livraison + retour + MO + marge) ; un seul total affiché au client.
-6. **Pièces** : catalogue par marque, prix fournisseur, poids ; réservation sur le stock du prestataire ou commande fournisseur (prix, livraison, délai tracés).
-7. **Planification** des 2es passages.
+5. **Calcul de prix** : heures au-delà de la 1re au taux horaire + pièce au prix de la base + marge ; un seul total affiché au client.
+6. **Pièces** : base par marque avec prix publics, délais fabricant, poids ; **pas de commande ni de stock** (le bureau du prestataire commande).
+7. **Suivi des délais de pièces** : délai fabricant + 1 j, relances automatiques, retard signalé (pièce non payée au prestataire).
 8. **Clôture** : contrôle du PV et des photos, rapport, facture, historique machine.
-9. **Paiements** : encaissements, reversements aux prestataires, marge ; export comptable ; données DAC7.
+9. **Paiements** : empreintes, débits (1re heure, devis), **relevés mensuels** validés par les prestataires, reversements, marge ; export comptable ; données DAC7.
 10. **SAV et litiges** : réclamations, imputation au prestataire (reprise à ses frais), suivi.
 11. **Indicateurs** (§2.10) et catalogues (familles, marques, pannes, pièces).
 
 ### 2.7 Règles métier
 | Règle | Statut |
 | --- | --- |
-| Forfait de diagnostic (réf. 129 € HT) payé ou préautorisé à l'engagement, prix connu avant déplacement | ✅ process (2026-11-21) |
-| Arrivée et début du diagnostic horodatés (plus de compteur de 45 min) | ✅ process (2026-11-21) |
-| Reste à payer réglé à la clôture, après validation de la remise en service | ✅ process (2026-11-21) |
+| Empreinte CB à la commande, sans débit ; libérée automatiquement si aucun technicien ne prend la course avant un délai (ex. minuit) | ✅ 9/11 (décision du 2026-11-21) |
+| Taux horaire ; **1re heure indivisible débitée à l'arrivée du technicien** (arrivée horodatée) | ✅ 9/11 (décision du 2026-11-21) |
+| Heures suivantes et pièce : devis calculé par la plateforme, **un seul prix total** ; **2e paiement débité à la validation du devis** | ✅ 9/11 + process |
+| Le technicien peut lancer le devis avant de quitter le client | ✅ décision du 2026-11-21 |
 | Refus du devis : machine remise en l'état initial | ✅ CDC |
-| La plateforme choisit le prestataire (zone × dispo × métier × marque × historique) ; refus → proposé au suivant | ✅ process (2026-11-21) + CDC |
+| La plateforme choisit le prestataire (zone × dispo × métier × marque × historique) ; refus → proposé au suivant | ✅ process + CDC |
+| **Sectorisation** : un client reste au même technicien ; clients préférentiels pris en compte dans le dispatch | ✅ 9/11 + indicateurs de Lancelot |
+| Équipe joker quand un technicien fait défaut | 🟡 9/11 |
 | Le technicien doit être dans le périmètre (pas de suivi en direct) | ✅ CR 9/11 |
 | Paiement en 3 fois : gros devis seulement, hors bêta | ✅ |
 | Responsabilité commerciale = plateforme ; technique = prestataire | ✅ process |
-| Forfait remboursé si aucun technicien trouvé | 🟡 maquette v6 |
-| Remboursement du forfait si panne non réparable | ❓ |
-| Délai maximum si aucun technicien disponible | ❓ |
-| Machine non listée / « autre marque » | ❓ |
-| Revenu = marge ; prestataire payé à son tarif contractuel | ✅ process (2026-11-21) ; montants ❓ |
-| Astreinte payée ou non (5 h du matin, dimanche) | ❓ cadrage |
-| Marge intégrée au prix des pièces (pièce + livraison + retour + MO + marge) | ✅ process (2026-11-21) |
-| Prise en compte des affinités client-technicien existantes dans le dispatch ; sectorisation (un client reste au même technicien) | 💡 indicateurs de Lancelot + notes du 9/11 ([[2026-11-09-notes-granola-reunion]]) |
+| Revenu = marge ; prestataire payé à son tarif contractuel | ✅ process ; montants ❓ |
 | Le prestataire engage sa responsabilité sur son diagnostic et sur la référence de pièce | ✅ process |
-| Prix client calculé par la plateforme ; un seul prix total visible | ✅ process (2026-11-21) |
-| Réparation sans pièce : prix ferme MO + consommable validé par le restaurant | ✅ process (2026-11-21) |
-| Aucune commande de pièce sans accord du client | ✅ process |
-| Pièce réservée = indisponible pour toute autre mission | ✅ process (2026-11-21) |
-| 2e intervention planifiée selon délai d'appro et disponibilité | ✅ process (2026-11-21) |
-| Clôture : PV + photos du prestataire, validation du restaurant | ✅ process (2026-11-21) |
+| **Pièce commandée par le bureau du prestataire**, pose intégrée à sa tournée ; 2e passage hors plateforme, visibilité maintenue | ✅ 9/11 (décision du 2026-11-21) |
+| Délai fabricant + 1 jour de tolérance, relances automatiques (J+24 h, J+48 h…) ; **délai dépassé : pièce non payée au prestataire** | ✅ 9/11 |
+| Clôture : photo obligatoire + validation du restaurant dans l'appli | ✅ 9/11 + process |
+| **Reversement par relevé mensuel** (bimensuel si urgence), validé par le prestataire | ✅ 9/11 (décision du 2026-11-21) |
 | SAV : pas de nouvelle facture si erreur du prestataire, reprise à sa charge | ✅ process |
-| Durée de la garantie, délai de paiement du prestataire | ❓ |
+| Client en cas de retard de pièce (remboursement, geste) | ❓ |
+| Si aucun technicien : empreinte libérée ; délai maximum | 🟡 / ❓ |
+| Panne non réparable : 1re heure due ? | ❓ |
+| Machine non listée / « autre marque » | ❓ |
+| Astreinte payée ou non (5 h du matin, dimanche) | ❓ cadrage |
+| Durée de la garantie | ❓ |
 
 ### 2.8 Cas limites à prévoir ([[2026-11-09-indicateurs-suivi]])
 45 min de circulation · parking impossible · technicien mobilisé 1 h 45 · modèle non identifié · appareil inaccessible · client incapable d'expliquer la panne · référence illisible · panne intermittente · machine à remplacer · peur de la concurrence entre prestataires · aucun technicien disponible · panne non réparable · litige.
@@ -279,12 +276,13 @@ CDC : délai d'arrivée, réparation au premier passage, note moyenne. Doc IA : 
 - **Équipement** : famille, marque, modèle, plaque, connecté (oui/non), historique d'interventions.
 - **Catalogue** : familles → marques → pannes fréquentes (codes erreur) → pièces (référence, prix moyen HT, poids). Données initiales : [[2026-11-01-pannes-rational]] (fours mixtes : 9 pièces, de 12 € à 810 € HT ; sauteuses iVario : 12 pièces).
 - **Intervention** : demande (symptômes, photos, urgence, modèle, plaque), qualification (métier, compétence), statut (§2.3), prestataire, heures (demande, acceptation, arrivée prévue, arrivée réelle, début du diagnostic, fin), diagnostic (panne, référence, quantité, temps de pose), issue, rapport.
-- **Passage** : une intervention peut avoir plusieurs passages (diagnostic, pose) ; date planifiée, horodatages, PV (pièce posée, tests, temps passé, photos).
-- **Tarif contractuel prestataire** : taux de MO, forfaits, consommables.
-- **Stock prestataire** (minimal) : pièce, quantité, réservation liée à une intervention.
-- **Commande fournisseur** : fournisseur, référence, prix fournisseur, frais de livraison et de retour, délai, statut.
+- **Passage** : une intervention peut avoir plusieurs passages (diagnostic, pose) ; date prévue (pose : fixée par le bureau du prestataire), horodatages, PV (pièce posée, tests, temps passé, photo obligatoire).
+- **Tarif contractuel prestataire** : taux horaire, consommables.
+- **Pièce à poser** (par intervention) : référence, source (camion / commande par le bureau), délai fabricant, date de pose prévue, relances, retard (pièce non payée).
+- **Relevé prestataire** (mensuel ou bimensuel) : interventions, montants, statut (envoyé, contesté, validé, payé), transferts associés.
 - **Réclamation SAV** : intervention liée, motif (diagnostic, référence, malfaçon), imputation, résolution.
-- **Devis** : type (réparation immédiate sans pièce / complémentaire avec pièce), lignes internes (MO, consommable, pièce, livraison, retour, marge) et **un seul total affiché au client**, statut, accord horodaté, paiement associé.
+- **Devis** : lignes internes (heures, consommable, pièce, marge) et **un seul total affiché au client**, statut, accord horodaté, 2e paiement associé.
+- **Paiement** : empreinte (posée, capturée pour la 1re heure, libérée), débit du devis.
 - **Paiement / reversement / facture**, **litige**, **notation** (5 critères).
 
 ### 2.12 Options techniques et chiffrage (à produire par Florian)
@@ -322,8 +320,8 @@ Actions liées : envoyer ses estimations de coûts à Jess (prévisionnel) ; rel
 ### 3.1 Incohérences entre sources
 | Sujet | Valeurs | Sources |
 | --- | --- | --- |
-| Forfait | 80 € (déplacement + 1re heure) · 110 € (45 min) · **129 € HT, forfait de diagnostic (référence depuis le 2026-11-21, montant à confirmer)** · panier 240 € | maquette v6 · CDC + CR 9/11 · process · doc IA |
-| Paiement et pièces (notes du 9/11, [[2026-11-09-notes-granola-reunion]]) | 1re heure à l'arrivée, 2e paiement à la validation du devis, reversement par relevé mensuel, pièce commandée par le bureau du technicien, 2e passage hors plateforme · process retenu le 21/11 : forfait à l'engagement, reste à la clôture, commande et planning par la plateforme | notes Granola · process |
+| Forfait | 80 € (déplacement + 1re heure) · 110 € (45 min) · 129 € HT, forfait de diagnostic (process, écarté le 2026-11-21) · **taux horaire, 1re heure indivisible débitée à l'arrivée (9/11, retenu le 2026-11-21 ; montant à fixer)** · panier 240 € | maquette v6 · CDC + CR 9/11 · process · notes du 9/11 · doc IA |
+| Paiement et pièces | 9/11 ([[2026-11-09-notes-granola-reunion]]) vs process : **tranché le 2026-11-21 en faveur du 9/11** (voir tableau ci-dessous) | notes Granola · process |
 | Commission | 20-30 % · 10-15 % · 10 % · 12 % → **tranché le 2026-11-21 : marge, pas commission** (prévisionnel à refaire) | cadrage · CR 19/10 · prévisionnel · doc IA |
 | Cible | Boulangerie (four, pétrin, diviseuse, froid) · cuisine pro (6 familles) | cadrage · CDC |
 | Compte obligatoire | Déclarer sans compte · connexion en écran 2 | ODJ 26/10 · CDC |
@@ -331,19 +329,20 @@ Actions liées : envoyer ses estimations de coûts à Jess (prévisionnel) ; rel
 | Prévisionnel | CA trimestriel = un seul mois ; clients fin 2027 : 1 500 (sheet) vs 500 (diapos) ; 2 250 interventions/mois au T4 avec ~30 techniciens ≈ 75 par technicien | [[2026-11-09-previsionnel-financier]] |
 | Classes INPI | 9/37/42 · 35/37/42 | récap Léa · doc IA |
 
-**Tranché le 2026-11-21 : le process de Lancelot fait foi** ([[decisions]])
+**Tranché le 2026-11-21 : le process de Lancelot fait foi face au CDC** ([[decisions]]) — **sauf les lignes marquées 9/11**, où la discussion du 9/11 ([[2026-11-09-notes-granola-reunion]]) prime sur le process
 | Sujet | Retenu (process) | Écarté |
 | --- | --- | --- |
-| Contenu du forfait | Diagnostic seul ; réparation sans pièce facturée en prix ferme | 45 min de dépannage incluses (CDC) |
+| Premier paiement (9/11) | Empreinte CB à la commande ; taux horaire, 1re heure indivisible débitée à l'arrivée | Forfait de diagnostic de 129 € HT à l'engagement (process) ; 45 min incluses (CDC) |
 | Qui chiffre le devis | La plateforme ; le prestataire valide la référence | Le technicien saisit durée + pièce (CDC) |
 | Affectation | La plateforme choisit le meilleur prestataire | Alerte ouverte (CDC) ; manuelle pure (cadrage) |
 | Revenu | Marge sur tarif contractuel | Commission de 10 % (prévisionnel) |
-| Stock du prestataire | Contrôlé et réservé par mission, dès la bêta | « Plus tard » (cadrage) |
-| Paiement du complément | À la clôture | À l'acceptation du devis (CDC) |
+| Pièces et stock (9/11) | Le bureau du prestataire commande et planifie la pose ; le technicien déclare camion / à commander ; pas de stock géré | Commande par la plateforme, stock réservé, 2e passage planifié (process) |
+| Paiement du complément (9/11) | À la validation du devis | À la clôture (process) |
+| Reversement (9/11) | Relevé mensuel validé par le prestataire | Après chaque clôture (process) |
 
 ### 3.2 Questions à trancher avant / pendant le développement
-1. Montants : forfait de diagnostic (129 € HT à confirmer), grille des tarifs contractuels, taux de MO, règle de marge.
-2. Remboursement du forfait si panne non réparable ; si aucun technicien trouvé ; délai maximum.
+1. Montants : taux horaire client, grille des tarifs contractuels, règle de marge.
+2. 1re heure due si panne non réparable ? Délai de libération de l'empreinte si aucun technicien (minuit ?) ; délai maximum.
 3. Les 3 marques et les interventions de la bêta (Jess et Lancelot) ; liste des pannes artisans (Lancelot).
 4. Parcours sans compte pour une urgence ?
 5. Mode hors-ligne dans la bêta ?
@@ -354,11 +353,11 @@ Actions liées : envoyer ses estimations de coûts à Jess (prévisionnel) ; rel
 10. Statut, assurances et pièces justificatives exigées des techniciens ; contrat technicien.
 11. ~~No-code ou sur mesure~~ → première piste sur mesure Expo + Convex + Stripe ([[stack-technique]]) ; reste à confirmer Convex ou Supabase.
 12. Nom définitif et charte graphique.
-13. Stock du prestataire (retenu dans la bêta) : simple « oui/non » par mission ou inventaire ?
-14. Fournisseurs de pièces de la bêta et mode de commande (manuel par l'équipe ou intégré).
-15. Branches absentes du process : refus du forfait, refus de mission, refus du devis, panne non réparable, remise en service non validée.
-16. Durée de garantie et mécanisme d'imputation au prestataire (retenue sur reversement ?).
-17. Présenter à l'équipe l'alignement sur le process (le CDC de Jess et le prévisionnel sont à mettre à jour).
+13. ~~Stock du prestataire~~ → retiré : le technicien déclare « camion » ou « à commander par son bureau » (décision du 2026-11-21).
+14. Client en cas de retard de pièce (au-delà du délai fabricant + 1 jour) : remboursement de la pièce, geste commercial ?
+15. Branches absentes : refus des conditions, refus de mission, refus du devis, panne non réparable, remise en service non validée, technicien absent après commande de pièce (litige noté le 9/11).
+16. Durée de garantie et imputation au prestataire (retenue sur le relevé mensuel ?).
+17. Présenter à l'équipe l'alignement sur le process amendé par la discussion du 9/11 (le CDC de Jess et le prévisionnel sont à mettre à jour).
 
 ### 3.3 Risques
 - **Besoin non validé** côté restaurateurs (aucun entretien documenté).
