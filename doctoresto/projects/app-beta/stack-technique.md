@@ -22,7 +22,7 @@ summary: Première piste de réflexion (Florian, 2026-11-21) - Expo + Convex + S
 | Facturation | Outil externe via API | Réforme de la facturation électronique B2B (émission obligatoire pour les PME en septembre 2027) |
 | Analyse | Export nocturne (cron) vers Airtable ou Google Sheets | Pas de SQL dans Convex ; indicateurs de Lancelot et prévisionnel de Jess |
 
-Coûts récurrents en bêta : Convex, EAS et Clerk gratuits au début ; Apple Developer 99 €/an ; Google Play 25 € une fois ; frais Stripe par transaction. Tient dans les 3 500 € du prévisionnel tant que le dev est fait par Florian.
+Coûts récurrents en bêta : Convex, EAS et Clerk gratuits au début ; Apple Developer 99 €/an ; Google Play 25 € une fois ; frais Stripe (voir « Coûts Stripe » ci-dessous : ~1,5 % + 0,25 € par paiement carte, Connect 2 € par technicien actif et par mois + 0,10 € + 0,25 % par virement). Tient dans les 3 500 € du prévisionnel tant que le dev est fait par Florian.
 
 ## Répartition par canal
 - **Client : web app** (lien, magnet QR, Apple Pay dans le navigateur), pas de store en V1 : cohérent avec « panne → commande en moins de 2 minutes » et « déclarer sans compte ». ⚠️ Écart avec le CDC (apps natives iOS et Android) : à présenter à l'équipe.
@@ -72,9 +72,20 @@ Règles de paiement retenues le 2026-11-21 ([[2026-11-09-notes-granola-reunion]]
 - Le relevé mensuel laisse une fenêtre SAV avant de payer (moins de transferts à annuler), mais paie plus lentement des techniciens qui se plaignent des retards de paiement : d'où l'option bimensuelle.
 - **Clé d'idempotence par transfert** (`intervention:paiement`) : un webhook rejoué ou une tâche Convex relancée ne doit jamais payer deux fois.
 - **Aucune mission proposée** tant que le compte Express du technicien n'a pas la capacité `transfers` active (contrôle à la validation de la candidature).
-- **Frais et risques chez la plateforme** : frais Stripe (~2 % estimés le 9/11, non rendus en cas de remboursement) et rétrofacturations ; la fonction de prix les intègre, la marge doit les couvrir.
+- **Frais et risques chez la plateforme** : frais Stripe (non rendus en cas de remboursement) et rétrofacturations ; la fonction de prix les intègre, la marge doit les couvrir. Stripe ne recommande ce mode que si la plateforme **assume les soldes négatifs des comptes connectés** : remboursements et litiges sont à sa charge, à elle de récupérer l'argent chez le prestataire par une annulation de transfert (« transfer reversal »). Le relevé mensuel aide : tant que le relevé n'est pas payé, rien n'est à récupérer.
+- **Toujours renseigner `source_transaction`** : les virements automatiques du compte plateforme vers sa banque (calendrier de payout) peuvent vider le solde dont dépendraient des transferts qui n'en ont pas.
 - **TVA des deux côtés** : client facturé TTC ; transfert = montant de la facture du technicien (TTC, ou sans TVA s'il est en franchise).
-- **Ne pas parler de « séquestre »** dans les CGU ni dans le marketing : le séquestre de fonds pour le compte d'un tiers est une activité réglementée. Dans le modèle à marge, la plateforme vend le service : l'argent encaissé est son chiffre d'affaires, et elle paie un sous-traitant. À valider avec l'expert-comptable (avec la TVA et DAC7).
+- **Ne pas parler de « séquestre »** dans les CGU ni dans le marketing : le séquestre de fonds pour le compte d'un tiers est une activité réglementée. Dans le modèle à marge, la plateforme vend le service : l'argent encaissé est son chiffre d'affaires, et elle paie un sous-traitant. À valider avec l'expert-comptable (avec la TVA et DAC7). Pour démontrer qu'on ne touche pas aux fonds des prestataires, Stripe propose une fonction de cantonnement des fonds (« funds segregation » : fonds placés dans un état réservé avant transfert), **en preview** : à suivre, pas à prévoir pour la bêta.
+- **Accès au mode « charges et transferts séparés »** : la documentation indique qu'il faut parfois contacter Stripe pour l'activer. **À vérifier sur le compte Stripe dès sa création.**
+
+**Coûts Stripe (France, tarif standard à vérifier sur la grille du compte ; extrait d'une discussion Claude.ai de Florian, 2026-11-21)**
+| Poste | Tarif | Exemple |
+| --- | --- | --- |
+| Paiement carte européenne standard | ~1,5 % + 0,25 € par paiement | Intervention de 400 € en 2 paiements (1re heure + devis) : 6 € + 2 × 0,25 € ≈ **6,50 €** |
+| Connect, compte actif (plateforme qui gère la tarification des prestataires) | 2 € par compte actif et par mois | 30 techniciens payés dans le mois : 60 € |
+| Connect, virement envoyé au prestataire | 0,10 € + 0,25 % du montant | Relevé de 3 000 € : 7,60 € |
+| Virement instantané | 1 % du montant | À éviter, sauf urgence de trésorerie (option bimensuelle plutôt) |
+Ordre de grandeur : ~1,6 % côté encaissement, plus ~0,3 % et 2 € par technicien et par mois côté reversement, soit cohérent avec les ~2 % estimés le 9/11. Le relevé mensuel limite les frais Connect (un seul virement par technicien et par mois) : régler le calendrier de virement des comptes Express en conséquence. Hypothèses des exemples (400 €, 3 000 €) : illustratives.
 
 **Conséquence pour le MVP** : le schéma coûte peu, et la commande des pièces par le bureau du technicien supprime le stock, les commandes et le planning côté plateforme. Si les techniciens font leur inscription Stripe Express pendant leur candidature, **Stripe Connect peut entrer dans le MVP d'un mois** ; les relevés peuvent être générés à la main le premier mois.
 
@@ -92,7 +103,8 @@ Règles de paiement retenues le 2026-11-21 ([[2026-11-09-notes-granola-reunion]]
 6. Le prototype Claude de Léa est-il réutilisable ?
 7. ~~Avance de trésorerie sur les pièces~~ → supprimée : le bureau du technicien commande, le client paie à la validation du devis (décision du 2026-11-21, [[2026-11-09-notes-granola-reunion]]).
 8. Rythme du relevé : mensuel par défaut, bimensuel pour qui ? (critère « urgence de trésorerie » à définir).
-9. Durée maximale de détention des fonds sur le solde plateforme avant transfert (un mois avec le relevé mensuel) et durée maximale d'une empreinte CB : à vérifier chez Stripe (action de Florian notée le 9/11).
+9. Durée maximale de détention des fonds sur le solde plateforme avant transfert (un mois avec le relevé mensuel) et durée maximale d'une empreinte CB : **toujours à vérifier** (non couvert par l'extrait du 2026-11-21). Coûts : réglé (voir « Coûts Stripe »). Frais éventuels d'une empreinte libérée sans débit : à vérifier.
+12. Le mode « charges et transferts séparés » est-il activé d'office sur le compte, ou faut-il contacter Stripe ?
 10. Client en cas de retard de pièce (au-delà du délai fabricant + 1 jour) : remboursement de la pièce, geste commercial ?
 11. Délai de libération de l'empreinte si aucun technicien (minuit ? selon l'heure de la demande ?).
 
