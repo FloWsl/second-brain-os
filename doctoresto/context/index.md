@@ -1,4 +1,4 @@
-# context/ index (generated 2026-11-20, 5 notes)
+# context/ index (generated 2026-11-21, 5 notes)
 
 ## active
 - [[business]] (updated 2026-11-20, imp 5): Appli de dépannage d'urgence pour les professionnels CHR (restaurants, boulangeries, hôtels) ; 4 associés (pacte signé), société WRLJ SAS en création ; bêta à Paris en avril 2027, 500 clients fin 2027, national en 2028.

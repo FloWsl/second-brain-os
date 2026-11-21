@@ -12,6 +12,7 @@ summary: Bêta à Paris en avril 2027 - interventions les plus demandées, 3 mar
 # Appli Doctoresto, version bêta
 Responsable dev : Florian ([[me]]). Échéance : bêta à Paris en avril 2027, société créée avant.
 Statut au 2026-11-20 : CDC V1 rédigé par Jess (2026-11-02), à relire par tous ; maquette v6 de Flo (2026-11-02) ; process et indicateurs de Lancelot (2026-11-09). **Chiffrage du temps et du coût de la bêta : à faire (Flo).**
+Brief et PRD compilés (brouillon du 2026-11-20) : [[brief-prd]].
 
 ## Périmètre de la bêta
 - Interventions les plus demandées, 3 marques au début, tout Paris. (CR 2026-10-26)

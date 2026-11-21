@@ -2,7 +2,7 @@
 Updated 2026-11-20.
 
 ## Priorities
-- **Florian : chiffrer le temps et le coût de la bêta et faire une proposition**, à faire depuis le 26/10 ; Jess en a besoin pour le prévisionnel. Partir du CDC V1, choisir entre no-code et sur mesure. Déposer aussi mes recherches visuelles dans le Drive et envoyer mes estimations de coûts à Jess. → [[app-beta]], [[me]]
+- **Florian : chiffrer le temps et le coût de la bêta et faire une proposition**, à faire depuis le 26/10 ; Jess en a besoin pour le prévisionnel. Partir du CDC V1 et du brief/PRD compilé [[brief-prd]], choisir entre no-code et sur mesure. Déposer aussi mes recherches visuelles dans le Drive et envoyer mes estimations de coûts à Jess. → [[app-beta]], [[me]]
 - Prévisionnel à valider en nov.-déc. (Jess). Le CA trimestriel semble ne compter qu'un mois sur trois, et le nombre de clients diffère entre la sheet et les diapos. → [[2026-11-09-previsionnel-financier]]
 - Sirha Lyon, 21-25 janvier 2027 : budget (environ 1 500 € pour une table avec les fabricants), qui avance les frais, e-Soleau avant le salon, au moins un visuel côté technicien. → [[sirha-2027]]
 - Créer WRLJ SAS avant avril 2027. → [[creation-societe]]

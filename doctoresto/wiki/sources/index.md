@@ -1,4 +1,4 @@
-# wiki/sources/ index (generated 2026-11-20, 19 notes)
+# wiki/sources/ index (generated 2026-11-21, 19 notes)
 
 ## active
 - [[2026-10-13-cadrage-doctoresto]] (updated 2026-11-20, imp 3): Document fondateur : concept, priorité au terrain (5 missions), parcours en 6 étapes, fonctions au lancement, modèle, questions à trancher, condensé WhatsApp, test MesDépanneurs, concurrence.

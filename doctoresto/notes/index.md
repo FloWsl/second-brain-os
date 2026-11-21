@@ -1,4 +1,4 @@
-# notes/ index (generated 2026-11-20, 2 notes)
+# notes/ index (generated 2026-11-21, 2 notes)
 
 ## active
 - [[ideas]] (updated 2026-11-20, imp ?): Ideas and to-dos not yet tied to a project.

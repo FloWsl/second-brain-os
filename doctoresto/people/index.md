@@ -1,4 +1,4 @@
-# people/ index (generated 2026-11-20, 7 notes)
+# people/ index (generated 2026-11-21, 7 notes)
 
 ## active
 - [[alicia]] (updated 2026-11-20, imp 2): Expérience d'ouverture de restaurants dans le Sud ; intéressée hors capital (prestataire, paiement différé) ; retour attendu depuis le 2026-10-26.
