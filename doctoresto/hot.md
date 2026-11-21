@@ -2,7 +2,7 @@
 Updated 2026-11-21.
 
 ## Priorities
-- **Florian : chiffrer le temps et le coût de la bêta et faire une proposition**, à faire depuis le 26/10 ; Jess en a besoin pour le prévisionnel. Partir du CDC V1 et du brief/PRD compilé [[brief-prd]], choisir entre no-code et sur mesure. Déposer aussi mes recherches visuelles dans le Drive et envoyer mes estimations de coûts à Jess. → [[app-beta]], [[me]]
+- **Florian : chiffrer le temps et le coût de la bêta et faire une proposition**, à faire depuis le 26/10 ; Jess en a besoin pour le prévisionnel. Partir du CDC V1 et du brief/PRD compilé [[brief-prd]], première piste de stack posée le 2026-11-21 ([[stack-technique]]), reste le chiffrage final. Déposer aussi mes recherches visuelles dans le Drive et envoyer mes estimations de coûts à Jess. → [[app-beta]], [[me]]
 - Prévisionnel à valider en nov.-déc. (Jess). Le CA trimestriel semble ne compter qu'un mois sur trois, et le nombre de clients diffère entre la sheet et les diapos. → [[2026-11-09-previsionnel-financier]]
 - Sirha Lyon, 21-25 janvier 2027 : budget (environ 1 500 € pour une table avec les fabricants), qui avance les frais, e-Soleau avant le salon, au moins un visuel côté technicien. → [[sirha-2027]]
 - Créer WRLJ SAS avant avril 2027. → [[creation-societe]]
@@ -17,5 +17,6 @@ Updated 2026-11-21.
 - Prochaine réunion : à définir.
 
 ## Decisions this week
+- 2026-11-21 : première piste de stack Expo + Convex (ou Supabase) + Stripe, client en web app ; à confirmer (maîtrise de Convex, heures/semaine, objectif Sirha). → [[stack-technique]]
 - 2026-11-21 : le process de Lancelot fait référence pour le produit (marge, forfait de diagnostic, dispatch et prix par la plateforme, stock, paiement à la clôture).
 - Rien de nouveau depuis le 2026-11-13 (pacte signé). Dernières : société avant la bêta, pacte sans avocat, pas de suivi en temps réel dans la bêta (CR du 9/11).

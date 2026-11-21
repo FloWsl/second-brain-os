@@ -9,6 +9,10 @@ summary: Dated decisions with their reason, newest first.
 # Decisions
 Format: `## YYYY-MM-DD <decision>` then `Why:` and `Replaces:` if any.
 
+## 2026-11-21 Stack de la bêta : première piste Expo + Convex + Stripe (piste de réflexion, pas définitive)
+Why: code TypeScript qui appartient à la société (pacte, art. 1), rapide à coder seul avec l'IA, machine à statuts, tâches planifiées et temps réel intégrés pour le process de Lancelot ; le no-code colle mal au prix calculé après diagnostic et aux passages multiples. Client en web app, technicien en app, back-office web ; MVP d'un mois découpé. Convex si Florian le maîtrise déjà, sinon Supabase. [[stack-technique]]
+Replaces: piste no-code Bubble ou Sharetribe du doc IA ([[2026-11-15-feuille-de-route-ia]]).
+
 ## 2026-11-21 Le process opérationnel de Lancelot fait référence pour le produit (Florian, responsable dev)
 Why: c'est le document le plus complet et le plus cohérent sur le déroulé d'une intervention (rôles, responsabilités, flux d'argent) ; il sert d'ossature au PRD. Décision de Florian pour le dev, **à présenter à l'équipe** : le CDC V1 de Jess et le prévisionnel sont à aligner. [[2026-11-09-process-operationnel]], [[brief-prd]]
 Conséquences, sur les 6 points où il contredit le CDC :

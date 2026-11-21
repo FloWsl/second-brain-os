@@ -12,7 +12,7 @@ summary: Bêta à Paris en avril 2027 - interventions les plus demandées, 3 mar
 # Appli Doctoresto, version bêta
 Responsable dev : Florian ([[me]]). Échéance : bêta à Paris en avril 2027, société créée avant.
 Statut au 2026-11-20 : CDC V1 rédigé par Jess (2026-11-02), à relire par tous ; maquette v6 de Flo (2026-11-02) ; process et indicateurs de Lancelot (2026-11-09). **Chiffrage du temps et du coût de la bêta : à faire (Flo).**
-Brief et PRD compilés : [[brief-prd]].
+Brief et PRD compilés : [[brief-prd]]. Stack : [[stack-technique]] (première piste).
 **Référence produit depuis le 2026-11-21 : le process de Lancelot** ([[2026-11-09-process-operationnel]]) prime sur le CDC V1 en cas de conflit (décision dans [[decisions]]). À présenter à l'équipe.
 
 ## Périmètre de la bêta
@@ -36,7 +36,7 @@ Délai d'arrivée, réparation au premier passage, note moyenne (CDC) ; seuils c
 
 ## Questions ouvertes (CDC)
 Panne non réparable (remboursement du forfait ?), aucun technicien disponible (délai maximum ?), machine non listée, litiges, RGPD, statut et RC pro des artisans. Montants du modèle à marge : forfait (129 € HT à confirmer), tarifs contractuels, règle de marge.
-Technique (doc IA de la feuille de route) : no-code (Bubble ou Sharetribe + Stripe Connect) ou sur mesure ; à trancher dans mon chiffrage.
+Technique : **première piste (2026-11-21) : Expo + Convex (ou Supabase) + Stripe**, client en web app, MVP d'un mois découpé → [[stack-technique]]. Pas encore définitif ; no-code (Bubble, Sharetribe) écarté.
 
 ## History
 - Cadrage (2026-10-13) : équipements de boulangerie (four, pétrin, diviseuse, froid), affectation manuelle, mode hors-ligne. Le CDC du 2/11 a élargi la cible à la cuisine pro (fours mixtes, laverie, café, froid, robots).

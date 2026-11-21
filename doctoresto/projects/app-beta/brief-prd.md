@@ -288,6 +288,8 @@ CDC : délai d'arrivée, réparation au premier passage, note moyenne. Doc IA : 
 - **Paiement / reversement / facture**, **litige**, **notation** (5 critères).
 
 ### 2.12 Options techniques et chiffrage (à produire par Florian)
+> **Première piste retenue le 2026-11-21 : Expo + Convex (ou Supabase) + Stripe**, détail, MVP d'un mois et estimation (~90-100 h pour le périmètre complet) dans [[stack-technique]]. Le tableau ci-dessous reste pour l'historique.
+
 Pistes du doc IA de la feuille de route (non relu par l'équipe, [[2026-11-15-feuille-de-route-ia]]) :
 | Option | Délai | Coût |
 | --- | --- | --- |
@@ -349,7 +351,7 @@ Actions liées : envoyer ses estimations de coûts à Jess (prévisionnel) ; rel
 8. Astreinte de nuit / week-end : majoration ?
 9. Durée de conservation des données de géolocalisation et des photos (RGPD).
 10. Statut, assurances et pièces justificatives exigées des techniciens ; contrat technicien.
-11. No-code ou sur mesure (chiffrage de Florian).
+11. ~~No-code ou sur mesure~~ → première piste sur mesure Expo + Convex + Stripe ([[stack-technique]]) ; reste à confirmer Convex ou Supabase.
 12. Nom définitif et charte graphique.
 13. Stock du prestataire (retenu dans la bêta) : simple « oui/non » par mission ou inventaire ?
 14. Fournisseurs de pièces de la bêta et mode de commande (manuel par l'équipe ou intégré).
