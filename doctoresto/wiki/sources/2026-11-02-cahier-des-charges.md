@@ -9,7 +9,7 @@ drive_id: 1lj9FzIe1w1m_i0UU5hMnUSyhmj9JvKnP
 summary: CDC V1 de Jess : 14 écrans client et 11 écrans technicien, forfait de 110 € (déplacement, diagnostic, 45 min), devis au-delà, validation des techniciens par un EXPERT, MVP iOS et Android.
 ---
 # Cahier des charges V1 (diapos)
-> **Depuis le 2026-11-21, le process de Lancelot fait référence** en cas de conflit : prix calculé par la plateforme, choix du prestataire par la plateforme, marge ; et, d'après la discussion du 9/11 ([[2026-11-09-notes-granola-reunion]]), empreinte CB puis 1re heure au taux horaire débitée à l'arrivée (et non 110 € avec 45 min), devis payé à sa validation, pièces commandées par le bureau du technicien, relevé mensuel. Voir [[2026-11-09-process-operationnel]] et [[decisions]]. Les écrans restent la base.
+> **Depuis le 2026-11-21, le process de Lancelot fait référence** en cas de conflit : prix calculé par la plateforme, choix du prestataire par la plateforme, marge ; et, d'après la discussion du 9/11 ([[2026-11-09-notes-granola-reunion]]), empreinte CB puis forfait de diagnostic de 129 € HT (déplacement + 1re heure d'intervention) débité à l'arrivée (et non 110 € avec 45 min), devis payé à sa validation, pièces commandées par le bureau du technicien, relevé mensuel. Voir [[2026-11-09-process-operationnel]] et [[decisions]]. Les écrans restent la base.
 Source : Google Drive, DEVELOPPEMENT/CAHIER DES CHARGES/CDC Visuel (pptx de Jess, 2026-11-02 ; photos des pages papier à côté). Lien : https://drive.google.com/open?id=1lj9FzIe1w1m_i0UU5hMnUSyhmj9JvKnP
 Importée le 2026-11-20.
 
