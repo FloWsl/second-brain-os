@@ -3,11 +3,22 @@ title: Decisions
 type: decision
 status: active
 created: 2026-11-20
-updated: 2026-11-20
+updated: 2026-11-21
 summary: Dated decisions with their reason, newest first.
 ---
 # Decisions
 Format: `## YYYY-MM-DD <decision>` then `Why:` and `Replaces:` if any.
+
+## 2026-11-21 Le process opérationnel de Lancelot fait référence pour le produit (Florian, responsable dev)
+Why: c'est le document le plus complet et le plus cohérent sur le déroulé d'une intervention (rôles, responsabilités, flux d'argent) ; il sert d'ossature au PRD. Décision de Florian pour le dev, **à présenter à l'équipe** : le CDC V1 de Jess et le prévisionnel sont à aligner. [[2026-11-09-process-operationnel]], [[brief-prd]]
+Conséquences, sur les 6 points où il contredit le CDC :
+- Forfait = **forfait de diagnostic** (réf. 129 € HT, donné « à titre d'exemple », montant à confirmer), sans temps de réparation inclus ; réparation sans pièce facturée en prix ferme (MO + consommable).
+- **La plateforme calcule le prix client** (pièce + livraison + retour + MO + marge, un seul total) ; le prestataire fournit et valide la référence.
+- **La plateforme choisit le prestataire** (zone × disponibilité × métier × marque × historique) ; le prestataire accepte.
+- **Revenu = marge** ; le prestataire est payé à un tarif contractuel plateforme.
+- **Stock du prestataire contrôlé et réservé par mission dès la bêta.**
+- **Paiement** : forfait à l'engagement, reste à la clôture après validation de la remise en service ; la plateforme reverse ensuite au prestataire.
+Replaces: forfait de 110 € avec 45 min (CDC V1, CR du 9/11) ; commission de 10 % (prévisionnel) ; devis saisi par le technicien et alerte ouverte (CDC) ; stock embarqué plus tard (cadrage 2026-10-13) ; paiement à l'acceptation du devis (CDC).
 
 ## 2026-11-20 Jessica est présidente de la SAS (confirmé)
 Why: désignée dans le pacte signé (PDF du 2026-11-13) ; confirmé par Florian.
@@ -27,7 +38,7 @@ Contenu : WRLJ SAS, capital de 20 000 €, présidente Jessica, 37,5/37,5/15/10,
 Why: coût de l'API Google ; le technicien doit seulement être dans le périmètre. (CR 9/11)
 Voir [[app-beta]].
 
-## 2026-11-09 Forfait client de 110 € (déplacement, diagnostic, 45 min) puis devis payé à part
+## 2026-11-09 Forfait client de 110 € (déplacement, diagnostic, 45 min) puis devis payé à part — remplacé le 2026-11-21 (forfait de diagnostic du process)
 Why: prix d'appel clair, connu avant le déplacement. (CDC V1 du 2/11, repris au CR du 9/11)
 Replaces: forfait de 80 € de la maquette v6.
 Voir [[offer]].
@@ -51,7 +62,7 @@ Voir [[app-beta]], [[sirha-2027]].
 Why: rythme hebdomadaire (CR 19/10).
 Replaces: lundi 14h (copie du CR dans le doc de cadrage).
 
-## 2026-10-13 Périmètre de lancement : 4 équipements (four, pétrin, diviseuse, froid), affectation manuelle, mode hors-ligne ; IA, stock embarqué et GPS plus tard
+## 2026-10-13 Périmètre de lancement : 4 équipements (four, pétrin, diviseuse, froid), affectation manuelle, mode hors-ligne ; IA, stock embarqué et GPS plus tard (stock : remplacé le 2026-11-21)
 Why: l'affectation automatique demande assez de techniciens, l'IA un historique de pannes ; les labos sont mal couverts en réseau ; Waze suffit pour le GPS. (cadrage)
 Voir [[app-beta]].
 

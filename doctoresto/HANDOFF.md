@@ -27,8 +27,7 @@ Règles : `AGENTS.md`. État de la semaine : `hot.md`. Historique : `log.md`. D�
 
 ## Points à remonter à l'équipe
 - Prévisionnel : le CA trimestriel ne compte qu'un mois sur trois (CA probablement sous-estimé d'un facteur 3) ; clients fin 2027 : 1 500 dans la sheet, 500 dans les diapos. → `wiki/sources/2026-11-09-previsionnel-financier.md`
-- Forfait : 80 € (maquette), 110 € (CDC, la référence), 129 € HT (process de Lancelot).
-- Commission et reversement au technicien non votés (10 % dans le prévisionnel).
+- Forfait : depuis le 2026-11-21, le process de Lancelot fait référence (forfait de diagnostic, 129 € HT à confirmer ; marge au lieu de commission). À présenter à l'équipe : CDC et prévisionnel à aligner.
 - Aucun entretien restaurateur documenté ; le questionnaire est prêt.
 - Sirha : du 21 au 25 janvier 2027 (et non 21-23).
 

@@ -11,7 +11,7 @@ summary: Diagramme en couloirs (restaurant, plateforme, prestataire) en 7 étape
 ---
 # Process opérationnel de dépannage (Lancelot)
 Source : Google Drive, DEVELOPPEMENT/CAHIER DES CHARGES/« Synhtèse process »/**261109 Process.pdf** (1 page A2, diagramme en couloirs, auteur Lancelot, modifié le 2026-11-09 à 15h08). Lien : https://drive.google.com/open?id=1h4ZxjpqM5aaUylPIRpkfrETaPQjiAbik
-Importée le 2026-11-20 ; **analysée en détail le 2026-11-21** (rendu de l'image + texte). Considéré par Florian comme le document le plus important pour le dev (2026-11-21).
+Importée le 2026-11-20 ; **analysée en détail le 2026-11-21** (rendu de l'image + texte). **Document de référence pour le produit depuis le 2026-11-21** (décision de Florian, à présenter à l'équipe) : il prime sur le CDC V1 sur les 6 points ci-dessous. [[decisions]]
 
 Titre : « Process opérationnel de dépannage CHR ». Sous-titre (le principe) : **responsabilité commerciale centralisée • responsabilité technique portée par le prestataire**.
 
@@ -54,7 +54,8 @@ Surlignés en jaune par l'auteur (points sur lesquels il insiste, ou encore à t
 12. **Responsabilités = clauses contractuelles** : erreur de diagnostic ou de référence à la charge du prestataire → contrat prestataire, CGU, RC pro obligatoire.
 
 ## Écarts avec le CDC V1 ([[2026-11-02-cahier-des-charges]]) et les autres sources
-| Sujet | Process de Lancelot | CDC V1 / autres |
+Tranchés le 2026-11-21 : **la colonne « process » est retenue** (sauf le signalement, qui ajoute simplement modèle et plaque au CDC).
+| Sujet | Process de Lancelot (retenu) | CDC V1 / autres (écarté) |
 | --- | --- | --- |
 | Forfait | Forfait **diagnostic**, ex. 129 € HT | 110 € incluant déplacement, diagnostic **et 45 min de dépannage** ; HT ou TTC non précisé |
 | Réparation sans pièce | Facturée en plus : prix ferme MO + consommable | Incluse dans le forfait jusqu'à 45 min |

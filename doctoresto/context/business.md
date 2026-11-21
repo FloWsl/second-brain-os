@@ -3,7 +3,7 @@ title: Doctoresto - le projet
 type: context
 status: active
 created: 2026-11-20
-updated: 2026-11-20
+updated: 2026-11-21
 review_by: 2027-02-18
 importance: 5
 sources: ["[[2026-10-13-cadrage-doctoresto]]", "[[2026-10-19-cr-reunion]]", "[[2026-10-26-cr-reunion]]", "[[2026-11-02-presentation-reunion]]", "[[2026-11-09-cr-reunion]]", "[[2026-11-02-pacte-associes]]"]
@@ -13,9 +13,9 @@ summary: Appli de dépannage d'urgence pour les professionnels CHR (restaurants,
 # Doctoresto
 
 ## Le concept
-Appli de dépannage d'urgence pour les professionnels du CHR : le restaurateur déclare sa panne, paie un forfait, un technicien qualifié et proche arrive ; la plateforme encaisse, reverse au technicien et garde une commission ou une marge. (cadrage 2026-10-13 ; CDC 2026-11-02)
+Appli de dépannage d'urgence pour les professionnels du CHR : le restaurateur déclare sa panne, paie un forfait, un technicien qualifié et proche arrive ; la plateforme encaisse, reverse au technicien et garde une marge. (cadrage 2026-10-13 ; CDC 2026-11-02 ; marge depuis le 2026-11-21)
 Deux profils dans une appli : client (restaurateur, hôtelier, traiteur, boulanger) et technicien (technicien de marque ou artisan). Voir [[app-beta]].
-Principe de responsabilité : la plateforme porte la relation commerciale, le prestataire la responsabilité technique. ([[2026-11-09-process-operationnel]])
+Principe de responsabilité : la plateforme porte la relation commerciale, le prestataire la responsabilité technique. Le process de Lancelot est **la référence pour le produit** depuis le 2026-11-21 ([[2026-11-09-process-operationnel]]) : la plateforme qualifie, choisit le prestataire et calcule les prix ; voir [[offer]].
 Modèle : urgence et one shot ; les restaurateurs n'investissent pas dans le préventif. (CR 2026-11-09)
 Nom : plutôt « DoctoResto » pour l'appli (vigilance Doctolib) ; société « WRLJ » dans le pacte. Voir [[creation-societe]].
 

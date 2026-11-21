@@ -3,12 +3,13 @@ title: Cahier des charges V1 (diapos)
 type: source
 status: active
 created: 2026-11-20
-updated: 2026-11-20
+updated: 2026-11-21
 importance: 3
 drive_id: 1lj9FzIe1w1m_i0UU5hMnUSyhmj9JvKnP
 summary: CDC V1 de Jess : 14 écrans client et 11 écrans technicien, forfait de 110 € (déplacement, diagnostic, 45 min), devis au-delà, validation des techniciens par un EXPERT, MVP iOS et Android.
 ---
 # Cahier des charges V1 (diapos)
+> **Depuis le 2026-11-21, le process de Lancelot fait référence** en cas de conflit : forfait de diagnostic (et non 110 € avec 45 min), prix calculé par la plateforme, choix du prestataire par la plateforme, marge, stock réservé, paiement à la clôture. Voir [[2026-11-09-process-operationnel]] et [[decisions]]. Les écrans restent la base.
 Source : Google Drive, DEVELOPPEMENT/CAHIER DES CHARGES/CDC Visuel (pptx de Jess, 2026-11-02 ; photos des pages papier à côté). Lien : https://drive.google.com/open?id=1lj9FzIe1w1m_i0UU5hMnUSyhmj9JvKnP
 Importée le 2026-11-20.
 
