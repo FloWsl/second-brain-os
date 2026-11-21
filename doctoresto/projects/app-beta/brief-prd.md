@@ -6,7 +6,7 @@ created: 2026-11-20
 updated: 2026-11-21
 review_by: 2026-12-20
 importance: 5
-sources: ["[[business]]", "[[icp]]", "[[offer]]", "[[me]]", "[[app-beta]]", "[[decisions]]", "[[2026-10-13-cadrage-doctoresto]]", "[[2026-11-02-cahier-des-charges]]", "[[2026-11-02-maquette-ecrans-v6]]", "[[2026-11-09-process-operationnel]]", "[[2026-11-09-indicateurs-suivi]]", "[[2026-11-09-cout-geolocalisation]]", "[[2026-11-09-previsionnel-financier]]", "[[2026-11-09-cr-reunion]]", "[[2026-11-15-feuille-de-route-ia]]", "[[2026-11-01-pannes-rational]]", "[[2026-11-02-pistes-style]]", "[[2026-11-09-recap-nom-inpi]]", "[[marche-et-concurrence]]", "[[2026-11-20]]"]
+sources: ["[[business]]", "[[icp]]", "[[offer]]", "[[me]]", "[[app-beta]]", "[[decisions]]", "[[2026-10-13-cadrage-doctoresto]]", "[[2026-11-02-cahier-des-charges]]", "[[2026-11-02-maquette-ecrans-v6]]", "[[2026-11-09-process-operationnel]]", "[[2026-11-09-indicateurs-suivi]]", "[[2026-11-09-cout-geolocalisation]]", "[[2026-11-09-previsionnel-financier]]", "[[2026-11-09-cr-reunion]]", "[[2026-11-09-notes-granola-reunion]]", "[[2026-11-15-feuille-de-route-ia]]", "[[2026-11-01-pannes-rational]]", "[[2026-11-02-pistes-style]]", "[[2026-11-09-recap-nom-inpi]]", "[[marche-et-concurrence]]", "[[2026-11-20]]"]
 summary: Compilation, structurée autour du process opérationnel de Lancelot, de tout ce qui sert à écrire le brief et le PRD de la bêta DoctoResto - contexte, cibles, offre, périmètre, parcours écran par écran, règles métier, back-office, exigences non fonctionnelles, données, indicateurs, contraintes, options techniques, incohérences et questions ouvertes.
 ---
 # Brief projet et PRD — appli DoctoResto (bêta avril 2027)
@@ -42,7 +42,7 @@ Une appli mobile de **dépannage d'urgence pour les professionnels du CHR** (res
 | Statut | Professionnel | Auto-entrepreneur, entreprise ou partenaire. Un salarié ne peut pas facturer seul : c'est son entreprise qui contracte. |
 | Attente | Rapidité, prix connu avant déplacement, pas de compte obligatoire en urgence | Paiement sécurisé avant intervention, missions proches, plus d'affaires, pièces bien tarifées |
 | Cible bêta | **100 restaurateurs** (Paris) | **30 techniciens** |
-| Recrutement | Terrain, Sirha, Google Ads (pistes IA) | Listes de techniciens habilités formés chaque année par les fabricants ; fabricants plus favorables que les installateurs (>50 % des installateurs réticents, 2-3 déjà fans) |
+| Recrutement | Terrain, Sirha, Google Ads (pistes IA) | Listes de techniciens habilités formés chaque année par les fabricants ; fabricants plus favorables que les installateurs (>50 % des installateurs réticents, 2-3 déjà fans). Notes du 9/11 : d'abord les 10 meilleures entreprises (les plus réfractaires), indépendants pour absorber les nouveaux contrats, sectorisation, « équipe joker » ([[2026-11-09-notes-granola-reunion]]) |
 
 Personas des maquettes v6 : **Marie** (Boulangerie Martin) côté client ; **Karim** (DoctoResto Pro) côté technicien. ([[2026-11-02-maquette-ecrans-v6]])
 
@@ -231,7 +231,7 @@ Fonctions issues du CDC et du process de Lancelot :
 | Revenu = marge ; prestataire payé à son tarif contractuel | ✅ process (2026-11-21) ; montants ❓ |
 | Astreinte payée ou non (5 h du matin, dimanche) | ❓ cadrage |
 | Marge intégrée au prix des pièces (pièce + livraison + retour + MO + marge) | ✅ process (2026-11-21) |
-| Prise en compte des affinités client-technicien existantes dans le dispatch | 💡 indicateurs de Lancelot |
+| Prise en compte des affinités client-technicien existantes dans le dispatch ; sectorisation (un client reste au même technicien) | 💡 indicateurs de Lancelot + notes du 9/11 ([[2026-11-09-notes-granola-reunion]]) |
 | Le prestataire engage sa responsabilité sur son diagnostic et sur la référence de pièce | ✅ process |
 | Prix client calculé par la plateforme ; un seul prix total visible | ✅ process (2026-11-21) |
 | Réparation sans pièce : prix ferme MO + consommable validé par le restaurant | ✅ process (2026-11-21) |
@@ -323,6 +323,7 @@ Actions liées : envoyer ses estimations de coûts à Jess (prévisionnel) ; rel
 | Sujet | Valeurs | Sources |
 | --- | --- | --- |
 | Forfait | 80 € (déplacement + 1re heure) · 110 € (45 min) · **129 € HT, forfait de diagnostic (référence depuis le 2026-11-21, montant à confirmer)** · panier 240 € | maquette v6 · CDC + CR 9/11 · process · doc IA |
+| Paiement et pièces (notes du 9/11, [[2026-11-09-notes-granola-reunion]]) | 1re heure à l'arrivée, 2e paiement à la validation du devis, reversement par relevé mensuel, pièce commandée par le bureau du technicien, 2e passage hors plateforme · process retenu le 21/11 : forfait à l'engagement, reste à la clôture, commande et planning par la plateforme | notes Granola · process |
 | Commission | 20-30 % · 10-15 % · 10 % · 12 % → **tranché le 2026-11-21 : marge, pas commission** (prévisionnel à refaire) | cadrage · CR 19/10 · prévisionnel · doc IA |
 | Cible | Boulangerie (four, pétrin, diviseuse, froid) · cuisine pro (6 familles) | cadrage · CDC |
 | Compte obligatoire | Déclarer sans compte · connexion en écran 2 | ODJ 26/10 · CDC |

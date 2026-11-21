@@ -1,7 +1,8 @@
-# wiki/sources/ index (generated 2026-11-21, 19 notes)
+# wiki/sources/ index (generated 2026-11-21, 20 notes)
 
 ## active
 - [[2026-11-02-cahier-des-charges]] (updated 2026-11-21, imp 3): CDC V1 de Jess : 14 écrans client et 11 écrans technicien, forfait de 110 € (déplacement, diagnostic, 45 min), devis au-delà, validation des techniciens par un EXPERT, MVP iOS et Android.
+- [[2026-11-09-notes-granola-reunion]] (updated 2026-11-21, imp 4): Prise de notes Granola de Florian (9/11, 14h51) - techniciens (10 meilleures entreprises d'abord, sectorisation, matching au-delà de la distance, équipe joker), paiement en 2 temps avec reversement par relevé mensuel validé et empreinte CB, pièces commandées par le bureau du technicien (2e passage hors plateforme), coûts de fonctionnement, nom trop proche de Doctolib, actions de Florian. Plusieurs écarts avec le process de Lancelot retenu le 2026-11-21.
 - [[2026-11-09-process-operationnel]] (updated 2026-11-21, imp 5): Diagramme en couloirs (restaurant, plateforme, prestataire) en 7 étapes, document le plus structurant pour le dev - la plateforme qualifie, choisit le prestataire et calcule le prix client ; le prestataire porte le diagnostic, la référence et la garantie ; stock du prestataire réservé par mission ; encaissement puis reversement ; marge à la plateforme. Analyse détaillée et écarts avec le CDC.
 - [[2026-10-13-cadrage-doctoresto]] (updated 2026-11-20, imp 3): Document fondateur : concept, priorité au terrain (5 missions), parcours en 6 étapes, fonctions au lancement, modèle, questions à trancher, condensé WhatsApp, test MesDépanneurs, concurrence.
 - [[2026-10-19-cr-reunion]] (updated 2026-11-20, imp 3): Réunion du 19/10 : objectifs Sirha (fournisseurs) et bêta en avril 2027 (100 restaurateurs, 30 techniciens), panier de 350 €, commission de 10 à 15 %, capital de 20 à 50 k€, réunion le lundi à 13h.

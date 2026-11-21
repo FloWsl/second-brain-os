@@ -6,7 +6,7 @@ created: 2026-11-21
 updated: 2026-11-21
 review_by: 2026-12-05
 importance: 5
-sources: ["[[app-beta]]", "[[brief-prd]]", "[[2026-11-09-process-operationnel]]", "[[2026-11-15-feuille-de-route-ia]]", "[[me]]"]
+sources: ["[[2026-11-09-notes-granola-reunion]]", "[[app-beta]]", "[[brief-prd]]", "[[2026-11-09-process-operationnel]]", "[[2026-11-15-feuille-de-route-ia]]", "[[me]]"]
 summary: Première piste de réflexion (Florian, 2026-11-21) - Expo + Convex + Stripe, client en web app, technicien en app, back-office web ; MVP d'un mois découpé ; flux d'argent en charges et transferts séparés (Stripe Connect) ; 5 principes d'architecture pour passer à l'échelle ; Convex ou Supabase selon la maîtrise de Convex ; questions ouvertes.
 ---
 # Stack technique de la bêta — première piste (2026-11-21)
@@ -74,6 +74,12 @@ MVP d'un mois (~30 à 40 h) :
 
 **Conséquence pour le MVP** : le schéma coûte peu. Si les techniciens font leur inscription Stripe Express pendant leur candidature, **Stripe Connect peut entrer dans le MVP d'un mois** à la place des virements manuels.
 
+**Variante notée en réunion le 9/11 (notes Granola, [[2026-11-09-notes-granola-reunion]]), antérieure au process retenu le 21/11 :**
+- Empreinte CB tant qu'aucun technicien n'a pris la course, libérée automatiquement passé un délai (ex. minuit). Compatible avec le schéma ci-dessus : préautorisation courte (même jour), puis capture ou annulation.
+- **Reversement par relevé mensuel** (bimensuel si urgence de trésorerie), validé par le technicien avant paiement. Compatible avec Connect : à la validation du relevé, un transfert par paiement avec `source_transaction`. Plus simple pour le SAV qu'un J+X par intervention, mais plus lent pour des techniciens qui se plaignent des retards de paiement. À arbitrer.
+- 1er paiement à l'arrivée du technicien (1re heure indivisible) et 2e paiement à la validation du devis de pièce : **en conflit avec le process** (forfait à l'engagement, reste à la clôture).
+- Pièce commandée par le bureau du technicien et 2e passage hors plateforme : supprimerait l'avance de trésorerie (question 7), la réservation de stock et le planning, donc **allégerait nettement le MVP**, mais contredit le process. Si délai fabricant + 1 jour dépassé : pièce non payée au technicien.
+
 ## Points d'attention
 - Paiement à la clôture : forfait encaissé tout de suite, carte enregistrée, débit du reste client absent ; si la banque exige 3-D Secure, repli par lien de paiement. Pas de préautorisation (expire en ~7 jours).
 - SDK Stripe différent sur web (`@stripe/stripe-react-native` ne marche pas sur le web) → Checkout hébergé côté client web.
@@ -86,9 +92,11 @@ MVP d'un mois (~30 à 40 h) :
 4. Client : web seul, ou aussi app ? (écart avec le CDC à présenter)
 5. Back-office dans l'app Expo ou en Next.js à part ?
 6. Le prototype Claude de Léa est-il réutilisable ?
-7. **Avance de trésorerie sur les pièces commandées** : la plateforme paie le fournisseur (sans compte Stripe connecté) avant que le client règle le reste à la clôture (jusqu'à 810 € pour la pièce Rational la plus chère). Encaisser la part « pièce » à l'acceptation du devis (écart avec le process) ou accepter l'avance avec un plafond ? À trancher avec Lancelot.
+7. **Avance de trésorerie sur les pièces commandées** : la plateforme paie le fournisseur (sans compte Stripe connecté) avant que le client règle le reste à la clôture (jusqu'à 810 € pour la pièce Rational la plus chère). Encaisser la part « pièce » à l'acceptation du devis (écart avec le process) ou accepter l'avance avec un plafond ? À trancher avec Lancelot. La variante du 9/11 (pièce commandée par le bureau du technicien, 2e paiement à la validation du devis) supprimerait cette avance ([[2026-11-09-notes-granola-reunion]]).
 8. **Délai de reversement au prestataire** (J+X après validation de la remise en service) : rejoint la question ouverte du délai de paiement du prestataire.
-9. Durée maximale de détention des fonds sur le solde plateforme avant transfert : à vérifier dans la documentation Stripe.
+9. Durée maximale de détention des fonds sur le solde plateforme avant transfert, et durée maximale d'une empreinte CB : à vérifier (action de Florian notée le 9/11).
+10. Reversement : J+X par intervention ou relevé mensuel validé par le technicien (9/11) ?
+11. Commande de pièce et 2e passage : par la plateforme (process) ou par le bureau du technicien, hors plateforme (9/11) ? Le second allège fortement le MVP.
 
 ## Écarté
 - Sharetribe : surtout web, modèle de transaction mal adapté au prix calculé après diagnostic et aux passages multiples.

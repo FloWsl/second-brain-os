@@ -6,7 +6,7 @@ created: 2026-11-20
 updated: 2026-11-21
 review_by: 2026-12-20
 importance: 5
-sources: ["[[2026-11-02-cahier-des-charges]]", "[[2026-11-09-cr-reunion]]", "[[2026-10-26-cr-reunion]]", "[[2026-11-09-process-operationnel]]", "[[2026-11-09-indicateurs-suivi]]", "[[2026-11-09-cout-geolocalisation]]", "[[2026-11-02-maquette-ecrans-v6]]"]
+sources: ["[[2026-11-02-cahier-des-charges]]", "[[2026-11-09-cr-reunion]]", "[[2026-11-09-notes-granola-reunion]]", "[[2026-10-26-cr-reunion]]", "[[2026-11-09-process-operationnel]]", "[[2026-11-09-indicateurs-suivi]]", "[[2026-11-09-cout-geolocalisation]]", "[[2026-11-02-maquette-ecrans-v6]]"]
 summary: Bêta à Paris en avril 2027 - interventions les plus demandées, 3 marques au début ; référence produit = process de Lancelot (forfait de diagnostic, prix calculé par la plateforme, marge, stock réservé, paiement à la clôture) ; écrans du CDC V1 ; Florian doit chiffrer le temps et le coût de la bêta.
 ---
 # Appli Doctoresto, version bêta
@@ -27,6 +27,7 @@ Brief et PRD compilés : [[brief-prd]]. Stack : [[stack-technique]] (première p
 Client : accueil à 2 boutons → compte (Apple, Google, Face ID) → famille → marque, modèle, plaque → description et photo → géolocalisation → **forfait de diagnostic** → paiement → prestataire et heure d'arrivée → prix ferme ou devis avec pièce (un seul total) → 2e passage si pièce à commander → validation de la remise en service et paiement du reste → notation.
 Technicien : candidature validée par un EXPERT (back-office), tarif contractuel → mission proposée par la plateforme, acceptation et heure → arrivée horodatée → diagnostic (référence, quantité, temps de pose) → prix calculé par la plateforme, référence validée, pièce en stock réservée ou commandée → pose → PV et photos → payé par la plateforme.
 Process opérationnel complet : [[2026-11-09-process-operationnel]].
+⚠️ Notes de réunion du 9/11 ([[2026-11-09-notes-granola-reunion]]) : variante antérieure (1re heure débitée à l'arrivée, 2e paiement à la validation du devis, reversement par relevé mensuel, pièce commandée par le bureau du technicien, 2e passage hors plateforme). Le process reste la référence ; écarts à discuter avec l'équipe.
 
 ## Indicateurs
 Délai d'arrivée, réparation au premier passage, note moyenne (CDC) ; seuils continuer/alerte de Lancelot : [[2026-11-09-indicateurs-suivi]].
