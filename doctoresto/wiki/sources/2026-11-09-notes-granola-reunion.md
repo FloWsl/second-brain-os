@@ -49,7 +49,7 @@ Importée le 2026-11-21. Complète le CR officiel du même jour ([[2026-11-09-cr
 | Action | Qui | Statut au 2026-11-21 |
 | --- | --- | --- |
 | Envoyer le récap des modifications du pacte (good/bad leaver, entrée d'un associé) | Florian | probablement caduc (pacte signé le 13/11) |
-| Vérifier les coûts du paiement et la durée maximale des empreintes CB ; affiner le prévisionnel mensuel | Florian | à faire (rejoint le chiffrage, [[stack-technique]]) |
+| Vérifier les coûts du paiement et la durée maximale des empreintes CB ; affiner le prévisionnel mensuel | Florian | coûts et durées faits le 2026-11-21 ([[stack-technique]]) ; prévisionnel mensuel à faire (rejoint le chiffrage, [[stack-technique]]) |
 | Proposer un rétroplanning de développement (version minimale, cible avril) | Florian | à faire (première estimation dans [[stack-technique]]) |
 | Top 3-5 de noms pour vote | tous | pas de trace |
 | Confirmer le rendez-vous du vendredi 13 novembre | — | passé |

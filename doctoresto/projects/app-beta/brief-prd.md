@@ -246,7 +246,7 @@ Fonctions issues du CDC et du process de Lancelot :
 - **Plateformes** : iOS et Android (CDC). Publication App Store et Play Store (coûts listés au prévisionnel).
 - **Performance d'usage** : de la panne à la commande en moins de 2 minutes (CDC).
 - **Réseau** : labos et cuisines souvent mal couverts → mode dégradé / hors-ligne au moins côté technicien. ❓ (cadrage, absent du CDC)
-- **Paiement** : CB, Apple Pay, 3-D Secure ; pré-autorisation ou encaissement du forfait (process) ; reversement aux techniciens → **marketplace avec paiements fractionnés** (piste : Stripe Connect). Frais Stripe estimés à ~3,85 € par intervention de 240 € (doc IA, à vérifier).
+- **Paiement** : CB, Apple Pay, 3-D Secure ; empreinte CB à la commande, forfait capturé à l'arrivée, devis débité à sa validation ; reversement par relevé mensuel → **Stripe Connect, charges et transferts séparés**. Frais : ~1,5 % + 0,25 € par paiement carte, 2 € par technicien actif et par mois, 0,10 € + 0,25 % par virement (tarif standard, à vérifier sur la grille). Détail : [[stack-technique]].
 - **Conformité** :
   - **RGPD** : géolocalisation et photos (consentement, durée de conservation ❓).
   - **DAC7** : déclaration annuelle à la DGFiP des revenus versés aux techniciens ; KYC et diligences sur les vendeurs (veille du 2026-11-20).
@@ -306,7 +306,7 @@ Actions liées : envoyer ses estimations de coûts à Jess (prévisionnel) ; rel
 ### 2.14 Planning de développement (💡 proposition à valider)
 | Période | Livrable |
 | --- | --- |
-| Fin nov. 2026 | Chiffrage temps/coût + choix no-code ou sur mesure ; réponses aux questions ouvertes du CDC |
+| Fin nov. 2026 | Chiffrage temps/coût (première piste de stack posée le 2026-11-21, ~90-100 h pour le périmètre complet, MVP d'un mois découpé : [[stack-technique]]) ; réponses aux questions ouvertes du CDC |
 | Déc. 2026 | Visuels côté technicien (pour le Sirha) ; choix de la piste graphique ; e-Soleau |
 | Janv. 2027 | Sirha (21-25/01) : démo côté technicien ; catalogue pièces/marques complété avec les fabricants |
 | Janv.-fév. 2027 | Développement MVP, back-office, paiement, onboarding techniciens |

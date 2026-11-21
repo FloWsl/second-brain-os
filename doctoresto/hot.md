@@ -16,10 +16,10 @@ Updated 2026-11-21.
 - Alicia : retour attendu sur un format hors capital.
 - Prochaine réunion : à définir.
 
-- Florian (notes du 9/11) : vérifier coûts du paiement et durée max des empreintes CB ; proposer un rétroplanning de dev.
+- Florian (notes du 9/11) : coûts et durées Stripe vérifiés le 2026-11-21 ([[stack-technique]]), reste à confirmer la gratuité d'une empreinte annulée et l'activation des « charges et transferts séparés » sur le compte ; proposer un rétroplanning de dev.
 
 ## Decisions this week
 - 2026-11-21 : la discussion du 9/11 prime sur le process de Lancelot là où ils se contredisent (paiement, reversement, pièces, stock). → [[2026-11-09-notes-granola-reunion]]
 - 2026-11-21 : première piste de stack Expo + Convex (ou Supabase) + Stripe, client en web app ; à confirmer (maîtrise de Convex, heures/semaine, objectif Sirha). → [[stack-technique]]
-- 2026-11-21 : le process de Lancelot fait référence pour le produit (marge, forfait de diagnostic, dispatch et prix par la plateforme, stock, paiement à la clôture).
+- 2026-11-21 : le process de Lancelot fait référence pour le produit (marge, dispatch et prix par la plateforme, responsabilités, SAV) ; amendé le même jour par la discussion du 9/11 (ci-dessus) et par le forfait de 129 € HT pour le déplacement et la 1re heure.
 - Rien de nouveau depuis le 2026-11-13 (pacte signé). Dernières : société avant la bêta, pacte sans avocat, pas de suivi en temps réel dans la bêta (CR du 9/11).
