@@ -21,7 +21,7 @@ summary: Compilation, structurée autour du process opérationnel de Lancelot am
 ## Partie 1 — Brief projet
 
 ### 1.1 En une phrase
-Une appli mobile de **dépannage d'urgence pour les professionnels du CHR** (restaurants, boulangeries, hôtels, traiteurs) : le client déclare sa panne en moins de 2 minutes, un technicien qualifié et proche intervient, la 1re heure est débitée à son arrivée ; la plateforme encaisse, reverse au technicien et **garde une marge** (décisions du 2026-11-21). ✅ ([[business]], [[2026-11-02-cahier-des-charges]])
+Une appli mobile de **dépannage d'urgence pour les professionnels du CHR** (restaurants, boulangeries, hôtels, traiteurs) : le client déclare sa panne en moins de 2 minutes, un technicien qualifié et proche intervient, le forfait (déplacement + 1re heure) est débité à son arrivée ; la plateforme encaisse, reverse au technicien et **garde une marge** (décisions du 2026-11-21). ✅ ([[business]], [[2026-11-02-cahier-des-charges]])
 
 ### 1.2 Problème
 - Une panne en plein service, c'est du chiffre d'affaires perdu. Les pannes d'équipements critiques arrivent souvent tôt le matin ou le week-end. (CDC V1 ; cadrage)
@@ -57,11 +57,11 @@ Personas des maquettes v6 : **Marie** (Boulangerie Martin) côté client ; **Kar
 | 2028 | Développement national, 5 000 clients fin 2028 |
 
 ### 1.6 Modèle économique ([[offer]])
-- ✅ **Taux horaire, 1re heure indivisible** : à la commande, **empreinte CB** (pas de débit), libérée automatiquement si aucun technicien ne prend la course avant un délai (ex. minuit) ; **la 1re heure est débitée à l'arrivée du technicien**. (discussion du 9/11, [[2026-11-09-notes-granola-reunion]] ; décision du 2026-11-21 ; remplace le forfait de diagnostic de 129 € HT du process et le forfait de 110 € avec 45 min du CDC)
+- ✅ **Forfait de diagnostic de 129 € HT = déplacement + 1re heure d'intervention** (heure indivisible) : à la commande, **empreinte CB** (pas de débit), libérée automatiquement si aucun technicien ne prend la course avant un délai (ex. minuit) ; **le forfait est débité à l'arrivée du technicien**. (montant du process conservé, débit à l'arrivée de la discussion du 9/11, [[2026-11-09-notes-granola-reunion]] ; décisions du 2026-11-21 ; remplace le forfait de 110 € avec 45 min du CDC)
 - ✅ Au-delà de la 1re heure ou si une pièce est nécessaire : **devis calculé par la plateforme** (heures suivantes au taux horaire + pièce au prix de la base + marge), **un seul prix total** ; **2e paiement débité dès la validation du devis par le client**. Le technicien peut lancer le devis avant de quitter le client.
 - ✅ **Revenu = marge** : le prestataire travaille à un **tarif contractuel plateforme** connu d'avance ; le client paie le prix calculé par la plateforme ; la différence reste à la plateforme. Seuil de marge brute de Lancelot : > 25 % (alerte < 15 %). (process ; remplace la commission de 10 % du prévisionnel)
 - ✅ **Reversement aux techniciens par relevé mensuel** (bimensuel en cas d'urgence de trésorerie), validé par le technicien ; l'argent reste bloqué sur la plateforme jusqu'à la fin de la prestation (« modèle Vinted »). ([[2026-11-09-notes-granola-reunion]])
-- ❓ Montants à fixer : **taux horaire client**, grille des tarifs contractuels, règle de marge (heures, pièces). Le **prévisionnel de Jess est à refaire** sur ce modèle.
+- ❓ Montants à fixer : **taux horaire des heures suivantes**, grille des tarifs contractuels, règle de marge (heures, pièces). Le **prévisionnel de Jess est à refaire** sur ce modèle.
 - Hors bêta : paiement en 3 fois (gros devis), abonnements.
 
 ### 1.7 Équipe et ressources
@@ -115,12 +115,12 @@ Sources : process de Lancelot ([[2026-11-09-process-operationnel]], transcriptio
 ```mermaid
 flowchart TD
   A[1 Signalement<br/>restaurant : équipement, marque, modèle, plaque, symptômes, photos, urgence] --> B[Qualification<br/>plateforme : pré-diagnostic, urgence, métier, compétence]
-  B --> C{2 Engagement<br/>restaurant accepte le taux horaire<br/>1re heure indivisible due à l'arrivée}
+  B --> C{2 Engagement<br/>restaurant accepte le forfait 129 € HT<br/>déplacement + 1re heure, dû à l'arrivée}
   C -->|oui| D[Empreinte CB, pas de débit]
   D --> E[3 Dispatch<br/>plateforme : zone × dispo × métier × marque × historique<br/>sectorisation, clients préférentiels]
   E --> F{Prestataire accepte<br/>tarif contractuel connu}
   F -.->|personne avant le délai, ex. minuit| X1[Empreinte libérée]
-  F -->|oui| G[Arrivée horodatée<br/>1re heure débitée]
+  F -->|oui| G[Arrivée horodatée<br/>forfait débité]
   G --> H[4 Diagnostic<br/>responsabilité du prestataire : panne, référence, quantité, temps de pose]
   H --> I{Réparé dans la 1re heure ?}
   I -->|oui| S
@@ -139,15 +139,15 @@ flowchart TD
 ```
 
 **Statuts d'une intervention (💡 déduits)**
-`signalée` → `qualifiée` → `empreinte posée` → `proposée au prestataire` → `acceptée` (ou `expirée, empreinte libérée`) → `prestataire sur place` (horodaté, **1re heure débitée**) → `diagnostiquée` → soit `réparée dans l'heure`, soit `devis envoyé` → `devis accepté` (**2e paiement débité**) ou `devis refusé` (remise en état) → `pose immédiate` ou `pièce commandée par le bureau` (délai prévu, relances, `en retard`) → `2e passage` → `réparée` → `remise en service validée` (photo + client) → `au relevé` → `relevé validé par le prestataire` → `prestataire payé` → `close` ; branche `réclamation SAV` après clôture.
+`signalée` → `qualifiée` → `empreinte posée` → `proposée au prestataire` → `acceptée` (ou `expirée, empreinte libérée`) → `prestataire sur place` (horodaté, **forfait débité**) → `diagnostiquée` → soit `réparée dans l'heure`, soit `devis envoyé` → `devis accepté` (**2e paiement débité**) ou `devis refusé` (remise en état) → `pose immédiate` ou `pièce commandée par le bureau` (délai prévu, relances, `en retard`) → `2e passage` → `réparée` → `remise en service validée` (photo + client) → `au relevé` → `relevé validé par le prestataire` → `prestataire payé` → `close` ; branche `réclamation SAV` après clôture.
 
 **Qui fait quoi, et ce que ça demande à l'appli**
 | Étape | Restaurant (appli client) | Plateforme (back-office) | Prestataire (appli pro) |
 | --- | --- | --- | --- |
 | 1 Signalement | Formulaire : équipement, marque, **modèle, plaque (photo)**, symptômes, photos, urgence | File des demandes ; pré-diagnostic, métier et compétence (manuel en bêta) | — |
-| 2 Engagement | Accepte le taux horaire (1re heure due à l'arrivée) ; **empreinte CB** | Pose l'empreinte ; la libère si personne ne prend la course avant le délai | — |
+| 2 Engagement | Accepte le forfait de 129 € HT (déplacement + 1re heure, dû à l'arrivée) ; **empreinte CB** | Pose l'empreinte ; la libère si personne ne prend la course avant le délai | — |
 | 3 Dispatch | — | Choix du prestataire (zone, dispo, métier, marque, historique, **sectorisation, clients préférentiels**) ; manuel assisté en bêta ; équipe joker si défaillance | Reçoit la mission avec le **tarif contractuel**, accepte |
-| 4 Arrivée et diagnostic | Accueille le technicien | Horodatage de l'arrivée ; **débit de la 1re heure** | Diagnostic ; saisit panne, **référence, quantité, temps de pose** |
+| 4 Arrivée et diagnostic | Accueille le technicien | Horodatage de l'arrivée ; **débit du forfait** | Diagnostic ; saisit panne, **référence, quantité, temps de pose** |
 | Réparé dans l'heure | — | — | Répare, passe à la clôture |
 | 5 Devis | Reçoit **un seul prix total**, valide ; **2e paiement débité** | Calcule le prix (heures + pièce + marge) | Déclare pièce **dans le camion** ou **à commander par son bureau** ; valide la référence (erreur à sa charge) ; **lance le devis avant de partir** |
 | Pièce à commander | Reçoit le délai prévu | **Visibilité seulement** : délai fabricant + 1 j, relances automatiques (J+24 h, J+48 h…) | Son bureau commande et intègre la pose dans sa tournée (hors plateforme) |
@@ -157,8 +157,8 @@ flowchart TD
 
 **Conséquences pour le périmètre de la bêta** 💡
 - Le **back-office reste central** (qualification, dispatch, calcul de prix, suivi des délais de pièces, relevés, SAV), mais **sans commande de pièces, sans stock et sans planning** : périmètre nettement réduit (décision du 2026-11-21).
-- **Référentiels avant le lancement** : taux horaire client, grille de tarifs contractuels des prestataires, **base de pièces avec prix publics et délais fabricant**, règle de marge. Base existante : Rational ([[2026-11-01-pannes-rational]]).
-- **Paiement** : empreinte CB à la commande (courte, même jour), débit de la 1re heure à l'arrivée, 2e paiement à la validation du devis, client présent dans l'appli ; reversement mensuel. Mécanique Stripe : [[stack-technique]].
+- **Référentiels avant le lancement** : taux horaire des heures suivantes, grille de tarifs contractuels des prestataires, **base de pièces avec prix publics et délais fabricant**, règle de marge. Base existante : Rational ([[2026-11-01-pannes-rational]]).
+- **Paiement** : empreinte CB à la commande (courte, même jour), débit du forfait (129 € HT) à l'arrivée, 2e paiement à la validation du devis, client présent dans l'appli ; reversement mensuel. Mécanique Stripe : [[stack-technique]].
 
 ### 2.4 Parcours client — 14 écrans (CDC V1)
 | # | Écran | Exigences |
@@ -171,7 +171,7 @@ flowchart TD
 | C6 | Connectée ? | Machine connectée ou non (info seulement en bêta) |
 | C7 | Description | Texte + photo. 💡 Ajouter modèle et photo de la plaque signalétique (process étape 1) |
 | C8 | Récapitulatif et géolocalisation | Consentement RGPD |
-| C9 | Conditions | **Taux horaire, 1re heure indivisible débitée à l'arrivée du technicien** ; au-delà ou avec pièce, devis calculé par la plateforme, payé à sa validation *(décision du 2026-11-21 ; le CDC disait 110 € avec 45 min)* |
+| C9 | Conditions | **Forfait de diagnostic de 129 € HT (déplacement + 1re heure d'intervention), débité à l'arrivée du technicien** ; au-delà ou avec pièce, devis calculé par la plateforme, payé à sa validation *(décision du 2026-11-21 ; le CDC disait 110 € avec 45 min)* |
 | C10 | Paiement | **Empreinte CB** (pas de débit), libérée si aucun technicien avant le délai ; carte enregistrée ; CB, Apple Pay, 3-D Secure ; (3 fois : hors bêta). Cible : panne → commande **< 2 min** |
 | C11 | Prestataire et heure d'arrivée | Prestataire choisi par la plateforme ; heure confirmée par lui (pas de suivi en direct en bêta) |
 | C12 | Devis | Devis calculé par la plateforme (heures en plus et/ou pièce), **un seul total**, accepter (**2e paiement débité**) ou refuser (remise en état initial, CDC) ; si pièce à commander, délai prévu |
@@ -189,7 +189,7 @@ flowchart TD
 | T4 | Candidature | Validée par un EXPERT en back-office. Pièces à exiger (piste IA) : Kbis, attestation URSSAF, RC pro et décennale, habilitations (électrique, fluides frigorigènes). 💡 + données DAC7 (identité, SIREN, IBAN) |
 | T5 | Mission proposée | Proposée par la plateforme (meilleur prestataire), avec le **tarif contractuel** ; accepter et fixer son heure ; refus → la plateforme propose au suivant |
 | T6 | Détail de la panne | Infos et photos du client |
-| T7 | Arrivée | Validée par géolocalisation ; **horodatage de l'arrivée = débit de la 1re heure** *(plus de compteur de 45 min)* |
+| T7 | Arrivée | Validée par géolocalisation ; **horodatage de l'arrivée = débit du forfait** *(plus de compteur de 45 min)* |
 | T8 | Diagnostic | Panne, **référence, quantité, temps de pose** ; réparé dans l'heure, heures en plus, pièce nécessaire ; réparation impossible |
 | T9 | Devis | Le prestataire indique si la pièce est **dans son camion** ou **à commander par son bureau** et **lance le devis avant de quitter le client** ; **la plateforme calcule le prix client** ; le prestataire **valide la référence** (erreur à sa charge) |
 | T10 | Réponse client et 2e passage | Refus = remise en état initial ; accord → pose immédiate si pièce dans le camion, sinon son bureau commande et planifie la pose (hors plateforme) ; délai fabricant + 1 j, relances |
@@ -215,7 +215,7 @@ Fonctions issues du CDC et du process de Lancelot :
 | Règle | Statut |
 | --- | --- |
 | Empreinte CB à la commande, sans débit ; libérée automatiquement si aucun technicien ne prend la course avant un délai (ex. minuit) | ✅ 9/11 (décision du 2026-11-21) |
-| Taux horaire ; **1re heure indivisible débitée à l'arrivée du technicien** (arrivée horodatée) | ✅ 9/11 (décision du 2026-11-21) |
+| **Forfait de diagnostic de 129 € HT = déplacement + 1re heure d'intervention** (indivisible), **débité à l'arrivée du technicien** (arrivée horodatée) ; heures suivantes au taux horaire | ✅ process (montant) + 9/11 (débit à l'arrivée) ; décisions du 2026-11-21 |
 | Heures suivantes et pièce : devis calculé par la plateforme, **un seul prix total** ; **2e paiement débité à la validation du devis** | ✅ 9/11 + process |
 | Le technicien peut lancer le devis avant de quitter le client | ✅ décision du 2026-11-21 |
 | Refus du devis : machine remise en l'état initial | ✅ CDC |
@@ -234,7 +234,7 @@ Fonctions issues du CDC et du process de Lancelot :
 | SAV : pas de nouvelle facture si erreur du prestataire, reprise à sa charge | ✅ process |
 | Client en cas de retard de pièce (remboursement, geste) | ❓ |
 | Si aucun technicien : empreinte libérée ; délai maximum | 🟡 / ❓ |
-| Panne non réparable : 1re heure due ? | ❓ |
+| Panne non réparable : forfait dû ? | ❓ |
 | Machine non listée / « autre marque » | ❓ |
 | Astreinte payée ou non (5 h du matin, dimanche) | ❓ cadrage |
 | Durée de la garantie | ❓ |
@@ -277,12 +277,12 @@ CDC : délai d'arrivée, réparation au premier passage, note moyenne. Doc IA : 
 - **Catalogue** : familles → marques → pannes fréquentes (codes erreur) → pièces (référence, prix moyen HT, poids). Données initiales : [[2026-11-01-pannes-rational]] (fours mixtes : 9 pièces, de 12 € à 810 € HT ; sauteuses iVario : 12 pièces).
 - **Intervention** : demande (symptômes, photos, urgence, modèle, plaque), qualification (métier, compétence), statut (§2.3), prestataire, heures (demande, acceptation, arrivée prévue, arrivée réelle, début du diagnostic, fin), diagnostic (panne, référence, quantité, temps de pose), issue, rapport.
 - **Passage** : une intervention peut avoir plusieurs passages (diagnostic, pose) ; date prévue (pose : fixée par le bureau du prestataire), horodatages, PV (pièce posée, tests, temps passé, photo obligatoire).
-- **Tarif contractuel prestataire** : taux horaire, consommables.
+- **Tarif contractuel prestataire** : part du forfait, taux horaire, consommables.
 - **Pièce à poser** (par intervention) : référence, source (camion / commande par le bureau), délai fabricant, date de pose prévue, relances, retard (pièce non payée).
 - **Relevé prestataire** (mensuel ou bimensuel) : interventions, montants, statut (envoyé, contesté, validé, payé), transferts associés.
 - **Réclamation SAV** : intervention liée, motif (diagnostic, référence, malfaçon), imputation, résolution.
 - **Devis** : lignes internes (heures, consommable, pièce, marge) et **un seul total affiché au client**, statut, accord horodaté, 2e paiement associé.
-- **Paiement** : empreinte (posée, capturée pour la 1re heure, libérée), débit du devis.
+- **Paiement** : empreinte (posée, capturée pour le forfait, libérée), débit du devis.
 - **Paiement / reversement / facture**, **litige**, **notation** (5 critères).
 
 ### 2.12 Options techniques et chiffrage (à produire par Florian)
@@ -320,7 +320,7 @@ Actions liées : envoyer ses estimations de coûts à Jess (prévisionnel) ; rel
 ### 3.1 Incohérences entre sources
 | Sujet | Valeurs | Sources |
 | --- | --- | --- |
-| Forfait | 80 € (déplacement + 1re heure) · 110 € (45 min) · 129 € HT, forfait de diagnostic (process, écarté le 2026-11-21) · **taux horaire, 1re heure indivisible débitée à l'arrivée (9/11, retenu le 2026-11-21 ; montant à fixer)** · panier 240 € | maquette v6 · CDC + CR 9/11 · process · notes du 9/11 · doc IA |
+| Forfait | 80 € (déplacement + 1re heure) · 110 € (45 min) · **129 € HT, forfait de diagnostic = déplacement + 1re heure d'intervention, débité à l'arrivée (retenu le 2026-11-21)** ; heures suivantes au taux horaire (à fixer) · panier 240 € | maquette v6 · CDC + CR 9/11 · process · notes du 9/11 · doc IA |
 | Paiement et pièces | 9/11 ([[2026-11-09-notes-granola-reunion]]) vs process : **tranché le 2026-11-21 en faveur du 9/11** (voir tableau ci-dessous) | notes Granola · process |
 | Commission | 20-30 % · 10-15 % · 10 % · 12 % → **tranché le 2026-11-21 : marge, pas commission** (prévisionnel à refaire) | cadrage · CR 19/10 · prévisionnel · doc IA |
 | Cible | Boulangerie (four, pétrin, diviseuse, froid) · cuisine pro (6 familles) | cadrage · CDC |
@@ -332,7 +332,7 @@ Actions liées : envoyer ses estimations de coûts à Jess (prévisionnel) ; rel
 **Tranché le 2026-11-21 : le process de Lancelot fait foi face au CDC** ([[decisions]]) — **sauf les lignes marquées 9/11**, où la discussion du 9/11 ([[2026-11-09-notes-granola-reunion]]) prime sur le process
 | Sujet | Retenu (process) | Écarté |
 | --- | --- | --- |
-| Premier paiement (9/11) | Empreinte CB à la commande ; taux horaire, 1re heure indivisible débitée à l'arrivée | Forfait de diagnostic de 129 € HT à l'engagement (process) ; 45 min incluses (CDC) |
+| Premier paiement (9/11) | Empreinte CB à la commande ; forfait de 129 € HT (déplacement + 1re heure d'intervention) débité à l'arrivée | Même forfait sans temps d'intervention, payé à l'engagement (process) ; 110 € avec 45 min (CDC) |
 | Qui chiffre le devis | La plateforme ; le prestataire valide la référence | Le technicien saisit durée + pièce (CDC) |
 | Affectation | La plateforme choisit le meilleur prestataire | Alerte ouverte (CDC) ; manuelle pure (cadrage) |
 | Revenu | Marge sur tarif contractuel | Commission de 10 % (prévisionnel) |
@@ -341,8 +341,8 @@ Actions liées : envoyer ses estimations de coûts à Jess (prévisionnel) ; rel
 | Reversement (9/11) | Relevé mensuel validé par le prestataire | Après chaque clôture (process) |
 
 ### 3.2 Questions à trancher avant / pendant le développement
-1. Montants : taux horaire client, grille des tarifs contractuels, règle de marge.
-2. 1re heure due si panne non réparable ? Délai de libération de l'empreinte si aucun technicien (minuit ?) ; délai maximum.
+1. Montants : taux horaire des heures suivantes, grille des tarifs contractuels, règle de marge.
+2. Forfait dû si panne non réparable ? Délai de libération de l'empreinte si aucun technicien (minuit ?) ; délai maximum.
 3. Les 3 marques et les interventions de la bêta (Jess et Lancelot) ; liste des pannes artisans (Lancelot).
 4. Parcours sans compte pour une urgence ?
 5. Mode hors-ligne dans la bêta ?

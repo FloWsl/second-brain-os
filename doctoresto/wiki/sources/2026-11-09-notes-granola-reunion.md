@@ -55,7 +55,7 @@ Importée le 2026-11-21. Complète le CR officiel du même jour ([[2026-11-09-cr
 | Confirmer le rendez-vous du vendredi 13 novembre | — | passé |
 
 ## Écarts avec le process de Lancelot (tranchés le 2026-11-21 en faveur de cette discussion)
-Précisions de Florian le 2026-11-21 : 1re heure au **taux horaire** (heures suivantes et pièce via le devis) ; **prix calculé par la plateforme, revenu = marge** (process) ; le technicien déclare « camion » ou « à commander par son bureau » et **peut lancer le devis avant de quitter le client**.
+Précisions de Florian le 2026-11-21 : la 1re heure est couverte par le **forfait de diagnostic de 129 € HT du process, conservé** (déplacement + 1re heure d'intervention), débité à l'arrivée ; heures suivantes au taux horaire et pièce via le devis ; **prix calculé par la plateforme, revenu = marge** (process) ; le technicien déclare « camion » ou « à commander par son bureau » et **peut lancer le devis avant de quitter le client**.
 
 | Sujet | Retenu (9/11) | Écarté (process) |
 | --- | --- | --- |

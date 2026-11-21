@@ -9,8 +9,8 @@ Updated 2026-11-21.
 
 ## Open loops
 - Relire le CDC V1 et préparer ses réponses aux questions ouvertes (tous).
-- **Référence produit = process de Lancelot amendé par la discussion du 9/11** (décisions du 2026-11-21) : empreinte CB, 1re heure au taux horaire débitée à l'arrivée, devis calculé par la plateforme et payé à sa validation, marge, pièces commandées par le bureau du technicien (pas de stock), relevé mensuel. **À présenter à l'équipe** : CDC de Jess et prévisionnel à aligner. → [[2026-11-09-notes-granola-reunion]], [[brief-prd]]
-- Taux horaire client, grille des tarifs contractuels et règle de marge à fixer ; client en cas de retard de pièce ; délai de libération de l'empreinte.
+- **Référence produit = process de Lancelot amendé par la discussion du 9/11** (décisions du 2026-11-21) : empreinte CB, forfait de 129 € HT (déplacement + 1re heure) débité à l'arrivée, heures suivantes au taux horaire, devis calculé par la plateforme et payé à sa validation, marge, pièces commandées par le bureau du technicien (pas de stock), relevé mensuel. **À présenter à l'équipe** : CDC de Jess et prévisionnel à aligner. → [[2026-11-09-notes-granola-reunion]], [[brief-prd]]
+- Taux horaire des heures suivantes, grille des tarifs contractuels et règle de marge à fixer ; client en cas de retard de pièce ; délai de libération de l'empreinte.
 - Nom : DoctoResto pour l'appli (risque Doctolib, libellés INPI ; le 9/11, nom jugé trop proche de Doctolib et top 3-5 à voter, pas de trace du vote : [[2026-11-09-notes-granola-reunion]]) ; nom de la société ; classes 9/37/42 ou 35/37/42.
 - Validation terrain : aucun entretien restaurateur documenté ; questionnaire prêt.
 - Alicia : retour attendu sur un format hors capital.

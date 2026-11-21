@@ -13,7 +13,7 @@ summary: Appli de dépannage d'urgence pour les professionnels CHR (restaurants,
 # Doctoresto
 
 ## Le concept
-Appli de dépannage d'urgence pour les professionnels du CHR : le restaurateur déclare sa panne, un technicien qualifié et proche arrive (1re heure débitée à son arrivée, depuis le 2026-11-21) ; la plateforme encaisse, reverse au technicien et garde une marge. (cadrage 2026-10-13 ; CDC 2026-11-02 ; marge depuis le 2026-11-21)
+Appli de dépannage d'urgence pour les professionnels du CHR : le restaurateur déclare sa panne, un technicien qualifié et proche arrive (forfait de 129 € HT, déplacement + 1re heure, débité à son arrivée, depuis le 2026-11-21) ; la plateforme encaisse, reverse au technicien et garde une marge. (cadrage 2026-10-13 ; CDC 2026-11-02 ; marge depuis le 2026-11-21)
 Deux profils dans une appli : client (restaurateur, hôtelier, traiteur, boulanger) et technicien (technicien de marque ou artisan). Voir [[app-beta]].
 Principe de responsabilité : la plateforme porte la relation commerciale, le prestataire la responsabilité technique. Le process de Lancelot est **la référence pour le produit** depuis le 2026-11-21 ([[2026-11-09-process-operationnel]]) : la plateforme qualifie, choisit le prestataire et calcule les prix ; voir [[offer]].
 Modèle : urgence et one shot ; les restaurateurs n'investissent pas dans le préventif. (CR 2026-11-09)

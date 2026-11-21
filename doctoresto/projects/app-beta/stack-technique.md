@@ -17,7 +17,7 @@ summary: Première piste de réflexion (Florian, 2026-11-21) - Expo + Convex + S
 | --- | --- | --- |
 | Front | **Expo** (React Native + web, une seule base de code) | iOS, Android et web ; une app à 2 rôles (accueil à 2 boutons du CDC) ; mises à jour à distance (EAS Update) sans repasser par les stores, utile pendant l'absence de Florian en mars-avril 2027 |
 | Backend | **Convex** (alternative : Supabase / Postgres) | Machine à statuts en mutations transactionnelles, tâches planifiées (relance dispatch, rappels 2e passage), temps réel, stockage des photos, webhooks Stripe ; backend open source et auto-hébergeable (code cédé à WRLJ, pacte art. 1) |
-| Paiement | **Stripe** (Checkout hébergé côté web : empreinte CB, 1re heure capturée à l'arrivée, devis payé à sa validation) ; **Stripe Connect Express** en charges et transferts séparés (voir Flux d'argent), possible dès le MVP | Modèle à marge = charges et transferts séparés ; Connect gère la vérification d'identité des techniciens |
+| Paiement | **Stripe** (Checkout hébergé côté web : empreinte CB, forfait de 129 € HT (déplacement + 1re heure) capturé à l'arrivée, devis payé à sa validation) ; **Stripe Connect Express** en charges et transferts séparés (voir Flux d'argent), possible dès le MVP | Modèle à marge = charges et transferts séparés ; Connect gère la vérification d'identité des techniciens |
 | Connexion | Clerk (ou Convex Auth) ; Face ID = déverrouillage local (`expo-local-authentication`) | Apple et Google ; Clerk plus mûr sur Expo |
 | Facturation | Outil externe via API | Réforme de la facturation électronique B2B (émission obligatoire pour les PME en septembre 2027) |
 | Analyse | Export nocturne (cron) vers Airtable ou Google Sheets | Pas de SQL dans Convex ; indicateurs de Lancelot et prévisionnel de Jess |
@@ -49,19 +49,19 @@ MVP d'un mois (~30 à 40 h) :
 | Dans le MVP | Fait à la main ou reporté |
 | --- | --- |
 | Client web : déclaration, photos, empreinte CB par paiement Stripe hébergé, carte enregistrée, validation du devis | Dispatch : choisi par l'équipe dans le back-office |
-| App technicien : mission, arrivée (débit de la 1re heure), diagnostic, « camion / à commander », devis lancé sur place, photo de clôture | Commandes de pièces : par le bureau du technicien (hors plateforme), délai et relances suivis |
+| App technicien : mission, arrivée (débit du forfait), diagnostic, « camion / à commander », devis lancé sur place, photo de clôture | Commandes de pièces : par le bureau du technicien (hors plateforme), délai et relances suivis |
 | Back-office web : file, dispatch, statuts, calcul du prix, suivi des délais de pièces, clôture | Stock : aucun (le technicien déclare « camion » ou « à commander ») |
 | Journal d'événements et export des indicateurs | Reversements : relevé mensuel ; Stripe Connect si les techniciens s'inscrivent à Stripe Express à la candidature (sinon virements manuels et Connect au mois 2) ; relevés générés à la main le premier mois |
 |  | Facturation : outil externe à la main au début |
 
 ## Flux d'argent (piste de Florian du 2026-11-21, adaptée à la discussion du 9/11)
 **Principe : « charges et transferts séparés » de Stripe Connect.** Le client paie la plateforme (compte Stripe de WRLJ). Plus tard, quand la plateforme le décide, elle transfère au compte connecté (Express) du prestataire. Entre les deux, l'argent attend sur le solde de la plateforme (« modèle Vinted » : bloqué jusqu'à la fin de la prestation). La marge, c'est ce qui n'est pas transféré.
-Règles de paiement retenues le 2026-11-21 ([[2026-11-09-notes-granola-reunion]], prime sur le process de Lancelot sur ce point) : empreinte CB à la commande, **1re heure (taux horaire, indivisible) débitée à l'arrivée**, **2e paiement à la validation du devis**, **reversement par relevé mensuel** validé par le technicien.
+Règles de paiement retenues le 2026-11-21 ([[2026-11-09-notes-granola-reunion]], prime sur le process de Lancelot sur ce point) : empreinte CB à la commande, **forfait de diagnostic de 129 € HT (déplacement + 1re heure d'intervention, indivisible) débité à l'arrivée**, **2e paiement à la validation du devis**, **reversement par relevé mensuel** validé par le technicien.
 
 **Mécanique**
-1. **Commande** : empreinte CB = PaymentIntent en `capture_method=manual` (Checkout côté web), avec `transfer_group=<id intervention>` et `setup_future_usage` pour enregistrer la carte. Montant autorisé = la 1re heure.
+1. **Commande** : empreinte CB = PaymentIntent en `capture_method=manual` (Checkout côté web), avec `transfer_group=<id intervention>` et `setup_future_usage` pour enregistrer la carte. Montant autorisé = le forfait TTC (154,80 € avec une TVA à 20 %).
 2. **Aucun technicien avant le délai** (ex. minuit) : tâche planifiée qui annule le PaymentIntent → empreinte libérée, rien n'est débité.
-3. **Arrivée horodatée du technicien** : capture du PaymentIntent (1re heure). Webhook : récupérer la `latest_charge` (`ch_xxx`) et la stocker sur l'intervention (`checkout.session.completed` ne donne pas directement la charge).
+3. **Arrivée horodatée du technicien** : capture du PaymentIntent (forfait). Webhook : récupérer la `latest_charge` (`ch_xxx`) et la stocker sur l'intervention (`checkout.session.completed` ne donne pas directement la charge).
 4. **Validation du devis** (heures en plus et/ou pièce) : le client est sur place et valide dans l'appli → nouveau PaymentIntent avec la carte enregistrée, **client présent** : si la banque exige 3-D Secure, il s'authentifie tout de suite. Même `transfer_group`.
 5. **Relevé mensuel** (bimensuel si urgence de trésorerie) : la plateforme génère le relevé du technicien ; il le valide ou signale des erreurs ; à la validation, `POST /v1/transfers` avec `destination=acct_<prestataire>` et `source_transaction=ch_xxx`, **un transfert par paiement** (un transfert ne peut pas dépasser la charge sur laquelle il s'appuie). Avec `source_transaction`, la demande réussit toujours et le transfert part quand les fonds sont disponibles ; sans lui, un transfert supérieur au solde échoue et Stripe ne réessaie pas.
 
@@ -81,7 +81,7 @@ Règles de paiement retenues le 2026-11-21 ([[2026-11-09-notes-granola-reunion]]
 **Coûts Stripe (France, tarif standard à vérifier sur la grille du compte ; extrait d'une discussion Claude.ai de Florian, 2026-11-21)**
 | Poste | Tarif | Exemple |
 | --- | --- | --- |
-| Paiement carte européenne standard | ~1,5 % + 0,25 € par paiement | Intervention de 400 € en 2 paiements (1re heure + devis) : 6 € + 2 × 0,25 € ≈ **6,50 €** |
+| Paiement carte européenne standard | ~1,5 % + 0,25 € par paiement | Intervention de 400 € en 2 paiements (forfait + devis) : 6 € + 2 × 0,25 € ≈ **6,50 €** |
 | Connect, compte actif (plateforme qui gère la tarification des prestataires) | 2 € par compte actif et par mois | 30 techniciens payés dans le mois : 60 € |
 | Connect, virement envoyé au prestataire | 0,10 € + 0,25 % du montant | Relevé de 3 000 € : 7,60 € |
 | Virement instantané | 1 % du montant | À éviter, sauf urgence de trésorerie (option bimensuelle plutôt) |
@@ -90,7 +90,7 @@ Ordre de grandeur : ~1,6 % côté encaissement, plus ~0,3 % et 2 € par technic
 **Conséquence pour le MVP** : le schéma coûte peu, et la commande des pièces par le bureau du technicien supprime le stock, les commandes et le planning côté plateforme. Si les techniciens font leur inscription Stripe Express pendant leur candidature, **Stripe Connect peut entrer dans le MVP d'un mois** ; les relevés peuvent être générés à la main le premier mois.
 
 ## Points d'attention
-- Empreinte CB : courte (même jour), donc compatible avec la durée de validité d'une autorisation carte (~7 jours chez Stripe pour la plupart des cartes, à vérifier). Le montant capturé ne peut pas dépasser le montant autorisé : autoriser au moins la 1re heure.
+- Empreinte CB : courte (même jour), donc compatible avec la durée de validité d'une autorisation carte (~7 jours chez Stripe pour la plupart des cartes, à vérifier). Le montant capturé ne peut pas dépasser le montant autorisé : autoriser au moins le forfait TTC.
 - SDK Stripe différent sur web (`@stripe/stripe-react-native` ne marche pas sur le web) → Checkout hébergé côté client web.
 - ⚠️ Modèle à marge : la plateforme vend le service et facture la TVA sur le total, le technicien facture la plateforme ; effet possible sur DAC7. **À faire valider par un expert-comptable avant de coder la facturation.**
 
