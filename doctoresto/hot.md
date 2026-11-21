@@ -9,6 +9,7 @@ Updated 2026-11-20.
 
 ## Open loops
 - Relire le CDC V1 et préparer ses réponses aux questions ouvertes (tous).
+- Process de Lancelot (ossature du produit, analysé le 2026-11-21) contredit le CDC sur 6 points : contenu du forfait, qui chiffre le devis, dispatch, marge ou commission, stock, moment du paiement. À trancher avant le dev. → [[2026-11-09-process-operationnel]]
 - Montant du forfait à aligner : 80 € (maquette), 110 € (CDC), 129 € HT (process).
 - Commission et reversement au technicien non votés (10 % dans le prévisionnel).
 - Nom : DoctoResto pour l'appli (risque Doctolib, libellés INPI) ; nom de la société ; classes 9/37/42 ou 35/37/42.

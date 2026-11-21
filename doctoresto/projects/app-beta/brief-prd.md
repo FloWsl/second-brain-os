@@ -3,16 +3,17 @@ title: Brief projet et PRD - appli DoctoResto (bêta avril 2027)
 type: project
 status: draft
 created: 2026-11-20
-updated: 2026-11-20
+updated: 2026-11-21
 review_by: 2026-12-20
 importance: 5
 sources: ["[[business]]", "[[icp]]", "[[offer]]", "[[me]]", "[[app-beta]]", "[[decisions]]", "[[2026-10-13-cadrage-doctoresto]]", "[[2026-11-02-cahier-des-charges]]", "[[2026-11-02-maquette-ecrans-v6]]", "[[2026-11-09-process-operationnel]]", "[[2026-11-09-indicateurs-suivi]]", "[[2026-11-09-cout-geolocalisation]]", "[[2026-11-09-previsionnel-financier]]", "[[2026-11-09-cr-reunion]]", "[[2026-11-15-feuille-de-route-ia]]", "[[2026-11-01-pannes-rational]]", "[[2026-11-02-pistes-style]]", "[[2026-11-09-recap-nom-inpi]]", "[[marche-et-concurrence]]", "[[2026-11-20]]"]
-summary: Compilation en un seul document de tout ce qui sert à écrire le brief et le PRD de la bêta DoctoResto - contexte, cibles, offre, périmètre, parcours écran par écran, règles métier, back-office, exigences non fonctionnelles, données, indicateurs, contraintes, options techniques, incohérences et questions ouvertes.
+summary: Compilation, structurée autour du process opérationnel de Lancelot, de tout ce qui sert à écrire le brief et le PRD de la bêta DoctoResto - contexte, cibles, offre, périmètre, parcours écran par écran, règles métier, back-office, exigences non fonctionnelles, données, indicateurs, contraintes, options techniques, incohérences et questions ouvertes.
 ---
 # Brief projet et PRD — appli DoctoResto (bêta avril 2027)
 
 > Compilé le 2026-11-20 à partir du cerveau Doctoresto (sources du Drive « DOCTO RESTO » importées le même jour).
 > Chaque fait renvoie à sa source. **Statut des informations** : ✅ décidé · 🟡 proposé, non voté · ❓ ouvert · 💡 proposition de compilation (à valider par l'équipe).
+> **Document structurant : le process opérationnel de Lancelot** (diagramme du 2026-11-09, analysé en détail le 2026-11-21 : [[2026-11-09-process-operationnel]]). Il sert d'ossature au PRD (§2.3) ; le CDC V1 décrit les écrans.
 > Ce document ne remplace pas le CDC V1 de Jess ([[2026-11-02-cahier-des-charges]]) : il l'agrège avec le process, les indicateurs, les décisions et les contraintes, pour servir de base au chiffrage et au développement.
 
 ---
@@ -59,6 +60,7 @@ Personas des maquettes v6 : **Marie** (Boulangerie Martin) côté client ; **Kar
 - ✅ **Forfait client de 110 €** : déplacement, diagnostic et jusqu'à 45 min de dépannage, payé à la commande. Au-delà (temps ou pièce) : devis accepté/refusé dans l'appli, nouveau devis = nouveau paiement. (CDC V1, CR du 9/11)
 - 🟡 Revenu plateforme : commission de **10 %** sur un panier moyen de **350 € HT** dans le prévisionnel (35 € HT par intervention) ; process de Lancelot : **marge sur les pièces**, marge brute visée > 25 %.
 - ❓ Montant de la commission et du reversement au technicien : **non votés**.
+- ⚠️ **Deux modèles coexistent** : le process de Lancelot repose sur une **marge** (le prestataire travaille à un tarif contractuel plateforme, la plateforme calcule le prix client et garde la différence) ; le prévisionnel sur une **commission** de 10 %. Le choix change l'appli (grilles tarifaires et calcul de prix d'un côté, simple pourcentage de l'autre) : à trancher avant le dev.
 - Hors bêta : paiement en 3 fois (gros devis), abonnements.
 
 ### 1.7 Équipe et ressources
@@ -104,7 +106,62 @@ Budget dev dans le prévisionnel 2027 : **3 500 € (dev mobile et cloud)**. Tou
 | EXPERT DoctoResto (back-office) | Valide les candidatures techniciens, suit les missions, traite les litiges |
 | 💡 Admin | Gère catalogues (familles, marques, pannes, pièces, prix), tarifs, paramètres |
 
-### 2.3 Parcours client — 14 écrans (CDC V1)
+### 2.3 Process opérationnel de référence (Lancelot) — ossature du produit
+Source : [[2026-11-09-process-operationnel]] (diagramme en 3 couloirs, transcription complète et analyse dans la fiche). Principe : **la plateforme porte la relation commerciale, le prestataire la responsabilité technique.** C'est le document le plus structurant pour le dev : chaque case devient un écran, une action back-office, un statut ou une règle.
+
+**Flux (réécrit en Mermaid pour le dev)**
+```mermaid
+flowchart TD
+  A[1 Signalement<br/>restaurant : équipement, marque, modèle, plaque, symptômes, photos, urgence] --> B[Qualification<br/>plateforme : pré-diagnostic, urgence, métier, compétence]
+  B --> C{2 Engagement<br/>restaurant accepte le forfait diagnostic}
+  C -->|oui| D[Plateforme encaisse ou préautorise]
+  D --> E[3 Dispatch<br/>plateforme : zone × dispo × métier × marque × historique]
+  E --> F{Prestataire accepte<br/>tarif contractuel connu}
+  F -->|oui| G[Arrivée et début du diagnostic horodatés]
+  G --> H[4 Diagnostic<br/>responsabilité du prestataire : panne, référence, quantité, temps de pose]
+  H --> I{Pièce nécessaire ?}
+  I -->|non| J[Prix ferme MO + consommable<br/>validé par le restaurant] --> K[Réparation immédiate]
+  I -->|oui| L[5 Plateforme calcule le prix client<br/>pièce + livraison + retour + MO + marge<br/>prestataire valide la référence]
+  L --> M{Restaurant accepte le devis ?<br/>un seul prix total}
+  M -->|oui| N{Pièce dans le stock du prestataire ?}
+  N -->|cas 1 non| O[Commande via la plateforme<br/>prix, livraison, délai tracés<br/>prestataire valide la commande technique]
+  N -->|cas 2 oui| P[Réservation de la pièce<br/>affectée à la mission]
+  O --> Q[2e intervention programmée<br/>selon délai d'appro et dispo]
+  P --> Q
+  Q --> R[Pose, essais, remise en service]
+  K --> S
+  R --> S[6 Clôture<br/>PV + photos par le prestataire<br/>restaurant valide la remise en service<br/>rapport, facture, historique machine]
+  S --> T[Restaurant paie la plateforme<br/>plateforme reverse au prestataire, garde la marge]
+  T --> U[7 SAV<br/>plateforme orchestre ; prestataire reprend à ses frais si erreur]
+  C -.->|non : non dessiné| X((à définir))
+  F -.->|refus : non dessiné| X
+  M -.->|non : non dessiné<br/>CDC = remise en état| X
+```
+
+**Statuts d'une intervention (💡 déduits du process, à valider)**
+`signalée` → `qualifiée` → `forfait accepté / payé` → `proposée au prestataire` → `acceptée` → `prestataire sur place` (horodaté) → `diagnostiquée` → soit `réparation immédiate validée` → `réparée`, soit `devis envoyé` → `devis accepté` (ou `devis refusé` → remise en état) → `pièce réservée` ou `pièce commandée` → `2e passage planifié` → `réparée` → `remise en service validée` → `payée` → `prestataire réglé` → `close` ; branche `réclamation SAV` ouverte après clôture.
+
+**Qui fait quoi, et ce que ça demande à l'appli**
+| Étape | Restaurant (appli client) | Plateforme (back-office) | Prestataire (appli pro) |
+| --- | --- | --- | --- |
+| 1 Signalement | Formulaire : équipement, marque, **modèle, plaque (photo)**, symptômes, photos, urgence | File des demandes ; pré-diagnostic et choix du métier et de la compétence (manuel en bêta) | — |
+| 2 Engagement | Accepte et paie le forfait diagnostic | Encaissement ou préautorisation (prix connu avant déplacement) | — |
+| 3 Dispatch | — | Choix du prestataire sur 5 critères (manuel assisté en bêta : liste filtrée et triée) | Reçoit la mission avec le **tarif contractuel**, accepte |
+| 4 Diagnostic | Accueille le technicien | Suit la mission ; horodatage arrivée / début | Diagnostic ; saisit panne, **référence, quantité, temps de pose** |
+| Sans pièce | Valide le prix ferme sur place | Calcule le prix ferme (MO + consommable) | Répare tout de suite |
+| 5 Appro | Reçoit **un seul prix total** et accepte | Calcule le prix client ; enregistre l'accord ; **aucune commande sans accord** | Valide la référence (erreur à sa charge) ; déclare son stock |
+| Stock | — | Réserve la pièce ou la commande (prix fournisseur, livraison, délai tracés) | Confirme la disponibilité réelle ; la pièce réservée est bloquée pour les autres missions |
+| 2e passage | Reçoit la date | Programme selon délai d'appro et disponibilité | Pose, essais, remise en service |
+| 6 Clôture | Valide la remise en service ; paie | Rapport, facture, **historique machine** ; encaisse puis reverse | PV technique : pièce posée, tests, temps passé, photos |
+| 7 SAV | Réclame auprès de la plateforme, son seul interlocuteur | Orchestre la réclamation ; pas de nouvelle facture si erreur du prestataire | Reprend à ses frais (diagnostic, référence, malfaçon) |
+
+**Conséquences pour le périmètre de la bêta** 💡
+- Le **back-office est central** (qualification, dispatch, calcul de prix, commandes, planification, SAV) : en bêta, l'équipe fait ces gestes à la main dans un outil interne simple ; l'automatisation (dispatch, prix) vient après.
+- Il faut des **référentiels avant le lancement** : grille de tarifs contractuels des prestataires, taux de MO, consommables, catalogue pièces avec prix fournisseur, frais de livraison et de retour, règle de marge. Base existante : Rational ([[2026-11-01-pannes-rational]]).
+- **Plusieurs passages par intervention** et **stock du prestataire** sont dans le process : le cadrage repoussait le stock embarqué ; version minimale proposée : le prestataire déclare « pièce dans mon camion : oui/non » par mission, sans inventaire complet.
+- **Paiement** : une préautorisation carte expire (environ 7 jours chez Stripe) ; avec un délai d'appro, encaisser au moment de l'accord du devis ou redemander une autorisation.
+
+### 2.4 Parcours client — 14 écrans (CDC V1)
 | # | Écran | Exigences |
 | --- | --- | --- |
 | C1 | Accueil | 2 boutons : « J'ai une panne » / « Je suis un technicien » |
@@ -124,7 +181,7 @@ Budget dev dans le prévisionnel 2027 : **3 500 € (dev mobile et cloud)**. Tou
 
 Écrans complémentaires vus dans la maquette v6 : historique des interventions, factures, compte. ([[2026-11-02-maquette-ecrans-v6]])
 
-### 2.4 Parcours technicien — 11 écrans (CDC V1)
+### 2.5 Parcours technicien — 11 écrans (CDC V1)
 | # | Écran | Exigences |
 | --- | --- | --- |
 | T1 | Accueil | — |
@@ -141,19 +198,21 @@ Budget dev dans le prévisionnel 2027 : **3 500 € (dev mobile et cloud)**. Tou
 
 Maquette v6 côté technicien : statut disponible / hors ligne, missions à moins de 20 km, planning, revenus. Photo de la pièce obligatoire au diagnostic.
 
-### 2.5 Back-office (CDC : validation EXPERT, suivi, litiges)
-💡 Exigences déduites du process de Lancelot ([[2026-11-09-process-operationnel]]) :
-1. **Qualification** de la demande : pré-diagnostic, métier, compétence requise.
-2. **Dispatch** : affectation **manuelle** en bêta (cadrage) ; critères du process : zone, disponibilité, métier, marque, historique ; tarif contractuel connu du technicien.
-3. **Calcul du prix client** pour une pièce : pièce + livraison + retour + main-d'œuvre + marge ; le technicien valide la référence (erreur à sa charge) ; un seul prix total affiché ; aucune commande sans accord du client.
-4. **Approvisionnement** : pièce en stock chez le technicien (réservée à la mission) ou commandée via la plateforme (prix, délai, livraison tracés) ; 2e intervention si besoin.
-5. **Clôture** : remise en service validée, rapport, facture, **historique machine**.
-6. **Paiements** : la plateforme encaisse puis reverse au technicien ; la marge reste à la plateforme.
-7. **SAV et litiges** : le client garde la plateforme comme interlocuteur ; erreur de diagnostic, mauvaise référence ou malfaçon = reprise à la charge du technicien, sans nouvelle facture.
-8. Tableau de bord des indicateurs (§2.9).
-9. Gestion des catalogues : familles, marques, pannes, pièces, prix, poids.
+### 2.6 Back-office (CDC : validation EXPERT, suivi, litiges ; process : §2.3)
+Fonctions issues du CDC et du process de Lancelot :
+1. **Candidatures prestataires** : validation EXPERT, pièces justificatives, métiers, marques habilitées, zone, **tarif contractuel**.
+2. **File des demandes et qualification** : pré-diagnostic, urgence, métier, compétence.
+3. **Dispatch** : liste des prestataires filtrée (zone, disponibilité, métier, marque) et triée (historique) ; envoi de la mission ; relance si refus ou absence de réponse.
+4. **Suivi en direct des missions** par statut (§2.3), avec horodatages.
+5. **Calcul de prix** : prix ferme sans pièce (MO + consommable) ; prix client avec pièce (pièce + livraison + retour + MO + marge) ; un seul total affiché au client.
+6. **Pièces** : catalogue par marque, prix fournisseur, poids ; réservation sur le stock du prestataire ou commande fournisseur (prix, livraison, délai tracés).
+7. **Planification** des 2es passages.
+8. **Clôture** : contrôle du PV et des photos, rapport, facture, historique machine.
+9. **Paiements** : encaissements, reversements aux prestataires, marge ; export comptable ; données DAC7.
+10. **SAV et litiges** : réclamations, imputation au prestataire (reprise à ses frais), suivi.
+11. **Indicateurs** (§2.10) et catalogues (familles, marques, pannes, pièces).
 
-### 2.6 Règles métier
+### 2.7 Règles métier
 | Règle | Statut |
 | --- | --- |
 | Forfait 110 € payé à la commande (déplacement, diagnostic, 45 min) | ✅ |
@@ -172,11 +231,20 @@ Maquette v6 côté technicien : statut disponible / hors ligne, missions à moin
 | Astreinte payée ou non (5 h du matin, dimanche) | ❓ cadrage |
 | Commission sur les pièces | ❓ cadrage (le process dit marge sur pièces) |
 | Prise en compte des affinités client-technicien existantes dans le dispatch | 💡 indicateurs de Lancelot |
+| Le prestataire engage sa responsabilité sur son diagnostic et sur la référence de pièce | ✅ process |
+| Prix client calculé par la plateforme ; un seul prix total visible | 🟡 process (le CDC fait saisir le devis par le technicien) |
+| Réparation sans pièce : prix ferme MO + consommable validé par le restaurant | 🟡 process (le CDC l'inclut dans les 45 min du forfait) |
+| Aucune commande de pièce sans accord du client | ✅ process |
+| Pièce réservée = indisponible pour toute autre mission | 🟡 process |
+| 2e intervention planifiée selon délai d'appro et disponibilité | 🟡 process |
+| Clôture : PV + photos du prestataire, validation du restaurant | 🟡 process |
+| SAV : pas de nouvelle facture si erreur du prestataire, reprise à sa charge | ✅ process |
+| Durée de la garantie, délai de paiement du prestataire | ❓ |
 
-### 2.7 Cas limites à prévoir ([[2026-11-09-indicateurs-suivi]])
+### 2.8 Cas limites à prévoir ([[2026-11-09-indicateurs-suivi]])
 45 min de circulation · parking impossible · technicien mobilisé 1 h 45 · modèle non identifié · appareil inaccessible · client incapable d'expliquer la panne · référence illisible · panne intermittente · machine à remplacer · peur de la concurrence entre prestataires · aucun technicien disponible · panne non réparable · litige.
 
-### 2.8 Exigences non fonctionnelles
+### 2.9 Exigences non fonctionnelles
 - **Plateformes** : iOS et Android (CDC). Publication App Store et Play Store (coûts listés au prévisionnel).
 - **Performance d'usage** : de la panne à la commande en moins de 2 minutes (CDC).
 - **Réseau** : labos et cuisines souvent mal couverts → mode dégradé / hors-ligne au moins côté technicien. ❓ (cadrage, absent du CDC)
@@ -189,7 +257,7 @@ Maquette v6 côté technicien : statut disponible / hors ligne, missions à moin
 - **Coûts d'exploitation** : 0,20 à 1 € par utilisateur et par mois (estimation de Florian, 13/10). Temps réel Firebase/Supabase : 0-25 €/mois au début. Google Routes/géocodage : 10 000 appels gratuits/mois puis 5 $ les 1 000 ; à 500 interventions/mois, un recalcul toutes les 2 min reste gratuit, toutes les 30 s ≈ 50 $ ([[2026-11-09-cout-geolocalisation]]).
 - **Propriété intellectuelle** : code et maquettes cédés à WRLJ (pacte, art. 1) ; e-Soleau (CDC, maquettes, concept) avant le Sirha.
 
-### 2.9 Indicateurs produit ([[2026-11-09-indicateurs-suivi]], CDC)
+### 2.10 Indicateurs produit ([[2026-11-09-indicateurs-suivi]], CDC)
 | Indicateur | Continuer | Alerte |
 | --- | --- | --- |
 | Acceptation des devis | > 70 % | < 50 % |
@@ -203,17 +271,22 @@ Maquette v6 côté technicien : statut disponible / hors ligne, missions à moin
 CDC : délai d'arrivée, réparation au premier passage, note moyenne. Doc IA : note > 4,7, coût d'acquisition < 25 €. Fréquence visée : 1,5 intervention par mois et par client (2027).
 💡 Chaque indicateur implique un événement à tracer dans les données (horodatages de demande, acceptation, arrivée, clôture ; issue ; litige ; prix pièce et marge).
 
-### 2.10 Modèle de données (ébauche 💡)
+### 2.11 Modèle de données (ébauche 💡)
 - **Utilisateur** (client | technicien | expert | admin), auth (Apple, Google, Face ID, email).
 - **Établissement client** : nom, type CHR, adresse/coordonnées, contacts.
 - **Technicien** : statut (artisan | marque), métiers, marques habilitées, zone, disponibilité, documents (Kbis, URSSAF, RC pro, décennale, habilitations), données DAC7 (identité, SIREN, IBAN), statut de validation, note.
 - **Équipement** : famille, marque, modèle, plaque, connecté (oui/non), historique d'interventions.
 - **Catalogue** : familles → marques → pannes fréquentes (codes erreur) → pièces (référence, prix moyen HT, poids). Données initiales : [[2026-11-01-pannes-rational]] (fours mixtes : 9 pièces, de 12 € à 810 € HT ; sauteuses iVario : 12 pièces).
-- **Intervention** : demande (symptômes, photos, urgence), statut, technicien, heures (demande, acceptation, arrivée prévue, arrivée réelle, fin), compteur 45 min, issue, photos avant/après, rapport.
-- **Devis** : lignes (main-d'œuvre, pièce, livraison, retour, marge), statut, paiement associé.
+- **Intervention** : demande (symptômes, photos, urgence, modèle, plaque), qualification (métier, compétence), statut (§2.3), prestataire, heures (demande, acceptation, arrivée prévue, arrivée réelle, début du diagnostic, fin), compteur 45 min, diagnostic (panne, référence, quantité, temps de pose), issue, rapport.
+- **Passage** : une intervention peut avoir plusieurs passages (diagnostic, pose) ; date planifiée, horodatages, PV (pièce posée, tests, temps passé, photos).
+- **Tarif contractuel prestataire** : taux de MO, forfaits, consommables.
+- **Stock prestataire** (minimal) : pièce, quantité, réservation liée à une intervention.
+- **Commande fournisseur** : fournisseur, référence, prix fournisseur, frais de livraison et de retour, délai, statut.
+- **Réclamation SAV** : intervention liée, motif (diagnostic, référence, malfaçon), imputation, résolution.
+- **Devis** : type (réparation immédiate sans pièce / complémentaire avec pièce), lignes internes (MO, consommable, pièce, livraison, retour, marge) et **un seul total affiché au client**, statut, accord horodaté, paiement associé.
 - **Paiement / reversement / facture**, **litige**, **notation** (5 critères).
 
-### 2.11 Options techniques et chiffrage (à produire par Florian)
+### 2.12 Options techniques et chiffrage (à produire par Florian)
 Pistes du doc IA de la feuille de route (non relu par l'équipe, [[2026-11-15-feuille-de-route-ia]]) :
 | Option | Délai | Coût |
 | --- | --- | --- |
@@ -223,13 +296,13 @@ Autres repères : géoloc en direct en freelance 1 500 à 5 000 € (hors bêta)
 💡 Critères de choix à documenter dans le chiffrage : apps natives iOS/Android exigées par le CDC (Sharetribe est surtout web), hors-ligne, Stripe Connect et KYC/DAC7, back-office, réversibilité du code (cédé à la société), dev assisté par IA (Léa a déjà un prototype Claude), disponibilité réduite de Florian en mars-avril 2027, coûts récurrents.
 Actions liées : envoyer ses estimations de coûts à Jess (prévisionnel) ; relever les heures de dev (valorisation au bilan, apport de Florian en partie en travail).
 
-### 2.12 Identité visuelle
+### 2.13 Identité visuelle
 - 6 pistes de style ([[2026-11-02-pistes-style]]) ; **le bleu plaît à la majorité** (CR du 9/11), probablement la piste F « Gyrophare » : bleu nuit #0A1F44, ambre #FFB000, acier ; Plus Jakarta Sans ; « urgence maîtrisée, confiance ».
 - Contrainte : **éviter le bleu cyan et toute typo proche de Doctolib** (risque de parasitisme). L'orange/beige de la première maquette de Léa fait « appli générée par IA ».
 - Maquette v6 (Florian) : design system forêt, orange, lime, blé ; thèmes clair et sombre — antérieure au choix du bleu.
 - Nom : plutôt **DoctoResto** pour l'appli, pas définitif ; société WRLJ. Vérifier domaine et @doctoresto. ([[2026-11-09-recap-nom-inpi]])
 
-### 2.13 Planning de développement (💡 proposition à valider)
+### 2.14 Planning de développement (💡 proposition à valider)
 | Période | Livrable |
 | --- | --- |
 | Fin nov. 2026 | Chiffrage temps/coût + choix no-code ou sur mesure ; réponses aux questions ouvertes du CDC |
@@ -253,6 +326,12 @@ Actions liées : envoyer ses estimations de coûts à Jess (prévisionnel) ; rel
 | Suivi en direct | Oui (« arrivée dans 24 min ») · non en bêta | maquette v6 · CR 9/11 |
 | Prévisionnel | CA trimestriel = un seul mois ; clients fin 2027 : 1 500 (sheet) vs 500 (diapos) ; 2 250 interventions/mois au T4 avec ~30 techniciens ≈ 75 par technicien | [[2026-11-09-previsionnel-financier]] |
 | Classes INPI | 9/37/42 · 35/37/42 | récap Léa · doc IA |
+| Contenu du forfait | Diagnostic seul, réparation sans pièce facturée en plus · déplacement + diagnostic + 45 min de dépannage | process · CDC |
+| Qui chiffre le devis | Plateforme (prestataire valide la référence) · technicien (durée + pièce du catalogue) | process · CDC |
+| Affectation | Plateforme choisit le meilleur prestataire · alerte et relance si refus · manuelle | process · CDC · cadrage |
+| Revenu | Marge sur tarif contractuel · commission 10 % | process · prévisionnel |
+| Stock embarqué | Contrôlé et réservé par mission · plus tard | process · cadrage |
+| Moment du paiement du complément | À la clôture · à l'acceptation du devis | process · CDC |
 
 ### 3.2 Questions à trancher avant / pendant le développement
 1. Commission et reversement au technicien ; marge sur pièces ou commission ?
@@ -267,6 +346,13 @@ Actions liées : envoyer ses estimations de coûts à Jess (prévisionnel) ; rel
 10. Statut, assurances et pièces justificatives exigées des techniciens ; contrat technicien.
 11. No-code ou sur mesure (chiffrage de Florian).
 12. Nom définitif et charte graphique.
+13. **Marge ou commission** ? Si marge : grille des tarifs contractuels prestataires et règle de marge.
+14. Le forfait couvre-t-il 45 min de réparation (CDC) ou le diagnostic seul (process) ?
+15. Qui chiffre le devis : la plateforme ou le technicien ? (impact : catalogue de prix complet ou saisie libre)
+16. Stock du prestataire dans la bêta : inventaire, simple « oui/non » par mission, ou rien ?
+17. Fournisseurs de pièces de la bêta et mode de commande (manuel par l'équipe ou intégré).
+18. Branches absentes du process : refus du forfait, refus de mission, refus du devis, panne non réparable, remise en service non validée.
+19. Durée de garantie et mécanisme d'imputation au prestataire (retenue sur reversement ?).
 
 ### 3.3 Risques
 - **Besoin non validé** côté restaurateurs (aucun entretien documenté).
