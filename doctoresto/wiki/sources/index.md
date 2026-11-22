@@ -1,4 +1,4 @@
-# wiki/sources/ index (generated 2026-11-21, 20 notes)
+# wiki/sources/ index (generated 2026-11-22, 20 notes)
 
 ## active
 - [[2026-11-02-cahier-des-charges]] (updated 2026-11-21, imp 3): CDC V1 de Jess : 14 écrans client et 11 écrans technicien, forfait de 110 € (déplacement, diagnostic, 45 min), devis au-delà, validation des techniciens par un EXPERT, MVP iOS et Android.

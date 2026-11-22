@@ -1,4 +1,4 @@
-# wiki/ index (generated 2026-11-21, 2 notes)
+# wiki/ index (generated 2026-11-22, 2 notes)
 
 ## active
 - [[drive-map]] (updated 2026-11-20, imp 3): Arborescence complète du Drive partagé « DOCTO RESTO » au 2026-11-20 (ids des dossiers, fichiers et fiche source de chacun) ; sert à la synchro quotidienne.
